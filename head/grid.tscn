@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/smallest_12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://head.png" type="Texture" id=2]
+[ext_resource path="res://head/grid.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="grid" type="Button"]
+margin_right = 96.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 96, 64 )
+custom_styles/focus = SubResource( 1 )
+clip_text = true
+align = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="TextureButton" parent="."]
+margin_left = 24.0
+margin_right = 72.0
+margin_bottom = 48.0
+mouse_filter = 2
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="."]
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "订单大四的阿萨德"
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

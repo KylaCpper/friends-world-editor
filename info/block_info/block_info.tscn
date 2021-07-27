@@ -1,0 +1,856 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/font/smallest_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://info/text.tres" type="StyleBox" id=2]
+[ext_resource path="res://info/edit_text_normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://info/edit_text_focus.tres" type="StyleBox" id=4]
+[ext_resource path="res://info/block_info/vbox2.gd" type="Script" id=5]
+[ext_resource path="res://info/block_info/block_info.gd" type="Script" id=6]
+[ext_resource path="res://info/spin.tres" type="Theme" id=7]
+[ext_resource path="res://info/check_num.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.705882, 0.705882, 0.705882, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_blend = true
+
+[node name="block_info" type="ScrollContainer"]
+margin_left = 166.0
+margin_top = 66.0
+margin_right = 1024.0
+margin_bottom = 10599.0
+custom_styles/bg = SubResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 580.0
+margin_bottom = 652.0
+custom_constants/separation = 0
+
+[node name="vbox0" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 300.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="title0" type="Label" parent="HBoxContainer/vbox0"]
+margin_right = 300.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "556654645654654654654654654654654654"
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "唯一key"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title1" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 36.0
+margin_right = 300.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "名字"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title2" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 72.0
+margin_right = 300.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "砸损强度"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title3" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 108.0
+margin_right = 300.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "挖掘强度"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title4" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "质量(影响速度和最大速度"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title5" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 180.0
+margin_right = 300.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "最大堆叠数"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title6" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 216.0
+margin_right = 300.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "硬度类型(硬砸非实体不碎，脆必碎"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title7" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 252.0
+margin_right = 300.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "显示透明"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title8" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 288.0
+margin_right = 300.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "有无碰撞"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title9" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 324.0
+margin_right = 300.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "自定义模型"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title10" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "材质"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title11" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 396.0
+margin_right = 300.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "音效"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title12" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 432.0
+margin_right = 300.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "方向类型"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title13" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 468.0
+margin_right = 300.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "燃料"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title14" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 504.0
+margin_right = 300.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "掉落"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title15" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 540.0
+margin_right = 300.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "食物"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title16" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 576.0
+margin_right = 300.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "周期更新"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title17" type="Label" parent="HBoxContainer/vbox0"]
+margin_top = 612.0
+margin_right = 300.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "自定义脚本"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox1" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 300.0
+margin_right = 316.0
+margin_bottom = 644.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="title0" type="Label" parent="HBoxContainer/vbox1"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title1" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 36.0
+margin_right = 16.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title2" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 72.0
+margin_right = 16.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title3" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 108.0
+margin_right = 16.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title4" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 144.0
+margin_right = 16.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title5" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 180.0
+margin_right = 16.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title6" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 216.0
+margin_right = 16.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title7" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 252.0
+margin_right = 16.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title8" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 288.0
+margin_right = 16.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title9" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 324.0
+margin_right = 16.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title10" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 360.0
+margin_right = 16.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title11" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 396.0
+margin_right = 16.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title12" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 432.0
+margin_right = 16.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title13" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 468.0
+margin_right = 16.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title14" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 504.0
+margin_right = 16.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title15" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 540.0
+margin_right = 16.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title16" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 576.0
+margin_right = 16.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title17" type="Label" parent="HBoxContainer/vbox1"]
+margin_top = 612.0
+margin_right = 16.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 316.0
+margin_right = 572.0
+margin_bottom = 644.0
+mouse_filter = 2
+custom_constants/separation = 4
+script = ExtResource( 5 )
+
+[node name="text0" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 32 )
+mouse_filter = 1
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text1" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 256, 32 )
+mouse_filter = 1
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text2" type="SpinBox" parent="HBoxContainer/vbox2"]
+margin_top = 72.0
+margin_right = 256.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 256, 32 )
+theme = ExtResource( 7 )
+min_value = 0.1
+max_value = 999.0
+step = 0.1
+value = 0.1
+align = 1
+
+[node name="text3" parent="HBoxContainer/vbox2" instance=ExtResource( 8 )]
+
+[node name="text4" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 144.0
+margin_right = 256.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text5" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 180.0
+margin_right = 256.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text6" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 216.0
+margin_right = 256.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text7" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 252.0
+margin_right = 256.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text8" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 288.0
+margin_right = 256.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text9" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 324.0
+margin_right = 256.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text10" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 360.0
+margin_right = 256.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text11" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 396.0
+margin_right = 256.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text12" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 432.0
+margin_right = 256.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text13" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 468.0
+margin_right = 256.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text14" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 504.0
+margin_right = 256.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text15" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 540.0
+margin_right = 256.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text16" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 576.0
+margin_right = 256.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+
+[node name="text17" type="LineEdit" parent="HBoxContainer/vbox2"]
+margin_top = 612.0
+margin_right = 256.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 256, 32 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+text = "key"
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true

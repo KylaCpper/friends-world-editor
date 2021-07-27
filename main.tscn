@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://left/left.gd" type="Script" id=2]
+[ext_resource path="res://info/block_info/block_info.tscn" type="PackedScene" id=3]
+[ext_resource path="res://head/head.gd" type="Script" id=4]
+[ext_resource path="res://assets/font/smallest_12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://head.png" type="Texture" id=6]
+[ext_resource path="res://head/head_grid.gd" type="Script" id=7]
+[ext_resource path="res://head/hbox.gd" type="Script" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+
+[sub_resource type="Theme" id=2]
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="head" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Panel" parent="head"]
+margin_right = 1024.0
+margin_bottom = 64.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="head_grid" type="Control" parent="head"]
+margin_left = 30.0
+margin_right = 330.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 96, 64 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="TextureButton" parent="head/head_grid"]
+margin_left = 24.0
+margin_right = 72.0
+margin_bottom = 48.0
+mouse_filter = 2
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="head/head_grid"]
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 5 )
+text = "订单大四的阿萨德"
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="head" type="ScrollContainer" parent="head"]
+margin_left = 166.0
+margin_right = 1024.0
+margin_bottom = 75.0
+mouse_filter = 2
+theme = SubResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="head/head"]
+mouse_filter = 2
+custom_constants/separation = 8
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="Tree" parent="."]
+margin_top = 62.0
+margin_right = 166.0
+margin_bottom = 600.0
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="block_info" parent="info" instance=ExtResource( 3 )]
