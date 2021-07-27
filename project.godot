@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="friends_world_editor"
+run/main_scene="res://main.tscn"
+boot_splash/image="res://boot.png"
+config/icon="res://head.png"
+config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+Overall="*res://global/overall.gd"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
