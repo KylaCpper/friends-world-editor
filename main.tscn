@@ -1,18 +1,32 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
 [ext_resource path="res://info/block_info/block_info.tscn" type="PackedScene" id=3]
 [ext_resource path="res://head/head.gd" type="Script" id=4]
-[ext_resource path="res://assets/font/smallest_12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://info/spin.tres" type="Theme" id=5]
 [ext_resource path="res://head.png" type="Texture" id=6]
 [ext_resource path="res://head/head_grid.gd" type="Script" id=7]
 [ext_resource path="res://head/hbox.gd" type="Script" id=8]
+[ext_resource path="res://windows/textedit.gd" type="Script" id=9]
+[ext_resource path="res://default.tres" type="Theme" id=10]
+[ext_resource path="res://windows/path.gd" type="Script" id=11]
+[ext_resource path="res://info/bg2.tres" type="StyleBox" id=12]
+[ext_resource path="res://windows/path_dir.gd" type="Script" id=13]
+[ext_resource path="res://windows/drop.gd" type="Script" id=14]
+[ext_resource path="res://windows/component/drops.gd" type="Script" id=15]
+[ext_resource path="res://windows/food.gd" type="Script" id=16]
+[ext_resource path="res://windows/food/food.gd" type="Script" id=17]
+[ext_resource path="res://windows/composite.gd" type="Script" id=18]
+[ext_resource path="res://windows/component/composite/composite.gd" type="Script" id=19]
+[ext_resource path="res://windows/component/composite/composites_grid.tscn" type="PackedScene" id=20]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="main" type="Control"]
 anchor_right = 1.0
@@ -35,7 +49,7 @@ __meta__ = {
 margin_right = 1024.0
 margin_bottom = 64.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,10 +65,11 @@ __meta__ = {
 }
 
 [node name="button" type="TextureButton" parent="head/head_grid"]
-margin_left = 24.0
-margin_right = 72.0
+margin_left = 22.8775
+margin_right = 70.8775
 margin_bottom = 48.0
 mouse_filter = 2
+theme = ExtResource( 5 )
 texture_normal = ExtResource( 6 )
 expand = true
 __meta__ = {
@@ -65,8 +80,10 @@ __meta__ = {
 margin_top = 48.0
 margin_right = 96.0
 margin_bottom = 63.0
-custom_fonts/font = ExtResource( 5 )
+theme = ExtResource( 10 )
+custom_styles/normal = SubResource( 1 )
 text = "订单大四的阿萨德"
+align = 1
 valign = 1
 clip_text = true
 __meta__ = {
@@ -79,6 +96,7 @@ margin_right = 1024.0
 margin_bottom = 75.0
 mouse_filter = 2
 theme = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -97,6 +115,7 @@ margin_top = 62.0
 margin_right = 166.0
 margin_bottom = 600.0
 mouse_filter = 1
+theme = ExtResource( 10 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -108,3 +127,427 @@ margin_bottom = 40.0
 mouse_filter = 2
 
 [node name="block_info" parent="info" instance=ExtResource( 3 )]
+visible = false
+margin_top = 62.0
+margin_bottom = 596.0
+
+[node name="liquid_block_info" parent="info" instance=ExtResource( 3 )]
+visible = false
+margin_top = 62.0
+margin_bottom = 596.0
+
+[node name="textedit" type="WindowDialog" parent="."]
+margin_left = 266.0
+margin_top = 103.0
+margin_right = 774.0
+margin_bottom = 408.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "edit"
+resizable = true
+script = ExtResource( 9 )
+
+[node name="TextEdit" type="TextEdit" parent="textedit"]
+margin_right = 508.0
+margin_bottom = 306.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+caret_blink = true
+
+[node name="path" type="FileDialog" parent="."]
+margin_left = 330.0
+margin_top = 162.0
+margin_right = 683.0
+margin_bottom = 408.0
+theme = ExtResource( 10 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/godot_work/friends_world_editor"
+current_path = "/godot_work/friends_world_editor/"
+script = ExtResource( 11 )
+
+[node name="path_dir" type="FileDialog" parent="."]
+margin_left = 330.0
+margin_top = 162.0
+margin_right = 683.0
+margin_bottom = 408.0
+theme = ExtResource( 10 )
+window_title = "Open a Directory"
+resizable = true
+mode = 2
+access = 2
+current_dir = "/godot_work/friends_world_editor"
+current_path = "/godot_work/friends_world_editor/"
+script = ExtResource( 13 )
+
+[node name="drop" type="WindowDialog" parent="."]
+margin_left = 126.0
+margin_top = 66.0
+margin_right = 905.0
+margin_bottom = 544.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "掉落"
+resizable = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="drop"]
+margin_left = 40.0
+margin_top = 10.0
+margin_right = 779.0
+margin_bottom = 478.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="drop/ScrollContainer"]
+margin_right = 45.0
+margin_bottom = 164.0
+
+[node name="hand" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_right = 45.0
+margin_bottom = 20.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/hand"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "默认+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pickaxe" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 45.0
+margin_bottom = 44.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/pickaxe"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "稿子+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shovel" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 45.0
+margin_bottom = 68.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/shovel"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "铲子+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="axe" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 45.0
+margin_bottom = 92.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/axe"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "斧子+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hammer" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 45.0
+margin_bottom = 116.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/hammer"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "锤子+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sword" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 45.0
+margin_bottom = 140.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/sword"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "剑+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fall" type="VBoxContainer" parent="drop/ScrollContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 45.0
+margin_bottom = 164.0
+script = ExtResource( 15 )
+
+[node name="add" type="Button" parent="drop/ScrollContainer/VBoxContainer/fall"]
+margin_right = 45.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "摔毁+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="WindowDialog" parent="."]
+margin_left = 299.405
+margin_top = 267.0
+margin_right = 781.405
+margin_bottom = 345.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "食物"
+resizable = true
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="food"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 470.0
+margin_bottom = 78.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="Control" parent="food/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="food/ScrollContainer/food"]
+margin_top = 4.0
+margin_right = 54.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "饱食度:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 167.465
+margin_top = 4.0
+margin_right = 208.465
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "口渴:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 316.671
+margin_top = 4.0
+margin_right = 375.671
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "植物营养:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Label" parent="food/ScrollContainer/food"]
+margin_top = 39.0
+margin_right = 41.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "蛋白质:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text4" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 154.0
+margin_top = 39.0
+margin_right = 219.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "胰岛素抵抗:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text5" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 334.0
+margin_top = 39.0
+margin_right = 375.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "时间:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 54.0
+margin_top = 4.0
+margin_right = 154.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 208.0
+margin_top = 4.0
+margin_right = 308.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui2" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 375.0
+margin_top = 4.0
+margin_right = 475.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 46.0
+margin_top = 39.0
+margin_right = 146.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 226.0
+margin_top = 39.0
+margin_right = 326.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 375.0
+margin_top = 39.0
+margin_right = 475.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="composite" type="WindowDialog" parent="."]
+margin_left = 154.0
+margin_top = 140.0
+margin_right = 934.0
+margin_bottom = 476.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "合成"
+resizable = true
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="composite"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 32.0
+margin_bottom = 24.0
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="composite"]
+margin_left = 22.0
+margin_top = 26.0
+margin_right = 758.0
+margin_bottom = 334.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="composite/ScrollContainer"]
+margin_right = 665.0
+margin_bottom = 22.0
+custom_constants/separation = 8
+script = ExtResource( 19 )
+
+[node name="composites_grid" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
+margin_right = 665.0
+margin_bottom = 22.0
