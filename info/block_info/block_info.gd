@@ -1,8 +1,17 @@
 extends ScrollContainer
 
-var data := {}
+var data := {
+	"drop":{},
+	"food":{},
+	"composite":[],
+}
+var index := 0
 var key_list := {
 	
 }
 func _ready() -> void:
-	$HBoxContainer/vbox2.data = data
+	_update()
+func _update() -> void:
+	Overall.block_node = self
+	$VBoxContainer/HBoxContainer/vbox2._update(data)
+
