@@ -3,4 +3,4 @@
  
  这是一个friends world 编辑器工具项目
 
-godot 3.2.3
+use godot 3.2.3
