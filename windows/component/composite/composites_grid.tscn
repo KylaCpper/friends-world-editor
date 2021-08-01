@@ -81,4 +81,4 @@ __meta__ = {
 
 [node name="composite0" parent="." instance=ExtResource( 1 )]
 margin_left = 355.0
-margin_right = 665.0
+margin_right = 681.0

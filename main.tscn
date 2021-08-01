@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -20,6 +20,17 @@
 [ext_resource path="res://windows/composite.gd" type="Script" id=18]
 [ext_resource path="res://windows/component/composite/composite.gd" type="Script" id=19]
 [ext_resource path="res://windows/component/composite/composites_grid.tscn" type="PackedScene" id=20]
+[ext_resource path="res://info/liquid_block_info/liquid_block_info.tscn" type="PackedScene" id=21]
+[ext_resource path="res://windows/branch.gd" type="Script" id=22]
+[ext_resource path="res://windows/component/branch.gd" type="Script" id=23]
+[ext_resource path="res://info/plant_block_info/plant_block_info.tscn" type="PackedScene" id=24]
+[ext_resource path="res://left/msg.gd" type="Script" id=25]
+[ext_resource path="res://windows/select_item.gd" type="Script" id=26]
+[ext_resource path="res://windows/component/select_item.gd" type="Script" id=27]
+[ext_resource path="res://head.gd" type="Script" id=28]
+[ext_resource path="res://info/ui/select_item_.tscn" type="PackedScene" id=29]
+[ext_resource path="res://info/ui/linetext.gd" type="Script" id=30]
+[ext_resource path="res://windows/path_save.gd" type="Script" id=31]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -27,6 +38,24 @@
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.843137, 0.843137, 0.843137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+border_width_bottom = 1
 
 [node name="main" type="Control"]
 anchor_right = 1.0
@@ -41,6 +70,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
+script = ExtResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,9 +84,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="import" type="Button" parent="head"]
+margin_right = 57.0
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "导入"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="export" type="Button" parent="head"]
+margin_top = 31.9819
+margin_right = 57.0
+margin_bottom = 56.9819
+theme = ExtResource( 10 )
+text = "导出"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="head_grid" type="Control" parent="head"]
-margin_left = 30.0
-margin_right = 330.0
+margin_left = 84.0
+margin_right = 384.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 96, 64 )
 script = ExtResource( 7 )
@@ -65,8 +114,8 @@ __meta__ = {
 }
 
 [node name="button" type="TextureButton" parent="head/head_grid"]
-margin_left = 22.8775
-margin_right = 70.8775
+margin_left = 4.48985
+margin_right = 52.4899
 margin_bottom = 48.0
 mouse_filter = 2
 theme = ExtResource( 5 )
@@ -77,8 +126,9 @@ __meta__ = {
 }
 
 [node name="text" type="Label" parent="head/head_grid"]
+margin_left = -20.0
 margin_top = 48.0
-margin_right = 96.0
+margin_right = 76.0
 margin_bottom = 63.0
 theme = ExtResource( 10 )
 custom_styles/normal = SubResource( 1 )
@@ -116,6 +166,9 @@ margin_right = 166.0
 margin_bottom = 600.0
 mouse_filter = 1
 theme = ExtResource( 10 )
+allow_reselect = true
+allow_rmb_select = true
+hide_root = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,16 +178,20 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="block_info" parent="info" instance=ExtResource( 3 )]
 visible = false
 margin_top = 62.0
 margin_bottom = 596.0
 
-[node name="liquid_block_info" parent="info" instance=ExtResource( 3 )]
+[node name="liquid_block_info" parent="info" instance=ExtResource( 21 )]
 visible = false
-margin_top = 62.0
-margin_bottom = 596.0
+
+[node name="plant_block_info" parent="info" instance=ExtResource( 24 )]
+visible = false
 
 [node name="textedit" type="WindowDialog" parent="."]
 margin_left = 266.0
@@ -161,7 +218,7 @@ margin_top = 162.0
 margin_right = 683.0
 margin_bottom = 408.0
 theme = ExtResource( 10 )
-window_title = "Open a File"
+window_title = "选择"
 resizable = true
 mode = 0
 access = 2
@@ -175,13 +232,27 @@ margin_top = 162.0
 margin_right = 683.0
 margin_bottom = 408.0
 theme = ExtResource( 10 )
-window_title = "Open a Directory"
+window_title = "选择"
 resizable = true
 mode = 2
 access = 2
 current_dir = "/godot_work/friends_world_editor"
 current_path = "/godot_work/friends_world_editor/"
 script = ExtResource( 13 )
+
+[node name="path_save" type="FileDialog" parent="."]
+visible = true
+margin_left = 330.0
+margin_top = 162.0
+margin_right = 683.0
+margin_bottom = 408.0
+theme = ExtResource( 10 )
+window_title = "导出"
+resizable = true
+access = 2
+current_dir = "/godot_work/friends_world_editor"
+current_path = "/godot_work/friends_world_editor/"
+script = ExtResource( 31 )
 
 [node name="drop" type="WindowDialog" parent="."]
 margin_left = 126.0
@@ -543,11 +614,337 @@ __meta__ = {
 }
 
 [node name="vbox" type="VBoxContainer" parent="composite/ScrollContainer"]
-margin_right = 665.0
+margin_right = 681.0
 margin_bottom = 22.0
 custom_constants/separation = 8
 script = ExtResource( 19 )
 
 [node name="composites_grid" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
-margin_right = 665.0
+margin_right = 681.0
 margin_bottom = 22.0
+
+[node name="branch" type="WindowDialog" parent="."]
+margin_left = 330.0
+margin_top = 234.0
+margin_right = 661.0
+margin_bottom = 326.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "分支"
+resizable = true
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="branch"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 324.0
+margin_bottom = 87.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="branch" type="Control" parent="branch/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="branch/ScrollContainer/branch"]
+margin_top = 4.0
+margin_right = 49.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "上分支:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="branch/ScrollContainer/branch"]
+margin_left = 164.0
+margin_top = 4.0
+margin_right = 210.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "下分支:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Label" parent="branch/ScrollContainer/branch"]
+margin_left = -1.0
+margin_top = 39.0
+margin_right = 39.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "源头:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Label" parent="branch/ScrollContainer/branch"]
+margin_left = 164.0
+margin_top = 39.0
+margin_right = 210.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "末分支:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
+margin_left = 49.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 24.0
+
+[node name="ui1" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
+margin_left = 210.0
+margin_top = 4.0
+margin_right = 294.0
+margin_bottom = 24.0
+
+[node name="ui2" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
+margin_left = 40.0
+margin_top = 39.0
+margin_right = 124.0
+margin_bottom = 59.0
+
+[node name="ui3" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
+margin_left = 210.0
+margin_top = 39.0
+margin_right = 294.0
+margin_bottom = 59.0
+
+[node name="select_item" type="WindowDialog" parent="."]
+margin_left = 266.0
+margin_top = 166.0
+margin_right = 812.0
+margin_bottom = 467.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "选择"
+resizable = true
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="select_item"]
+margin_left = 7.0
+margin_top = 2.0
+margin_right = 40.0
+margin_bottom = 22.0
+theme = ExtResource( 10 )
+text = "搜索:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" type="LineEdit" parent="select_item"]
+margin_left = 43.405
+margin_top = 2.0
+margin_right = 127.405
+margin_bottom = 22.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="select_item"]
+margin_left = 134.0
+margin_top = 2.0
+margin_right = 167.0
+margin_bottom = 22.0
+theme = ExtResource( 10 )
+text = "列数:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="num" type="SpinBox" parent="select_item"]
+margin_left = 168.309
+margin_top = 2.0
+margin_right = 268.309
+margin_bottom = 22.0
+theme = ExtResource( 10 )
+min_value = 1.0
+max_value = 24.0
+step = 1.0
+value = 7.0
+rounded = true
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="select_item"]
+margin_left = 10.0
+margin_top = 26.0
+margin_right = 538.0
+margin_bottom = 296.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_item" type="GridContainer" parent="select_item/ScrollContainer"]
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 7
+script = ExtResource( 27 )
+
+[node name="msg" type="Panel" parent="."]
+visible = false
+margin_left = 211.0
+margin_top = 115.0
+margin_right = 312.0
+margin_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource( 10 )
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button0" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 5.0
+margin_right = 95.9579
+margin_bottom = 25.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加方块"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button1" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 25.0
+margin_right = 95.9579
+margin_bottom = 45.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加液体方块"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 45.0
+margin_right = 95.9579
+margin_bottom = 65.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加植物方块"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button3" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 65.0
+margin_right = 95.9579
+margin_bottom = 85.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加物品"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button4" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 85.0
+margin_right = 95.9579
+margin_bottom = 105.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加工具"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button5" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 105.0
+margin_right = 95.9579
+margin_bottom = 125.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "添加护甲"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button6" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 125.0
+margin_right = 95.9579
+margin_bottom = 145.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "删除"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

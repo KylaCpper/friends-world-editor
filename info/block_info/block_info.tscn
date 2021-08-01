@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://default.tres" type="Theme" id=1]
 [ext_resource path="res://info/bg.tres" type="StyleBox" id=2]
@@ -12,12 +12,13 @@
 [ext_resource path="res://info/ui/path.tscn" type="PackedScene" id=10]
 [ext_resource path="res://info/check/check_option_button.tscn" type="PackedScene" id=11]
 [ext_resource path="res://info/ui/data.tscn" type="PackedScene" id=12]
+[ext_resource path="res://info/ui/linetext.tscn" type="PackedScene" id=13]
 
 [node name="block_info" type="ScrollContainer"]
 margin_left = 166.0
 margin_top = 66.0
 margin_right = 1024.0
-margin_bottom = 1599.0
+margin_bottom = 600.0
 custom_styles/bg = ExtResource( 2 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -192,7 +193,7 @@ margin_bottom = 356.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
-text = "有无碰撞"
+text = "实体"
 align = 1
 valign = 1
 __meta__ = {
@@ -690,30 +691,11 @@ theme = ExtResource( 1 )
 custom_constants/separation = 4
 script = ExtResource( 5 )
 
-[node name="ui0" type="LineEdit" parent="VBoxContainer/HBoxContainer/vbox2"]
-margin_right = 256.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 256, 32 )
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
-align = 1
-context_menu_enabled = false
-clear_button_enabled = true
-caret_blink = true
+[node name="ui0" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
 
-[node name="ui1" type="LineEdit" parent="VBoxContainer/HBoxContainer/vbox2"]
+[node name="ui1" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
 margin_top = 36.0
-margin_right = 256.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 256, 32 )
-mouse_filter = 1
-theme = ExtResource( 1 )
-custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
-align = 1
-context_menu_enabled = false
-clear_button_enabled = true
-caret_blink = true
 
 [node name="ui2" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 
@@ -788,24 +770,10 @@ margin_bottom = 680.0
 margin_top = 684.0
 margin_bottom = 716.0
 
-[node name="ui20" type="LineEdit" parent="VBoxContainer/HBoxContainer/vbox2"]
+[node name="ui20" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
 margin_top = 720.0
-margin_right = 256.0
 margin_bottom = 752.0
-rect_min_size = Vector2( 256, 32 )
-theme = ExtResource( 1 )
-align = 1
-context_menu_enabled = false
-clear_button_enabled = true
-caret_blink = true
 
-[node name="ui21" type="LineEdit" parent="VBoxContainer/HBoxContainer/vbox2"]
+[node name="ui21" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
 margin_top = 756.0
-margin_right = 256.0
 margin_bottom = 788.0
-rect_min_size = Vector2( 256, 32 )
-theme = ExtResource( 1 )
-align = 1
-context_menu_enabled = false
-clear_button_enabled = true
-caret_blink = true

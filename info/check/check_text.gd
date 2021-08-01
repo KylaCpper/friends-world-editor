@@ -5,7 +5,7 @@ signal _changed(text_)
 func _ready() -> void:
 	$check.connect("pressed",self,"on_pressed")
 	connect("text_changed",self,"on_changed")
-	editable = true
+	editable = false
 	selecting_enabled = true
 	
 func on_pressed() -> void:
