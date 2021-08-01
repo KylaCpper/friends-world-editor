@@ -5,7 +5,7 @@ signal _changed(num)
 func _ready() -> void:
 	$check.connect("pressed",self,"on_pressed")
 	connect("value_changed",self,"on_changed")
-	editable = true
+	editable = false
 	
 	
 func on_pressed() -> void:

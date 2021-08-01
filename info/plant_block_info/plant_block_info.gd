@@ -4,36 +4,37 @@ var data := {
 	"drop":{},
 	"food":{},
 	"composite":[],
+	"branch":[]
 }
 var index := 0
 var data_be := {
 	"key":"",
-	"name":"new_block",
+	"name":"new_plant_block",
 	"info":"",
-	"intensity":1.0,
-	"intensity_dig":1.0,
+	"intensity":0.0,
+	"intensity_dig":0.0,
 	"mass":1.0,
 	"max":16,
 	"smash":0,
-	"transparent":false,
-	"entity":true,
+	"transparent":true,
+	"entity":false,
 	"model":"",
-	"material":0,
+	"material":6,
 	"audio":"",
 	"dire":0,
 	"fuel":0,
 	"drop":{},
 	"food":{},
 	"composite":[],
-	"tick":false,
-	"script":"",
+	"tick":true,
+	"script":"base/block/plant",
 	"liquid":false,
-	"branch":false,
+	"branch":["","","",""],
 	"plant":"",
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
-	Overall.block_node = self
+	Overall.plant_block_node = self
 	hide()
 func _update(data) -> void:
 	self.data=data
@@ -42,7 +43,9 @@ func _update(data) -> void:
 func set_data(data:Dictionary) -> void:
 	for key in data_be:
 		if key != "key":
-			if key == "composite":
+			if key == "branch":
+				data[key] = ["","","",""]
+			elif key == "composite":
 				data[key] = []
 			elif key == "drop":
 				data[key] = {}

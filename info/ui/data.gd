@@ -1,5 +1,5 @@
 extends Control
-export (String ,"drop","food","composite")var TYPE = "drop"
+export (String ,"drop","food","composite","branch")var TYPE = "drop"
 signal _changed(text_)
 var data
 func _ready() -> void:
@@ -16,7 +16,8 @@ func on_pressed2() -> void:
 		Overall.food_node._show("food",data,$text)
 	if TYPE == "composite":
 		Overall.composite_node._show("composite",data,$text)
-		
+	if TYPE == "branch":
+		Overall.branch_node._show("branch",data,$text)
 func on_changed() -> void:
 	var data = str2var($text.text)
 	if TYPE == "drop":
@@ -28,6 +29,12 @@ func on_changed() -> void:
 		for key in data:
 			self.data[key] = data[key]
 	if TYPE == "composite":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "branch":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:
