@@ -8,4 +8,5 @@ func on_pressed() -> void:
 	Overall.select_item_node._show("select_item","",self)
 
 func on_changed(text_:String) -> void:
+	hint_tooltip = text_
 	emit_signal("_changed",text_)

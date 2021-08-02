@@ -18,7 +18,7 @@
 margin_left = 166.0
 margin_top = 66.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 1599.0
 custom_styles/bg = ExtResource( 2 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 850.0
-margin_bottom = 820.0
+margin_bottom = 856.0
 custom_constants/separation = 0
 
 [node name="head" type="Control" parent="VBoxContainer"]
@@ -38,12 +38,12 @@ rect_min_size = Vector2( 850, 32 )
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 32.0
 margin_right = 850.0
-margin_bottom = 820.0
+margin_bottom = 856.0
 custom_constants/separation = 0
 
 [node name="offset" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 50.0
-margin_bottom = 788.0
+margin_bottom = 824.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 custom_constants/separation = 4
@@ -51,7 +51,7 @@ custom_constants/separation = 4
 [node name="vbox0" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 50.0
 margin_right = 350.0
-margin_bottom = 788.0
+margin_bottom = 824.0
 rect_min_size = Vector2( 300, 0 )
 mouse_filter = 2
 custom_constants/separation = 4
@@ -256,24 +256,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui14" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 504.0
 margin_right = 300.0
 margin_bottom = 536.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "燃料"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 540.0
-margin_right = 300.0
-margin_bottom = 572.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -284,24 +270,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 576.0
-margin_right = 300.0
-margin_bottom = 608.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "食物"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ui17" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 612.0
+margin_top = 540.0
 margin_right = 300.0
-margin_bottom = 644.0
+margin_bottom = 572.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -312,10 +284,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui14" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 576.0
+margin_right = 300.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = "燃料"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 612.0
+margin_right = 300.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = "食物"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui22" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 648.0
 margin_right = 300.0
 margin_bottom = 680.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = "植物"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 684.0
+margin_right = 300.0
+margin_bottom = 716.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -327,9 +341,9 @@ __meta__ = {
 }
 
 [node name="ui19" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 684.0
+margin_top = 720.0
 margin_right = 300.0
-margin_bottom = 716.0
+margin_bottom = 752.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -341,9 +355,9 @@ __meta__ = {
 }
 
 [node name="ui20" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 720.0
+margin_top = 756.0
 margin_right = 300.0
-margin_bottom = 752.0
+margin_bottom = 788.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -355,9 +369,9 @@ __meta__ = {
 }
 
 [node name="ui21" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 756.0
+margin_top = 792.0
 margin_right = 300.0
-margin_bottom = 788.0
+margin_bottom = 824.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -371,7 +385,7 @@ __meta__ = {
 [node name="vbox1" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 350.0
 margin_right = 366.0
-margin_bottom = 788.0
+margin_bottom = 824.0
 mouse_filter = 2
 custom_constants/separation = 4
 
@@ -388,7 +402,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui1" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui22" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 36.0
 margin_right = 16.0
 margin_bottom = 68.0
@@ -402,7 +416,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui2" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui1" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 72.0
 margin_right = 16.0
 margin_bottom = 104.0
@@ -416,7 +430,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui3" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui2" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 108.0
 margin_right = 16.0
 margin_bottom = 140.0
@@ -430,7 +444,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui4" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui3" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 144.0
 margin_right = 16.0
 margin_bottom = 176.0
@@ -444,7 +458,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui5" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui4" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 180.0
 margin_right = 16.0
 margin_bottom = 212.0
@@ -458,7 +472,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui5" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 216.0
 margin_right = 16.0
 margin_bottom = 248.0
@@ -472,7 +486,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui7" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 252.0
 margin_right = 16.0
 margin_bottom = 284.0
@@ -486,7 +500,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui8" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui7" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 288.0
 margin_right = 16.0
 margin_bottom = 320.0
@@ -500,7 +514,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui8" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 324.0
 margin_right = 16.0
 margin_bottom = 356.0
@@ -514,7 +528,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 360.0
 margin_right = 16.0
 margin_bottom = 392.0
@@ -528,7 +542,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui11" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 396.0
 margin_right = 16.0
 margin_bottom = 428.0
@@ -542,7 +556,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui11" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 432.0
 margin_right = 16.0
 margin_bottom = 464.0
@@ -556,7 +570,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui13" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 468.0
 margin_right = 16.0
 margin_bottom = 500.0
@@ -570,7 +584,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui14" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui13" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 504.0
 margin_right = 16.0
 margin_bottom = 536.0
@@ -584,7 +598,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui14" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 540.0
 margin_right = 16.0
 margin_bottom = 572.0
@@ -598,7 +612,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 576.0
 margin_right = 16.0
 margin_bottom = 608.0
@@ -612,7 +626,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui17" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 612.0
 margin_right = 16.0
 margin_bottom = 644.0
@@ -626,7 +640,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui17" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 648.0
 margin_right = 16.0
 margin_bottom = 680.0
@@ -640,7 +654,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui19" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 684.0
 margin_right = 16.0
 margin_bottom = 716.0
@@ -654,7 +668,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui20" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui19" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 720.0
 margin_right = 16.0
 margin_bottom = 752.0
@@ -668,7 +682,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui21" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui20" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 756.0
 margin_right = 16.0
 margin_bottom = 788.0
@@ -682,10 +696,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ui21" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 792.0
+margin_right = 16.0
+margin_bottom = 824.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="vbox2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 366.0
 margin_right = 622.0
-margin_bottom = 788.0
+margin_bottom = 824.0
 mouse_filter = 2
 theme = ExtResource( 1 )
 custom_constants/separation = 4
@@ -743,37 +771,43 @@ margin_top = 468.0
 margin_bottom = 500.0
 TYPE = "dire"
 
-[node name="ui14" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 4 )]
+[node name="ui14" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 margin_top = 504.0
 margin_bottom = 536.0
 
 [node name="ui15" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 margin_bottom = 572.0
+TYPE = "composite"
 
 [node name="ui16" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 margin_top = 576.0
 margin_bottom = 608.0
-TYPE = "food"
+TYPE = "fuel"
 
 [node name="ui17" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 margin_top = 612.0
 margin_bottom = 644.0
-TYPE = "composite"
+TYPE = "food"
 
-[node name="ui18" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
-anchor_left = 0.0
-anchor_right = 0.0
+[node name="ui18" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 margin_top = 648.0
 margin_bottom = 680.0
+TYPE = "plant"
 
-[node name="ui19" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
+[node name="ui19" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
+anchor_left = 0.0
+anchor_right = 0.0
 margin_top = 684.0
 margin_bottom = 716.0
 
-[node name="ui20" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
+[node name="ui20" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
 margin_top = 720.0
 margin_bottom = 752.0
 
 [node name="ui21" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
 margin_top = 756.0
 margin_bottom = 788.0
+
+[node name="ui22" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
+margin_top = 792.0
+margin_bottom = 824.0

@@ -1,39 +1,24 @@
 extends ScrollContainer
 
 var data := {
-	"drop":{},
-	"food":{},
-	"composite":[],
+	"food":{}
 }
 var index := 0
 var data_be := {
 	"key":"",
-	"name":"new_block",
+	"name":"new_item",
 	"info":"",
-	"intensity":1.0,
-	"intensity_dig":1.0,
+	"img":"",
 	"mass":1.0,
 	"max":16,
-	"smash":0,
-	"transparent":false,
-	"entity":true,
-	"model":"",
-	"material":0,
-	"audio":"",
-	"dire":0,
-	"fuel":[],
-	"drop":{},
+	"fuel":false,
 	"food":[],
-	"composite":[],
 	"plant":[],
-	"tick":false,
 	"script":"",
-	"liquid":false,
-	"branch":false,
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
-	Overall.block_node = self
+	Overall.item_node = self
 	hide()
 func _update(data) -> void:
 	self.data=data

@@ -4,52 +4,45 @@ var data := {
 	"drop":{},
 	"food":{},
 	"composite":[],
-	"branch":[]
 }
 var index := 0
 var data_be := {
 	"key":"",
-	"name":"new_liquid_block",
+	"name":"new_tool",
 	"info":"",
-	"intensity":0.0,
-	"intensity_dig":0.0,
+	"img":"",
 	"mass":1.0,
 	"max":16,
-	"smash":0,
-	"transparent":true,
-	"entity":false,
-	"model":"",
-	"material":6,
-	"audio":"",
-	"dire":0,
+	"tool":[],
+	"lv":0,
+	"hp":10,
+	"speed":1,
+	"atk":1.0,
+	"damage":[],
+	"script":"",
 	"fuel":false,
-	"drop":{},
-	"food":false,
-	"composite":[],
-	"tick":false,
-	"script":"base/block/liquid",
-	"liquid":true,
-	"branch":["","","",""],
-	"plant":"",
+	"food":[],
 	"name_en":"","info_en":""
 }
-
 func _ready() -> void:
-	Overall.liquid_block_node = self
+	Overall.tool_node = self
 	hide()
 func _update(data) -> void:
 	self.data=data
-
 	$VBoxContainer/HBoxContainer/vbox2._update(data)
 	show()
 func set_data(data:Dictionary) -> void:
 	for key in data_be:
 		if key != "key":
-			if key == "branch":
-				data[key] = ["","","",""]
-			elif key == "composite":
+			if key == "composite":
 				data[key] = []
 			elif key == "drop":
 				data[key] = {}
+			elif key =="food":
+				data[key] = []
+			elif key == "fuel":
+				data[key] = []
+			elif key == "plant":
+				data[key] = []
 			else:
 				data[key] = data_be[key]

@@ -1,10 +1,11 @@
 extends VBoxContainer
 
 var data := {}
+
 var key_list = [
-	"key","name","info","transparent",
-	"model","material","tick",
-	"script","branch","audio","name_en","info_en"
+	"key","name","info","img","mass","max","tool","lv","hp",
+	"speed","atk","damage","script","fuel","food",
+	"name_en","info_en"
 ]
 func _ready() -> void:
 	var i := 0
@@ -21,17 +22,21 @@ func _update(data) -> void:
 	$ui0.text = data.key
 	$ui1.text = data.name
 	$ui2.get_node("TextEdit").text = data.info
-	$ui3.pressed = data.transparent
-	$ui4.get_node("LineEdit").text = data.model
-	$ui5.selected = data.material
-	$ui6.pressed = data.tick
-	$ui7.get_node("LineEdit").text = data.script
-	$ui8.get_node("text").text = var2str(data.branch)
-	$ui9.get_node("LineEdit").text = data.audio
+	$ui3.get_node("LineEdit").text = data.img
+	$ui4.value = data.mass
+	$ui5.value = data["max"]
+	$ui6.get_node("text").text = var2str(data.fuel)
+	$ui7.get_node("text").text = var2str(data.food)
+	$ui8.get_node("text").text = var2str(data.plant)
+	
+	$ui9.get_node("LineEdit").text = data.script
 	$ui10.text = data.name_en
 	$ui11.text = data.info_en
 	
-	$ui8.data = data.branch
+	
+	$ui6.data = data.fuel
+	$ui7.data = data.food
+	$ui8.data = data.plant
 	
 func on_focus_exited(node) -> void:
 	if node.has_method("deselect"):

@@ -25,8 +25,8 @@ func _update() -> void:
 	liquid_block = create_item(root)
 	liquid_block.set_text(0, "liquid_block")
 	
-	plant_block = create_item(root)
-	plant_block.set_text(0, "plant_block")
+#	plant_block = create_item(root)
+#	plant_block.set_text(0, "plant_block")
 
 	item = create_item(root)
 	item.set_text(0, "item")
@@ -45,10 +45,10 @@ func _update() -> void:
 		var be = create_item(liquid_block)
 		be.set_text(0,key)
 		be.set_tooltip(0,data.liquid_block[key].name)
-	for key in data.plant_block:
-		var be = create_item(plant_block)
-		be.set_text(0,key)
-		be.set_tooltip(0,data.plant_block[key].name)
+#	for key in data.plant_block:
+#		var be = create_item(plant_block)
+#		be.set_text(0,key)
+#		be.set_tooltip(0,data.plant_block[key].name)
 	for key in data.item:
 		var be = create_item(item)
 		be.set_text(0,key)
@@ -74,11 +74,11 @@ func on_select() -> void:
 			Overall.block_node._update(data.block[key])
 		if parent_name == "liquid_block":
 			Overall.liquid_block_node._update(data.liquid_block[key])
-		if parent_name == "plant_block":
-			Overall.plant_block_node._update(data.plant_block[key])
+#		if parent_name == "plant_block":
+#			Overall.plant_block_node._update(data.plant_block[key])
 func on_select_rmb(vec2:Vector2) -> void:
 	var key = get_selected().get_text(0)
-	Overall.msg_node.rect_position = vec2+Vector2(0,60)
+	Overall.msg_node.rect_position = vec2+Vector2(0,50)
 	Overall.msg_node.show()
 func _show() -> void:
 	Overall._hide()

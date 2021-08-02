@@ -1,5 +1,5 @@
 extends Control
-export (String ,"drop","food","composite","branch")var TYPE = "drop"
+export (String ,"drop","food","composite","branch","fuel","plant")var TYPE = "drop"
 signal _changed(text_)
 var data
 func _ready() -> void:
@@ -18,6 +18,10 @@ func on_pressed2() -> void:
 		Overall.composite_node._show("composite",data,$text)
 	if TYPE == "branch":
 		Overall.branch_node._show("branch",data,$text)
+	if TYPE == "fuel":
+		Overall.fuel_node._show("fuel",data,$text)
+	if TYPE == "plant":
+		Overall.plant_node._show("plant",data,$text)
 func on_changed() -> void:
 	var data = str2var($text.text)
 	if TYPE == "drop":
@@ -25,9 +29,11 @@ func on_changed() -> void:
 		for key in data:
 			self.data[key] = data[key]
 	if TYPE == "food":
-		if typeof(data) != TYPE_DICTIONARY:return
-		for key in data:
-			self.data[key] = data[key]
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
 	if TYPE == "composite":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
@@ -35,6 +41,18 @@ func on_changed() -> void:
 			self.data[i] = d
 			i = i+1
 	if TYPE == "branch":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "fuel":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "plant":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:

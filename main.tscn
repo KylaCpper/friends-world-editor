@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -14,23 +14,30 @@
 [ext_resource path="res://info/bg2.tres" type="StyleBox" id=12]
 [ext_resource path="res://windows/path_dir.gd" type="Script" id=13]
 [ext_resource path="res://windows/drop.gd" type="Script" id=14]
-[ext_resource path="res://windows/component/drops.gd" type="Script" id=15]
+[ext_resource path="res://windows/window_child_script/drops.gd" type="Script" id=15]
 [ext_resource path="res://windows/food.gd" type="Script" id=16]
-[ext_resource path="res://windows/food/food.gd" type="Script" id=17]
+[ext_resource path="res://windows/window_child_script/food.gd" type="Script" id=17]
 [ext_resource path="res://windows/composite.gd" type="Script" id=18]
-[ext_resource path="res://windows/component/composite/composite.gd" type="Script" id=19]
+[ext_resource path="res://windows/window_child_script/composite.gd" type="Script" id=19]
 [ext_resource path="res://windows/component/composite/composites_grid.tscn" type="PackedScene" id=20]
 [ext_resource path="res://info/liquid_block_info/liquid_block_info.tscn" type="PackedScene" id=21]
 [ext_resource path="res://windows/branch.gd" type="Script" id=22]
-[ext_resource path="res://windows/component/branch.gd" type="Script" id=23]
+[ext_resource path="res://windows/window_child_script/branch.gd" type="Script" id=23]
 [ext_resource path="res://info/plant_block_info/plant_block_info.tscn" type="PackedScene" id=24]
 [ext_resource path="res://left/msg.gd" type="Script" id=25]
 [ext_resource path="res://windows/select_item.gd" type="Script" id=26]
-[ext_resource path="res://windows/component/select_item.gd" type="Script" id=27]
+[ext_resource path="res://windows/window_child_script/select_item.gd" type="Script" id=27]
 [ext_resource path="res://head.gd" type="Script" id=28]
 [ext_resource path="res://info/ui/select_item_.tscn" type="PackedScene" id=29]
 [ext_resource path="res://info/ui/linetext.gd" type="Script" id=30]
 [ext_resource path="res://windows/path_save.gd" type="Script" id=31]
+[ext_resource path="res://info/item_info/item_info.tscn" type="PackedScene" id=32]
+[ext_resource path="res://windows/fuel.gd" type="Script" id=33]
+[ext_resource path="res://info/ui/num_.tscn" type="PackedScene" id=34]
+[ext_resource path="res://windows/window_child_script/fuel.gd" type="Script" id=35]
+[ext_resource path="res://windows/window_child_script/plant.gd" type="Script" id=36]
+[ext_resource path="res://windows/plant.gd" type="Script" id=37]
+[ext_resource path="res://info/tool_info/tool_info.tscn" type="PackedScene" id=38]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -191,7 +198,11 @@ margin_bottom = 596.0
 visible = false
 
 [node name="plant_block_info" parent="info" instance=ExtResource( 24 )]
+
+[node name="item_info" parent="info" instance=ExtResource( 32 )]
 visible = false
+
+[node name="tool_info" parent="info" instance=ExtResource( 38 )]
 
 [node name="textedit" type="WindowDialog" parent="."]
 margin_left = 266.0
@@ -218,7 +229,7 @@ margin_top = 162.0
 margin_right = 683.0
 margin_bottom = 408.0
 theme = ExtResource( 10 )
-window_title = "选择"
+window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
@@ -232,7 +243,7 @@ margin_top = 162.0
 margin_right = 683.0
 margin_bottom = 408.0
 theme = ExtResource( 10 )
-window_title = "选择"
+window_title = "Open a Directory"
 resizable = true
 mode = 2
 access = 2
@@ -241,7 +252,6 @@ current_path = "/godot_work/friends_world_editor/"
 script = ExtResource( 13 )
 
 [node name="path_save" type="FileDialog" parent="."]
-visible = true
 margin_left = 330.0
 margin_top = 162.0
 margin_right = 683.0
@@ -387,10 +397,10 @@ __meta__ = {
 }
 
 [node name="food" type="WindowDialog" parent="."]
-margin_left = 299.405
-margin_top = 267.0
-margin_right = 781.405
-margin_bottom = 345.0
+margin_left = 266.0
+margin_top = 238.0
+margin_right = 820.0
+margin_bottom = 362.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "食物"
@@ -403,8 +413,8 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="food"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 470.0
-margin_bottom = 78.0
+margin_right = 546.0
+margin_bottom = 120.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -419,8 +429,9 @@ __meta__ = {
 }
 
 [node name="text0" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 179.329
 margin_top = 4.0
-margin_right = 54.0
+margin_right = 233.329
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -432,9 +443,9 @@ __meta__ = {
 }
 
 [node name="text1" type="Label" parent="food/ScrollContainer/food"]
-margin_left = 167.465
+margin_left = 347.0
 margin_top = 4.0
-margin_right = 208.465
+margin_right = 388.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -446,10 +457,10 @@ __meta__ = {
 }
 
 [node name="text2" type="Label" parent="food/ScrollContainer/food"]
-margin_left = 316.671
-margin_top = 4.0
-margin_right = 375.671
-margin_bottom = 24.0
+margin_left = 21.0
+margin_top = 39.0
+margin_right = 80.0
+margin_bottom = 59.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "植物营养:"
@@ -460,8 +471,9 @@ __meta__ = {
 }
 
 [node name="text3" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 182.0
 margin_top = 39.0
-margin_right = 41.0
+margin_right = 228.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -473,9 +485,9 @@ __meta__ = {
 }
 
 [node name="text4" type="Label" parent="food/ScrollContainer/food"]
-margin_left = 154.0
+margin_left = 344.405
 margin_top = 39.0
-margin_right = 219.0
+margin_right = 416.405
 margin_bottom = 59.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -487,10 +499,10 @@ __meta__ = {
 }
 
 [node name="text5" type="Label" parent="food/ScrollContainer/food"]
-margin_left = 334.0
-margin_top = 39.0
-margin_right = 375.0
-margin_bottom = 59.0
+margin_left = 21.0
+margin_top = 4.0
+margin_right = 62.0
+margin_bottom = 24.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "时间:"
@@ -500,10 +512,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="text6" type="Label" parent="food/ScrollContainer/food"]
+margin_left = 21.0
+margin_top = 71.5
+margin_right = 62.0
+margin_bottom = 91.5
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "回血:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ui0" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 54.0
+margin_left = 62.0
 margin_top = 4.0
-margin_right = 154.0
+margin_right = 162.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
@@ -514,9 +540,9 @@ __meta__ = {
 }
 
 [node name="ui1" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 208.0
+margin_left = 233.329
 margin_top = 4.0
-margin_right = 308.0
+margin_right = 333.329
 margin_bottom = 24.0
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
@@ -527,9 +553,9 @@ __meta__ = {
 }
 
 [node name="ui2" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 375.0
+margin_left = 387.535
 margin_top = 4.0
-margin_right = 475.0
+margin_right = 487.535
 margin_bottom = 24.0
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
@@ -540,9 +566,9 @@ __meta__ = {
 }
 
 [node name="ui3" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 46.0
+margin_left = 79.329
 margin_top = 39.0
-margin_right = 146.0
+margin_right = 179.329
 margin_bottom = 59.0
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
@@ -553,9 +579,9 @@ __meta__ = {
 }
 
 [node name="ui4" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 226.0
+margin_left = 228.0
 margin_top = 39.0
-margin_right = 326.0
+margin_right = 328.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
@@ -566,10 +592,23 @@ __meta__ = {
 }
 
 [node name="ui5" type="SpinBox" parent="food/ScrollContainer/food"]
-margin_left = 375.0
+margin_left = 416.405
 margin_top = 39.0
-margin_right = 475.0
+margin_right = 516.405
 margin_bottom = 59.0
+rect_min_size = Vector2( 5, 20 )
+max_value = 10.0
+step = 0.1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="SpinBox" parent="food/ScrollContainer/food"]
+margin_left = 64.0
+margin_top = 71.5
+margin_right = 164.0
+margin_bottom = 91.5
 rect_min_size = Vector2( 5, 20 )
 max_value = 10.0
 step = 0.1
@@ -734,6 +773,148 @@ margin_top = 39.0
 margin_right = 294.0
 margin_bottom = 59.0
 
+[node name="fuel" type="WindowDialog" parent="."]
+margin_left = 330.0
+margin_top = 234.0
+margin_right = 635.0
+margin_bottom = 305.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "燃料"
+resizable = true
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="fuel"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 296.0
+margin_bottom = 66.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fuel" type="Control" parent="fuel/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="fuel/ScrollContainer/fuel"]
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "热值:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="fuel/ScrollContainer/fuel"]
+margin_left = 144.0
+margin_top = 4.0
+margin_right = 183.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "时间:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="fuel/ScrollContainer/fuel" instance=ExtResource( 34 )]
+margin_left = 40.0
+margin_top = 4.0
+margin_right = 140.0
+margin_bottom = 24.0
+
+[node name="ui1" parent="fuel/ScrollContainer/fuel" instance=ExtResource( 34 )]
+margin_left = 183.0
+margin_top = 4.0
+margin_right = 283.0
+margin_bottom = 24.0
+
+[node name="plant" type="WindowDialog" parent="."]
+margin_left = 330.0
+margin_top = 244.0
+margin_right = 721.0
+margin_bottom = 302.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "植物"
+resizable = true
+script = ExtResource( 37 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="plant"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 389.0
+margin_bottom = 48.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plant" type="Control" parent="plant/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="plant/ScrollContainer/plant"]
+margin_top = 4.0
+margin_right = 72.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "下一个方块:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="plant/ScrollContainer/plant"]
+margin_left = 187.0
+margin_top = 4.0
+margin_right = 267.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 10 )
+text = "下方块需求:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
+margin_left = 72.0
+margin_top = 4.0
+margin_right = 156.0
+margin_bottom = 24.0
+
+[node name="ui1" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
+margin_left = 267.0
+margin_top = 4.0
+margin_right = 351.0
+margin_bottom = 24.0
+
 [node name="select_item" type="WindowDialog" parent="."]
 margin_left = 266.0
 margin_top = 166.0
@@ -799,7 +980,6 @@ margin_bottom = 22.0
 theme = ExtResource( 10 )
 min_value = 1.0
 max_value = 24.0
-step = 1.0
 value = 7.0
 rounded = true
 align = 1
@@ -828,7 +1008,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 265.0
+margin_bottom = 244.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 4 )
@@ -870,6 +1050,7 @@ __meta__ = {
 }
 
 [node name="button2" type="Button" parent="msg"]
+visible = false
 margin_left = 4.95786
 margin_top = 45.0
 margin_right = 95.9579
@@ -886,10 +1067,10 @@ __meta__ = {
 }
 
 [node name="button3" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 65.0
-margin_right = 95.9579
-margin_bottom = 85.0
+margin_left = 5.0
+margin_top = 45.0
+margin_right = 96.0
+margin_bottom = 65.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 5 )
@@ -902,10 +1083,10 @@ __meta__ = {
 }
 
 [node name="button4" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 85.0
-margin_right = 95.9579
-margin_bottom = 105.0
+margin_left = 5.0
+margin_top = 65.0
+margin_right = 96.0
+margin_bottom = 85.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 5 )
@@ -918,10 +1099,10 @@ __meta__ = {
 }
 
 [node name="button5" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 105.0
-margin_right = 95.9579
-margin_bottom = 125.0
+margin_left = 5.0
+margin_top = 85.0
+margin_right = 96.0
+margin_bottom = 105.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 5 )
@@ -934,10 +1115,10 @@ __meta__ = {
 }
 
 [node name="button6" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 125.0
-margin_right = 95.9579
-margin_bottom = 145.0
+margin_left = 5.0
+margin_top = 105.0
+margin_right = 96.0
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 5 )
