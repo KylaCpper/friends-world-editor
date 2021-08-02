@@ -22,15 +22,15 @@ var data_be := {
 	"material":6,
 	"audio":"",
 	"dire":0,
-	"fuel":0,
+	"fuel":[],
 	"drop":{},
-	"food":{},
+	"food":[],
 	"composite":[],
 	"tick":true,
 	"script":"base/block/plant",
 	"liquid":false,
 	"branch":["","","",""],
-	"plant":"",
+	"plant":[],
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
@@ -50,6 +50,10 @@ func set_data(data:Dictionary) -> void:
 			elif key == "drop":
 				data[key] = {}
 			elif key =="food":
-				data[key] = {}
+				data[key] = []
+			elif key == "fuel":
+				data[key] = []
+			elif key == "plant":
+				data[key] = []
 			else:
 				data[key] = data_be[key]

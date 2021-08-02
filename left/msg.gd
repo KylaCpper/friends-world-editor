@@ -28,8 +28,8 @@ func  on_pressed0() -> void:
 	
 func  on_pressed1() -> void:
 	new_data("liquid_block",Overall.liquid_block_node)
-func  on_pressed2() -> void:
-	new_data("plant_block",Overall.plant_block_node)
+#func  on_pressed2() -> void:
+#	new_data("plant_block",Overall.plant_block_node)
 func  on_pressed3() -> void:
 	new_data("item",Overall.item_node)
 func  on_pressed4() -> void:

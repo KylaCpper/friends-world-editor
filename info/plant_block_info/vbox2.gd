@@ -4,7 +4,7 @@ var data := {}
 
 var key_list = [
 	"key","name","info","intensity","intensity_dig","mass","smash","plant","transparent",
-	"entity","model","material","audio","tick","drop",
+	"entity","model","material","audio","tick","fuel","drop",
 	"script","name_en","info_en"
 ]
 func _ready() -> void:
@@ -26,19 +26,22 @@ func _update(data) -> void:
 	$ui4.value = data.intensity_dig
 	$ui5.value = data.mass
 	$ui6.selected = data.smash
-	$ui7.text = data.plant
+	$ui7.get_node("text").text = var2str(data.plant)
 	$ui8.pressed = data.transparent
 	$ui9.pressed = data.entity
 	$ui10.get_node("LineEdit").text = data.model
 	$ui11.selected = data.material
 	$ui12.get_node("LineEdit").text = data.audio
 	$ui13.pressed = data.tick
-	$ui14.get_node("text").text = var2str(data.drop)
-	$ui15.get_node("LineEdit").text = data.script
-	$ui16.text = data.name_en
-	$ui17.text = data.info_en
+	$ui14.get_node("text").text = var2str(data.fuel)
+	$ui15.get_node("text").text = var2str(data.drop)
+	$ui16.get_node("LineEdit").text = data.script
+	$ui17.text = data.name_en
+	$ui18.text = data.info_en
 	
-	$ui14.data = data.drop
+	$ui7.data = data.plant
+	$ui14.data = data.fuel
+	$ui15.data = data.drop
 
 	
 func on_focus_exited(node) -> void:

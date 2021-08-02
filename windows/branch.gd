@@ -20,5 +20,7 @@ func on_hide() -> void:
 	yield(get_tree(),"idle_frame")
 	if obj:
 		$ScrollContainer/branch.set_data()
+#		for d in data:
+#			if !d:return
 		obj.text=var2str(data)
 		obj.emit_signal("text_changed")
