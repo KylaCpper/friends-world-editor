@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxFlat" format=2]
+
+[resource]
+border_width_top = 1
+border_width_bottom = 1
+expand_margin_top = 1.0
