@@ -76,11 +76,13 @@ func on_select() -> void:
 			Overall.liquid_block_node._update(data.liquid_block[key])
 #		if parent_name == "plant_block":
 #			Overall.plant_block_node._update(data.plant_block[key])
+		if parent_name == "item":
+			Overall.item_node._update(data.item[key])
+		if parent_name == "tool":
+			Overall.tool_node._update(data["tool"][key])
+		if parent_name == "armor":
+			Overall.armor_node._update(data.armor[key])
 func on_select_rmb(vec2:Vector2) -> void:
 	var key = get_selected().get_text(0)
 	Overall.msg_node.rect_position = vec2+Vector2(0,50)
 	Overall.msg_node.show()
-func _show() -> void:
-	Overall._hide()
-	Overall.block_node.data = Overall.data.block
-	Overall.block_node._update()

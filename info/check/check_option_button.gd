@@ -2,7 +2,7 @@ extends OptionButton
 signal _changed(num)
 export (String ,"material") var TYPE = "material"
 var list := {
-	"material":["默认","透明","半透明","3","4","自定义半透明","液体","7"],
+	"material":["默认","透明","半透明","自定义","自定义透明","自定义半透明","液体","7"],
 	
 }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -38,6 +38,21 @@
 [ext_resource path="res://windows/window_child_script/plant.gd" type="Script" id=36]
 [ext_resource path="res://windows/plant.gd" type="Script" id=37]
 [ext_resource path="res://info/tool_info/tool_info.tscn" type="PackedScene" id=38]
+[ext_resource path="res://windows/tool.gd" type="Script" id=39]
+[ext_resource path="res://windows/window_child_script/tool.gd" type="Script" id=40]
+[ext_resource path="res://windows/window_child_script/damage.gd" type="Script" id=41]
+[ext_resource path="res://windows/damage.gd" type="Script" id=42]
+[ext_resource path="res://info/armor_info/armor_info.tscn" type="PackedScene" id=43]
+[ext_resource path="res://windows/path_g.gd" type="Script" id=44]
+[ext_resource path="res://block.png" type="Texture" id=45]
+[ext_resource path="res://windows/uv_select.gd" type="Script" id=46]
+[ext_resource path="res://windows/window_child_script/texture.gd" type="Script" id=47]
+[ext_resource path="res://windows/uvs_select.gd" type="Script" id=48]
+[ext_resource path="res://windows/window_child_script/uvs_select.gd" type="Script" id=49]
+[ext_resource path="res://info/ui/uv_select.tscn" type="PackedScene" id=50]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -45,6 +60,14 @@
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.87451, 0.894118, 0.223529, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.768627, 0.768627, 0.768627, 1 )
@@ -82,9 +105,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bg" type="Panel" parent="head"]
+[node name="bg1" type="Panel" parent="head"]
+margin_left = 7.62939e-06
 margin_right = 1024.0
-margin_bottom = 64.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg2" type="Panel" parent="head"]
+margin_top = 27.0
+margin_right = 1024.0
+margin_bottom = 102.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 12 )
 __meta__ = {
@@ -92,7 +126,7 @@ __meta__ = {
 }
 
 [node name="import" type="Button" parent="head"]
-margin_right = 57.0
+margin_right = 38.0
 margin_bottom = 27.0
 theme = ExtResource( 10 )
 text = "导入"
@@ -100,10 +134,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="import_img0" type="Button" parent="head"]
+margin_left = 46.3496
+margin_right = 123.35
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "导入方块图"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="import_img1" type="Button" parent="head"]
+margin_left = 132.08
+margin_right = 248.08
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "导入自定义方块图"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="export" type="Button" parent="head"]
-margin_top = 31.9819
-margin_right = 57.0
-margin_bottom = 56.9819
+margin_left = 259.0
+margin_right = 297.0
+margin_bottom = 27.0
 theme = ExtResource( 10 )
 text = "导出"
 __meta__ = {
@@ -112,8 +166,9 @@ __meta__ = {
 
 [node name="head_grid" type="Control" parent="head"]
 margin_left = 84.0
+margin_top = 27.0
 margin_right = 384.0
-margin_bottom = 140.0
+margin_bottom = 167.0
 rect_min_size = Vector2( 96, 64 )
 script = ExtResource( 7 )
 __meta__ = {
@@ -121,8 +176,8 @@ __meta__ = {
 }
 
 [node name="button" type="TextureButton" parent="head/head_grid"]
-margin_left = 4.48985
-margin_right = 52.4899
+margin_left = -24.7676
+margin_right = 23.2325
 margin_bottom = 48.0
 mouse_filter = 2
 theme = ExtResource( 5 )
@@ -133,9 +188,9 @@ __meta__ = {
 }
 
 [node name="text" type="Label" parent="head/head_grid"]
-margin_left = -20.0
+margin_left = -84.0
 margin_top = 48.0
-margin_right = 76.0
+margin_right = 82.0
 margin_bottom = 63.0
 theme = ExtResource( 10 )
 custom_styles/normal = SubResource( 1 )
@@ -149,8 +204,9 @@ __meta__ = {
 
 [node name="head" type="ScrollContainer" parent="head"]
 margin_left = 166.0
+margin_top = 27.0
 margin_right = 1024.0
-margin_bottom = 75.0
+margin_bottom = 102.0
 mouse_filter = 2
 theme = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
@@ -168,11 +224,12 @@ __meta__ = {
 }
 
 [node name="left" type="Tree" parent="."]
-margin_top = 62.0
+margin_top = 102.0
 margin_right = 166.0
-margin_bottom = 600.0
+margin_bottom = 640.0
 mouse_filter = 1
 theme = ExtResource( 10 )
+custom_styles/bg = SubResource( 3 )
 allow_reselect = true
 allow_rmb_select = true
 hide_root = true
@@ -203,6 +260,10 @@ visible = false
 visible = false
 
 [node name="tool_info" parent="info" instance=ExtResource( 38 )]
+visible = false
+
+[node name="armor_info" parent="info" instance=ExtResource( 43 )]
+visible = false
 
 [node name="textedit" type="WindowDialog" parent="."]
 margin_left = 266.0
@@ -237,6 +298,20 @@ current_dir = "/godot_work/friends_world_editor"
 current_path = "/godot_work/friends_world_editor/"
 script = ExtResource( 11 )
 
+[node name="path_g" type="FileDialog" parent="."]
+margin_left = 330.0
+margin_top = 162.0
+margin_right = 683.0
+margin_bottom = 408.0
+theme = ExtResource( 10 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/godot_work/friends_world_editor"
+current_path = "/godot_work/friends_world_editor/"
+script = ExtResource( 44 )
+
 [node name="path_dir" type="FileDialog" parent="."]
 margin_left = 330.0
 margin_top = 162.0
@@ -263,6 +338,47 @@ access = 2
 current_dir = "/godot_work/friends_world_editor"
 current_path = "/godot_work/friends_world_editor/"
 script = ExtResource( 31 )
+
+[node name="uv_select" type="WindowDialog" parent="."]
+visible = true
+margin_left = 273.0
+margin_top = 40.0
+margin_right = 812.0
+margin_bottom = 588.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "uv选择"
+resizable = true
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="uv_select"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 529.0
+margin_bottom = 538.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="uv_select/ScrollContainer"]
+margin_right = 512.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 512, 512 )
+texture = ExtResource( 45 )
+expand = true
+script = ExtResource( 47 )
+
+[node name="select" type="Panel" parent="uv_select/ScrollContainer/texture"]
+margin_right = 64.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="drop" type="WindowDialog" parent="."]
 margin_left = 126.0
@@ -914,6 +1030,240 @@ margin_left = 267.0
 margin_top = 4.0
 margin_right = 351.0
 margin_bottom = 24.0
+
+[node name="select_tool" type="WindowDialog" parent="."]
+margin_left = 309.0
+margin_top = 244.0
+margin_right = 727.0
+margin_bottom = 353.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "多类型工具"
+resizable = true
+script = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="select_tool"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="select_tool"]
+margin_left = 10.0
+margin_top = 28.0
+margin_right = 412.0
+margin_bottom = 104.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_tool" type="GridContainer" parent="select_tool/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 40 )
+
+[node name="uvs_select" type="WindowDialog" parent="."]
+visible = true
+margin_left = 338.0
+margin_top = 202.0
+margin_right = 620.0
+margin_bottom = 309.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "贴uv"
+resizable = true
+script = ExtResource( 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="uvs_select"]
+margin_left = 10.0
+margin_top = 4.0
+margin_right = 43.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+text = "默认:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="uvs_select" instance=ExtResource( 50 )]
+margin_left = 46.0
+margin_top = 4.0
+margin_right = 130.0
+margin_bottom = 24.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="uvs_select"]
+margin_left = 10.0
+margin_top = 28.0
+margin_right = 277.0
+margin_bottom = 104.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="uvs_select" type="GridContainer" parent="uvs_select/ScrollContainer"]
+margin_right = 240.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 32 )
+columns = 4
+script = ExtResource( 49 )
+
+[node name="Label" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "前:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 24.0
+margin_right = 128.0
+rect_min_size = Vector2( 104, 20 )
+
+[node name="Label2" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_left = 132.0
+margin_right = 152.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "后:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 156.0
+margin_right = 240.0
+
+[node name="Label4" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_top = 24.0
+margin_right = 20.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 20 )
+text = "左:"
+align = 1
+valign = 1
+
+[node name="ui2" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 128.0
+margin_bottom = 44.0
+
+[node name="Label3" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_left = 132.0
+margin_top = 24.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 20 )
+text = "右:"
+align = 1
+valign = 1
+
+[node name="ui3" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 156.0
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 44.0
+
+[node name="Label5" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_top = 48.0
+margin_right = 20.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 20 )
+text = "上:"
+align = 1
+valign = 1
+
+[node name="ui4" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 24.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 68.0
+
+[node name="Label6" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
+margin_left = 132.0
+margin_top = 48.0
+margin_right = 152.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 20 )
+text = "下:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+margin_left = 156.0
+margin_top = 48.0
+margin_right = 240.0
+margin_bottom = 68.0
+
+[node name="damage" type="WindowDialog" parent="."]
+margin_left = 211.0
+margin_top = 214.0
+margin_right = 748.0
+margin_bottom = 332.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "工具破坏"
+resizable = true
+script = ExtResource( 42 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="damage"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 20 )
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="damage"]
+margin_left = 10.0
+margin_top = 28.0
+margin_right = 527.0
+margin_bottom = 120.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damage" type="GridContainer" parent="damage/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 41 )
 
 [node name="select_item" type="WindowDialog" parent="."]
 margin_left = 266.0

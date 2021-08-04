@@ -31,6 +31,7 @@ var data_be := {
 	"liquid":true,
 	"branch":["","","",""],
 	"plant":"",
+	"uv":[],
 	"name_en":"","info_en":""
 }
 
@@ -51,5 +52,7 @@ func set_data(data:Dictionary) -> void:
 				data[key] = []
 			elif key == "drop":
 				data[key] = {}
+			elif key == "uv":
+				data[key] = []
 			else:
 				data[key] = data_be[key]
