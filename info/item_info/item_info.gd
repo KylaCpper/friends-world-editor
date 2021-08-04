@@ -14,6 +14,7 @@ var data_be := {
 	"fuel":false,
 	"food":[],
 	"plant":[],
+	"composite":[],
 	"script":"",
 	"name_en":"","info_en":""
 }

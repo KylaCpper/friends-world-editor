@@ -30,6 +30,7 @@ var data_be := {
 	"script":"",
 	"liquid":false,
 	"branch":false,
+	"uv":[],
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
@@ -51,6 +52,8 @@ func set_data(data:Dictionary) -> void:
 			elif key == "fuel":
 				data[key] = []
 			elif key == "plant":
+				data[key] = []
+			elif key == "uv":
 				data[key] = []
 			else:
 				data[key] = data_be[key]

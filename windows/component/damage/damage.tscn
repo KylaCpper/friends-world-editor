@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://windows/component/damage/damage.gd" type="Script" id=1]
+[ext_resource path="res://default.tres" type="Theme" id=2]
+[ext_resource path="res://info/ui/bool_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://info/ui/num_.tscn" type="PackedScene" id=6]
+[ext_resource path="res://info/ui/select_item_.tscn" type="PackedScene" id=7]
+
+[node name="damage" type="Control"]
+margin_right = 400.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 510, 30 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="."]
+margin_top = 2.21619
+margin_right = 33.0
+margin_bottom = 22.2162
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 2 )
+text = "物品:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Label" parent="."]
+margin_left = 140.0
+margin_top = 2.21619
+margin_right = 173.0
+margin_bottom = 22.2162
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 2 )
+text = "数量:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="."]
+margin_left = 280.405
+margin_top = 2.21619
+margin_right = 314.405
+margin_bottom = 22.2162
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 2 )
+text = "几率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Label" parent="."]
+margin_left = 423.535
+margin_top = 2.21619
+margin_right = 457.535
+margin_bottom = 22.2162
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 2 )
+text = "阻断:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="." instance=ExtResource( 7 )]
+margin_left = 34.0
+margin_top = 2.21619
+margin_right = 118.0
+margin_bottom = 22.2162
+
+[node name="ui1" parent="." instance=ExtResource( 6 )]
+margin_left = 173.0
+margin_top = 2.21619
+margin_right = 273.0
+margin_bottom = 22.2162
+step = 1.0
+
+[node name="ui2" parent="." instance=ExtResource( 6 )]
+margin_left = 314.405
+margin_top = 2.21619
+margin_right = 414.405
+margin_bottom = 22.2162
+max_value = 100.0
+
+[node name="ui3" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 457.535
+margin_top = -4.31226
+margin_right = 500.535
+margin_bottom = 27.6877
+
+[node name="delete" type="Button" parent="."]
+margin_left = 488.919
+margin_right = 507.919
+margin_bottom = 22.0
+theme = ExtResource( 2 )
+text = "-"

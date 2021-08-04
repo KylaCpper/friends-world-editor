@@ -1,6 +1,6 @@
 extends VBoxContainer
 var data := []
-var drop_tscn := preload("res://windows/component/drop.tscn")
+var drop_tscn := preload("res://windows/component/drop/drop.tscn")
 func _ready() -> void:
 	$add.connect("pressed",self,"on_pressed")
 	

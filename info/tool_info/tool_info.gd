@@ -12,15 +12,16 @@ var data_be := {
 	"info":"",
 	"img":"",
 	"mass":1.0,
-	"max":16,
-	"tool":[],
+	"max":1,
+	"tool":"",
 	"lv":0,
 	"hp":10,
 	"speed":1,
 	"atk":1.0,
 	"damage":[],
+	"composite":[],
 	"script":"",
-	"fuel":false,
+	"fuel":[],
 	"food":[],
 	"name_en":"","info_en":""
 }
@@ -36,13 +37,11 @@ func set_data(data:Dictionary) -> void:
 		if key != "key":
 			if key == "composite":
 				data[key] = []
-			elif key == "drop":
-				data[key] = {}
-			elif key =="food":
+			elif key == "damage":
+				data[key] = []
+			elif key == "food":
 				data[key] = []
 			elif key == "fuel":
-				data[key] = []
-			elif key == "plant":
 				data[key] = []
 			else:
 				data[key] = data_be[key]

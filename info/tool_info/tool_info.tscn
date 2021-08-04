@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://info/tool_info/vbox2.gd" type="Script" id=1]
 [ext_resource path="res://info/tool_info/tool_info.gd" type="Script" id=2]
+[ext_resource path="res://info/ui/option_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://info/check/check_data.tscn" type="PackedScene" id=4]
 [ext_resource path="res://info/bg.tres" type="StyleBox" id=5]
 [ext_resource path="res://info/ui/path.tscn" type="PackedScene" id=6]
 [ext_resource path="res://info/ui/linetext.tscn" type="PackedScene" id=7]
 [ext_resource path="res://info/ui/textedit.tscn" type="PackedScene" id=8]
-[ext_resource path="res://info/check/check_num.tscn" type="PackedScene" id=9]
 [ext_resource path="res://info/ui/data.tscn" type="PackedScene" id=10]
 [ext_resource path="res://info/ui/num.tscn" type="PackedScene" id=11]
 [ext_resource path="res://default.tres" type="Theme" id=12]
@@ -15,7 +16,7 @@
 margin_left = 166.0
 margin_top = 62.0
 margin_right = 1024.0
-margin_bottom = 1595.0
+margin_bottom = 596.0
 custom_styles/bg = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -24,7 +25,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 850.0
-margin_bottom = 640.0
+margin_bottom = 676.0
 custom_constants/separation = 0
 
 [node name="head" type="Control" parent="VBoxContainer"]
@@ -35,12 +36,12 @@ rect_min_size = Vector2( 850, 32 )
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 32.0
 margin_right = 850.0
-margin_bottom = 640.0
+margin_bottom = 676.0
 custom_constants/separation = 0
 
 [node name="offset" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 50.0
-margin_bottom = 608.0
+margin_bottom = 644.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 custom_constants/separation = 4
@@ -48,7 +49,7 @@ custom_constants/separation = 4
 [node name="vbox0" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 50.0
 margin_right = 350.0
-margin_bottom = 608.0
+margin_bottom = 644.0
 rect_min_size = Vector2( 300, 0 )
 mouse_filter = 2
 custom_constants/separation = 4
@@ -123,26 +124,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui5" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 180.0
 margin_right = 300.0
 margin_bottom = 212.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 12 )
-text = "最大值"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 216.0
-margin_right = 300.0
-margin_bottom = 248.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -156,13 +141,29 @@ __meta__ = {
 }
 
 [node name="ui13" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 216.0
+margin_right = 300.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+text = "速度加成"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 252.0
 margin_right = 300.0
 margin_bottom = 284.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
-text = "等级"
+text = "多类型工具(覆盖上两项"
 align = 1
 valign = 1
 autowrap = true
@@ -178,7 +179,7 @@ margin_bottom = 320.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
-text = "耐久"
+text = "等级"
 align = 1
 valign = 1
 autowrap = true
@@ -194,7 +195,7 @@ margin_bottom = 356.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
-text = "速度"
+text = "耐久"
 align = 1
 valign = 1
 autowrap = true
@@ -226,7 +227,23 @@ margin_bottom = 428.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
-text = "损坏"
+text = "损坏后"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui19" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 432.0
+margin_right = 300.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+text = "合成"
 align = 1
 valign = 1
 autowrap = true
@@ -236,9 +253,9 @@ __meta__ = {
 }
 
 [node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 432.0
+margin_top = 468.0
 margin_right = 300.0
-margin_bottom = 464.0
+margin_bottom = 500.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -250,9 +267,9 @@ __meta__ = {
 }
 
 [node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 468.0
+margin_top = 504.0
 margin_right = 300.0
-margin_bottom = 500.0
+margin_bottom = 536.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -266,9 +283,9 @@ __meta__ = {
 }
 
 [node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 504.0
+margin_top = 540.0
 margin_right = 300.0
-margin_bottom = 536.0
+margin_bottom = 572.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -282,9 +299,9 @@ __meta__ = {
 }
 
 [node name="ui7" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 540.0
+margin_top = 576.0
 margin_right = 300.0
-margin_bottom = 572.0
+margin_bottom = 608.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -296,9 +313,9 @@ __meta__ = {
 }
 
 [node name="ui8" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 576.0
+margin_top = 612.0
 margin_right = 300.0
-margin_bottom = 608.0
+margin_bottom = 644.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -312,7 +329,7 @@ __meta__ = {
 [node name="vbox1" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 350.0
 margin_right = 366.0
-margin_bottom = 608.0
+margin_bottom = 644.0
 mouse_filter = 2
 custom_constants/separation = 4
 
@@ -329,7 +346,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui18" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 36.0
 margin_right = 16.0
 margin_bottom = 68.0
@@ -343,7 +360,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui13" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui17" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 72.0
 margin_right = 16.0
 margin_bottom = 104.0
@@ -357,7 +374,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui14" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 108.0
 margin_right = 16.0
 margin_bottom = 140.0
@@ -371,7 +388,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui13" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 144.0
 margin_right = 16.0
 margin_bottom = 176.0
@@ -385,7 +402,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui15" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 180.0
 margin_right = 16.0
 margin_bottom = 212.0
@@ -399,7 +416,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui16" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 216.0
 margin_right = 16.0
 margin_bottom = 248.0
@@ -413,7 +430,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui11" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 252.0
 margin_right = 16.0
 margin_bottom = 284.0
@@ -427,7 +444,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui1" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui11" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 288.0
 margin_right = 16.0
 margin_bottom = 320.0
@@ -441,7 +458,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui2" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui1" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 324.0
 margin_right = 16.0
 margin_bottom = 356.0
@@ -455,7 +472,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui3" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui2" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 360.0
 margin_right = 16.0
 margin_bottom = 392.0
@@ -469,7 +486,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui4" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui3" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 396.0
 margin_right = 16.0
 margin_bottom = 428.0
@@ -483,7 +500,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui5" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui4" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 432.0
 margin_right = 16.0
 margin_bottom = 464.0
@@ -497,7 +514,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui5" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 468.0
 margin_right = 16.0
 margin_bottom = 500.0
@@ -511,7 +528,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 504.0
 margin_right = 16.0
 margin_bottom = 536.0
@@ -525,7 +542,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui7" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 540.0
 margin_right = 16.0
 margin_bottom = 572.0
@@ -539,7 +556,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui8" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+[node name="ui7" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
 margin_top = 576.0
 margin_right = 16.0
 margin_bottom = 608.0
@@ -553,10 +570,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ui8" type="Label" parent="VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 612.0
+margin_right = 16.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="vbox2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 366.0
 margin_right = 622.0
-margin_bottom = 608.0
+margin_bottom = 644.0
 mouse_filter = 2
 theme = ExtResource( 12 )
 custom_constants/separation = 4
@@ -578,53 +609,59 @@ margin_bottom = 140.0
 margin_top = 144.0
 margin_bottom = 176.0
 
-[node name="ui5" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
+[node name="ui5" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 margin_top = 180.0
 margin_bottom = 212.0
+TYPE = "tool"
 
-[node name="ui6" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
+[node name="ui6" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
 margin_top = 216.0
 margin_bottom = 248.0
-TYPE = "fuel"
 
-[node name="ui12" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
+[node name="ui17" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 4 )]
 margin_top = 252.0
 margin_bottom = 284.0
+TYPE = "tool"
 
-[node name="ui13" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
+[node name="ui7" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
 margin_top = 288.0
 margin_bottom = 320.0
 
-[node name="ui14" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
+[node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
 margin_top = 324.0
 margin_bottom = 356.0
 
-[node name="ui15" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
+[node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
 margin_top = 360.0
 margin_bottom = 392.0
 
-[node name="ui7" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
+[node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
 margin_top = 396.0
 margin_bottom = 428.0
-TYPE = "food"
+TYPE = "damage"
 
-[node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 6 )]
+[node name="ui11" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
 margin_top = 432.0
 margin_bottom = 464.0
+TYPE = "composite"
 
-[node name="ui16" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 11 )]
+[node name="ui12" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 6 )]
 margin_top = 468.0
 margin_bottom = 500.0
 
-[node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
+[node name="ui13" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
 margin_top = 504.0
 margin_bottom = 536.0
+TYPE = "fuel"
+
+[node name="ui14" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
+margin_bottom = 572.0
 TYPE = "food"
 
-[node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 7 )]
-margin_top = 540.0
-margin_bottom = 572.0
-
-[node name="ui11" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 7 )]
+[node name="ui15" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 7 )]
 margin_top = 576.0
 margin_bottom = 608.0
+
+[node name="ui16" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 7 )]
+margin_top = 612.0
+margin_bottom = 644.0

@@ -1,5 +1,5 @@
 extends Control
-export (String ,"drop","food","composite","branch","fuel","plant")var TYPE = "drop"
+export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv")var TYPE = "drop"
 signal _changed(text_)
 var data
 func _ready() -> void:
@@ -22,6 +22,12 @@ func on_pressed2() -> void:
 		Overall.fuel_node._show("fuel",data,$text)
 	if TYPE == "plant":
 		Overall.plant_node._show("plant",data,$text)
+	if TYPE == "tool":
+		Overall.select_tool_node._show("tool",data,$text)
+	if TYPE == "damage":
+		Overall.damage_node._show("damage",data,$text)
+	if TYPE == "uv":
+		Overall.uvs_select_node._show("uv_select",data,$text)
 func on_changed() -> void:
 	var data = str2var($text.text)
 	if TYPE == "drop":
@@ -53,6 +59,24 @@ func on_changed() -> void:
 			self.data[i] = d
 			i = i+1
 	if TYPE == "plant":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "tool":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "damage":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+	if TYPE == "uv":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:

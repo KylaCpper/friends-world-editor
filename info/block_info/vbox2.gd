@@ -12,9 +12,31 @@ func _ready() -> void:
 	for child in get_children():
 		child.connect("focus_exited",self,"on_focus_exited",[child])
 		i = i+1
-	for ii in range(23):
+	for ii in range(24):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
+	if i == 14 || i==15 || i==16 ||i ==17 || i==18 || i== 23:return
+	if i == 5:
+		if !$ui6.get_node("check").pressed:
+			data["max"] = Overall.get_max(d)
+			$ui6.value = data["max"]
+	if i == 3:
+		if !$ui4.get_node("check").pressed:
+			data["intensity_dig"] = data["intensity"]
+			$ui4.value = data["intensity_dig"]
+	if i == 8 || i == 10:
+		if !$ui11.get_node("check").pressed:
+			if data.model:
+				if data.transparent:
+					data.material = 4
+				else:
+					data.material = 3
+			else:
+				if data.transparnet:
+					data.material = 1
+				else:
+					data.material = 0
+			$ui11.selected = data.material
 	data[key_list[i]] = d
 func _update(data) -> void:
 	self.data = data
@@ -41,12 +63,14 @@ func _update(data) -> void:
 	$ui20.get_node("LineEdit").text = data.script
 	$ui21.text = data.name_en
 	$ui22.text = data.info_en
+	$ui23.get_node("text").text = var2str(data.uv)
 	
 	$ui14.data = data.drop
 	$ui15.data = data.composite
 	$ui16.data = data.fuel
 	$ui17.data = data.food
 	$ui18.data = data.plant
+	$ui23.data = data.uv
 	
 	
 func on_focus_exited(node) -> void:

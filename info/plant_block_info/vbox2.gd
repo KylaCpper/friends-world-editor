@@ -16,6 +16,7 @@ func _ready() -> void:
 	for ii in range(17):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
+	if i==14 || i==15:return
 	data[key_list[i]] = d
 func _update(data) -> void:
 	self.data = data
