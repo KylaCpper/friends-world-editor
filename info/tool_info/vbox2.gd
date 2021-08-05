@@ -32,6 +32,12 @@ func on_changed(d,i) -> void:
 		var data_be = str2var(d)
 		data["tool"] = data_be 
 	else:
+		if i==3:
+			var img = Image.new()
+			img.load($ui3.get_node("LineEdit").hint_tooltip)
+			var tex = ImageTexture.new()
+			tex.create_from_image(img,0)
+			data["tex"] = tex
 		if i==10 || i==11 || i ==13 || i==14:
 			pass
 		else:

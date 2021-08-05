@@ -17,6 +17,7 @@ var data_be := {
 	"hp":0,
 	"damage":[],
 	"composite":[],
+	"tex":null,
 	"script":"",
 	"name_en":"","info_en":""
 }

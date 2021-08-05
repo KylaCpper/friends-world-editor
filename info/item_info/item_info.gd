@@ -15,6 +15,7 @@ var data_be := {
 	"food":[],
 	"plant":[],
 	"composite":[],
+	"tex":null,
 	"script":"",
 	"name_en":"","info_en":""
 }

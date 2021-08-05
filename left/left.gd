@@ -16,6 +16,7 @@ func _ready():
 	connect("item_selected",self,"on_select")
 	connect("item_rmb_selected",self,"on_select_rmb")
 func _update() -> void:
+	data = Overall.data
 	clear()
 	root = create_item(self)
 	root.set_text(0, "root")
@@ -63,6 +64,7 @@ func _update() -> void:
 		be.set_tooltip(0,data.armor[key].name)
 	
 func on_select() -> void:
+	data = Overall.data
 	var key = get_selected().get_text(0)
 	var parent_name = get_selected().get_parent().get_text(0)
 	yield(get_tree(),"idle_frame")
@@ -84,5 +86,5 @@ func on_select() -> void:
 			Overall.armor_node._update(data.armor[key])
 func on_select_rmb(vec2:Vector2) -> void:
 	var key = get_selected().get_text(0)
-	Overall.msg_node.rect_position = vec2+Vector2(0,50)
+	Overall.msg_node.rect_position = vec2+Vector2(0,100)
 	Overall.msg_node.show()

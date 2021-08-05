@@ -11,7 +11,7 @@ func on_resized() -> void:
 	$TextEdit.rect_size = rect_size
 func _show(title:String,text:String,obj) -> void:
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	$TextEdit.text = text
 	popup()
 

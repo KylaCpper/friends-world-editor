@@ -1,9 +1,16 @@
 extends Node
-var path = "ase_work/friends_world/"
-var age := ""
+var path = "friends_world/"
 var block_img :Texture
 var block_img_model :Texture
 var side_size := 5
+
+var age := ""
+var g_data = {
+	"age1":{
+
+	},
+	"age2":{}
+}
 var data = {
 	"block":{
 	},
@@ -19,7 +26,13 @@ var data = {
 	"armor":{
 		
 	}
+
 }
+const head_node_type := preload("res://head.gd")
+var head_node :head_node_type
+const add_class_node_type := preload("res://windows/add_class.gd")
+var add_class_node:add_class_node_type
+
 const block_node_type := preload("res://info/block_info/block_info.gd")
 var block_node:block_node_type
 const liquid_block_node_type := preload("res://info/liquid_block_info/liquid_block_info.gd")
@@ -31,6 +44,8 @@ const tool_node_type := preload("res://info/tool_info/tool_info.gd")
 var tool_node:tool_node_type
 const armor_node_type := preload("res://info/armor_info/armor_info.gd")
 var armor_node:armor_node_type
+
+
 #const tool_node_type := preload("res://info/tool_info/tool_info.gd")
 #var tool_node:tool_node_type
 #const armor_node_type := preload("res://info/armor_info/armor_info.gd")

@@ -9,7 +9,7 @@ func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,12)
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	self.data = data
 	$ScrollContainer/food._update(data)
 	popup()

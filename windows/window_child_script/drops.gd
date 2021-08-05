@@ -21,11 +21,11 @@ func on_pressed() -> void:
 	data.append({"name":"default","num":1,"pro":100.0,"lv":0,"stop":true})
 	tscn.data = data[data.size()-1]
 	add_child(tscn)
-
-func _add(arr:Array) -> void:
+func _free() -> void:
 	for node in get_children():
 		if node.name != "add":
 			node.free()
+func _add(arr:Array) -> void:
 	self.data = data
 	for data in arr:
 		if !data.empty():
@@ -36,6 +36,7 @@ func _add(arr:Array) -> void:
 			if !"lv" in data:data.lv = 0
 			if !"stop" in data:data.stop = true
 			tscn.get_node("ui0").text = data.name
+			tscn.get_node("ui0").hint_tooltip = data.name
 			tscn.get_node("ui1").value = data.num
 			tscn.get_node("ui2").value = data.pro
 			tscn.get_node("ui3").value = data.lv

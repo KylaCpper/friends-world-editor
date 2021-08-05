@@ -2,6 +2,7 @@ extends Control
 export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv")var TYPE = "drop"
 signal _changed(text_)
 var data
+var select := 0
 func _ready() -> void:
 	$button.connect("pressed",self,"on_pressed")
 	$button2.connect("pressed",self,"on_pressed2")
@@ -27,7 +28,10 @@ func on_pressed2() -> void:
 	if TYPE == "damage":
 		Overall.damage_node._show("damage",data,$text)
 	if TYPE == "uv":
-		Overall.uvs_select_node._show("uv_select",data,$text)
+		if select == 0:
+			Overall.uvs_select_node._show("uv_select",data,$text)
+		else:
+			Overall.uvs_select_node._show_model("uv_select",data,$text)
 func on_changed() -> void:
 	var data = str2var($text.text)
 	if TYPE == "drop":

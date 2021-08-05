@@ -17,6 +17,12 @@ func _ready() -> void:
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
 	if i==6 || i==7 || i==8 || i==9:return
+	if i==3:
+		var img = Image.new()
+		img.load($ui3.get_node("LineEdit").hint_tooltip)
+		var tex = ImageTexture.new()
+		tex.create_from_image(img,0)
+		data["tex"] = tex
 	if i == 4:
 		if !$ui5.get_node("check").pressed:
 			data["max"] = Overall.get_max(d)

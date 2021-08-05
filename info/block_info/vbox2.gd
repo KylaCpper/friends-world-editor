@@ -4,7 +4,7 @@ var data := {}
 var key_list = [
 	"key","name","info","intensity","intensity_dig","mass","max","smash","transparent",
 	"entity","model","material","audio","dire","drop","composite","fuel","food","plant","tick",
-	"script","name_en","info_en"
+	"script","name_en","info_en","uv"
 ]
 
 func _ready() -> void:
@@ -38,6 +38,10 @@ func on_changed(d,i) -> void:
 					data.material = 0
 			$ui11.selected = data.material
 	data[key_list[i]] = d
+	if data.material<=2:
+		$ui23.select = 0
+	else:
+		$ui23.select = 1
 func _update(data) -> void:
 	self.data = data
 	$ui0.text = data.key
@@ -71,7 +75,6 @@ func _update(data) -> void:
 	$ui17.data = data.food
 	$ui18.data = data.plant
 	$ui23.data = data.uv
-	
 	
 func on_focus_exited(node) -> void:
 	if node.has_method("deselect"):

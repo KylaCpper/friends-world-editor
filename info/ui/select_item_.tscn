@@ -5,8 +5,8 @@
 
 [node name="ui0" type="LineEdit"]
 margin_right = 84.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 0 )
 theme = ExtResource( 1 )
 align = 1
 context_menu_enabled = false
@@ -18,9 +18,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 85.2978
-margin_right = 104.298
-margin_bottom = 20.0
+margin_left = 87.5427
+margin_right = 106.543
+margin_bottom = 24.0
 theme = ExtResource( 1 )
 text = "."
 __meta__ = {

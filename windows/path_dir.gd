@@ -15,7 +15,7 @@ func on_resized() -> void:
 func _show(title:String,obj) -> void:
 #	self.filters = arr
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	popup()
 
 func on_hide(path:String) -> void:
@@ -23,3 +23,5 @@ func on_hide(path:String) -> void:
 		var p=path.split(Overall.path, true, 1)
 		if p.size() == 2:
 			obj.emit_signal("text_changed",p[1])
+		else:
+			obj.emit_signal("text_changed",obj.text)

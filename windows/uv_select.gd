@@ -23,4 +23,5 @@ func _changed(vec2:Vector2) -> void:
 	data["y"] = vec2.y
 	if obj:
 		obj.text = var2str(data)
+		obj.hint_tooltip = var2str(data)
 	

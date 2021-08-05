@@ -9,9 +9,15 @@ func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(77,10)
 func _show(title:String,data:Dictionary,obj) -> void:
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	self.data = data
-	
+	$ScrollContainer/VBoxContainer/hand._free()
+	$ScrollContainer/VBoxContainer/pickaxe._free()
+	$ScrollContainer/VBoxContainer/shovel._free()
+	$ScrollContainer/VBoxContainer/axe._free()
+	$ScrollContainer/VBoxContainer/hammer._free()
+	$ScrollContainer/VBoxContainer/sword._free()
+	$ScrollContainer/VBoxContainer/fall._free()
 	for key in data:
 		if key == "hand" || key == "pickaxe" || key == "shovel" || key == "axe" || key == "hammer" || key == "sword" || key == "fall":
 			get_node("ScrollContainer/VBoxContainer/"+key)._add(data[key])
