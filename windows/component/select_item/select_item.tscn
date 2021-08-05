@@ -29,21 +29,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 64.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 64, 32 )
-theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 1 )
-text = "asd__asda__sdsad__sadsadasd"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
 margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 64.0
@@ -58,3 +43,8 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 32, 16 )
+region_enabled = true

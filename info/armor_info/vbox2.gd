@@ -19,6 +19,12 @@ func on_changed(d,i) -> void:
 	if i==7 || i==8 || i ==9 || i==10:
 		pass
 	else:
+		if i == 3:
+			var img = Image.new()
+			img.load($ui3.get_node("LineEdit").hint_tooltip)
+			var tex = ImageTexture.new()
+			tex.create_from_image(img,0)
+			data["tex"] = tex
 		data[key_list[i]] = d
 	data["max"] = 1
 func _update(data) -> void:

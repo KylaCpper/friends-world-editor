@@ -16,9 +16,9 @@ __meta__ = {
 }
 
 [node name="text0" type="Label" parent="."]
-margin_top = 2.21619
+margin_top = 2.0
 margin_right = 33.0
-margin_bottom = 22.2162
+margin_bottom = 26.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 2 )
 text = "物品:"
@@ -29,10 +29,10 @@ __meta__ = {
 }
 
 [node name="text3" type="Label" parent="."]
-margin_left = 140.0
-margin_top = 2.21619
-margin_right = 173.0
-margin_bottom = 22.2162
+margin_left = 144.005
+margin_top = 2.0
+margin_right = 177.005
+margin_bottom = 26.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 2 )
 text = "数量:"
@@ -43,10 +43,10 @@ __meta__ = {
 }
 
 [node name="text1" type="Label" parent="."]
-margin_left = 280.405
-margin_top = 2.21619
-margin_right = 314.405
-margin_bottom = 22.2162
+margin_left = 280.0
+margin_top = 2.0
+margin_right = 314.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 2 )
 text = "几率:"
@@ -57,10 +57,10 @@ __meta__ = {
 }
 
 [node name="text2" type="Label" parent="."]
-margin_left = 423.535
-margin_top = 2.21619
-margin_right = 457.535
-margin_bottom = 22.2162
+margin_left = 424.0
+margin_top = 2.0
+margin_right = 458.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 2 )
 text = "阻断:"
@@ -72,35 +72,39 @@ __meta__ = {
 
 [node name="ui0" parent="." instance=ExtResource( 7 )]
 margin_left = 34.0
-margin_top = 2.21619
+margin_top = 2.0
 margin_right = 118.0
-margin_bottom = 22.2162
+margin_bottom = 26.0
 
 [node name="ui1" parent="." instance=ExtResource( 6 )]
-margin_left = 173.0
-margin_top = 2.21619
-margin_right = 273.0
-margin_bottom = 22.2162
+margin_left = 178.006
+margin_top = 2.0
+margin_right = 278.006
+margin_bottom = 26.0
 step = 1.0
 
 [node name="ui2" parent="." instance=ExtResource( 6 )]
-margin_left = 314.405
-margin_top = 2.21619
-margin_right = 414.405
-margin_bottom = 22.2162
+margin_left = 314.0
+margin_top = 2.0
+margin_right = 414.0
+margin_bottom = 26.0
 max_value = 100.0
 
 [node name="ui3" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 457.535
-margin_top = -4.31226
-margin_right = 500.535
-margin_bottom = 27.6877
+margin_left = 458.0
+margin_top = -3.0
+margin_right = 501.0
+margin_bottom = 29.0
 
 [node name="delete" type="Button" parent="."]
 margin_left = 488.919
+margin_top = 2.21619
 margin_right = 507.919
-margin_bottom = 22.0
+margin_bottom = 24.2162
 theme = ExtResource( 2 )
 text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}

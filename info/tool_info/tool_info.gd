@@ -21,6 +21,7 @@ var data_be := {
 	"damage":[],
 	"composite":[],
 	"script":"",
+	"tex":null,
 	"fuel":[],
 	"food":[],
 	"name_en":"","info_en":""

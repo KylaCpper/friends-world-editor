@@ -14,12 +14,14 @@ func on_resized() -> void:
 func _show(title:String,obj) -> void:
 #	self.filters = arr
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	popup()
 
 func on_hide(path:String) -> void:
 	if obj:
+		obj.hint_tooltip = path
 		var p=path.split(Overall.path, true, 1)
-		print(p)
 		if p.size() == 2:
 			obj.emit_signal("text_changed",p[1])
+		else:
+			obj.emit_signal("text_changed",obj.text)

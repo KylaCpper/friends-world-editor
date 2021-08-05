@@ -10,10 +10,10 @@ func on_pressed() -> void:
 	data.append({"name":"","num":1,"pro":100,"stop":true})
 	$ScrollContainer/damage._update(data)
 func on_resized() -> void:
-	$ScrollContainer.rect_size = rect_size - Vector2(22,12)
+	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	self.data = data
 	$ScrollContainer/damage._update(data)
 	popup()

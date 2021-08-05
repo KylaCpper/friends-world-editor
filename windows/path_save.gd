@@ -15,7 +15,7 @@ func on_resized() -> void:
 func _show(title:String,obj) -> void:
 #	self.filters = arr
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	popup()
 	
 func on_hide(path:String) -> void:
