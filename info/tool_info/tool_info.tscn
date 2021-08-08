@@ -33,6 +33,17 @@ margin_right = 850.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 850, 32 )
 
+[node name="delete" type="Button" parent="VBoxContainer/head"]
+margin_left = 790.0
+margin_top = 4.0
+margin_right = 845.0
+margin_bottom = 29.0
+theme = ExtResource( 12 )
+text = "删除"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 32.0
 margin_right = 850.0

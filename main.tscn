@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -49,7 +49,6 @@
 [ext_resource path="res://windows/window_child_script/texture.gd" type="Script" id=47]
 [ext_resource path="res://windows/uvs_select.gd" type="Script" id=48]
 [ext_resource path="res://windows/window_child_script/uvs_select.gd" type="Script" id=49]
-[ext_resource path="res://info/ui/uv_select.tscn" type="PackedScene" id=50]
 [ext_resource path="res://info/ui/linetext_.tscn" type="PackedScene" id=51]
 [ext_resource path="res://windows/add_class.gd" type="Script" id=52]
 [ext_resource path="res://info/ui/path_.tscn" type="PackedScene" id=53]
@@ -1148,10 +1147,10 @@ __meta__ = {
 }
 
 [node name="uvs_select" type="WindowDialog" parent="."]
-margin_left = 388.0
-margin_top = 240.0
-margin_right = 670.0
-margin_bottom = 347.0
+margin_left = 346.0
+margin_top = 214.0
+margin_right = 637.0
+margin_bottom = 321.0
 focus_mode = 2
 mouse_filter = 1
 theme = ExtResource( 10 )
@@ -1175,17 +1174,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui0" parent="uvs_select" instance=ExtResource( 50 )]
-margin_left = 46.0
+[node name="ui0" parent="uvs_select" instance=ExtResource( 53 )]
+margin_left = 47.405
 margin_top = 4.0
-margin_right = 130.0
-margin_bottom = 24.0
+margin_right = 303.405
+margin_bottom = 36.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="uvs_select"]
 margin_left = 10.0
 margin_top = 28.0
-margin_right = 277.0
-margin_bottom = 104.0
+margin_right = 286.0
+margin_bottom = 108.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 __meta__ = {
@@ -1193,7 +1192,7 @@ __meta__ = {
 }
 
 [node name="uvs_select" type="GridContainer" parent="uvs_select/ScrollContainer"]
-margin_right = 260.0
+margin_right = 272.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 0, 32 )
 mouse_filter = 2
@@ -1211,13 +1210,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui0" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+[node name="ui0" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
 margin_left = 24.0
-margin_right = 128.0
+margin_top = 0.0
+margin_right = 134.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="Label2" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
-margin_left = 132.0
-margin_right = 152.0
+margin_left = 138.0
+margin_right = 158.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 text = "后:"
@@ -1227,9 +1229,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui1" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
-margin_left = 156.0
-margin_right = 260.0
+[node name="ui1" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
+margin_left = 162.0
+margin_top = 0.0
+margin_right = 272.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="Label4" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
 margin_top = 24.0
@@ -1240,27 +1245,29 @@ text = "左:"
 align = 1
 valign = 1
 
-[node name="ui2" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+[node name="ui2" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
 margin_left = 24.0
 margin_top = 24.0
-margin_right = 128.0
+margin_right = 134.0
 margin_bottom = 44.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="Label3" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
-margin_left = 132.0
+margin_left = 138.0
 margin_top = 24.0
-margin_right = 152.0
+margin_right = 158.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 0, 20 )
 text = "右:"
 align = 1
 valign = 1
 
-[node name="ui3" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
-margin_left = 156.0
+[node name="ui3" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
+margin_left = 162.0
 margin_top = 24.0
-margin_right = 260.0
+margin_right = 272.0
 margin_bottom = 44.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="Label5" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
 margin_top = 48.0
@@ -1271,16 +1278,17 @@ text = "上:"
 align = 1
 valign = 1
 
-[node name="ui4" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
+[node name="ui4" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
 margin_left = 24.0
 margin_top = 48.0
-margin_right = 128.0
+margin_right = 134.0
 margin_bottom = 68.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="Label6" type="Label" parent="uvs_select/ScrollContainer/uvs_select"]
-margin_left = 132.0
+margin_left = 138.0
 margin_top = 48.0
-margin_right = 152.0
+margin_right = 158.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 0, 20 )
 text = "下:"
@@ -1290,11 +1298,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui5" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 50 )]
-margin_left = 156.0
+[node name="ui5" parent="uvs_select/ScrollContainer/uvs_select" instance=ExtResource( 53 )]
+margin_left = 162.0
 margin_top = 48.0
-margin_right = 260.0
+margin_right = 272.0
 margin_bottom = 68.0
+rect_min_size = Vector2( 110, 20 )
 
 [node name="damage" type="WindowDialog" parent="."]
 margin_left = 211.0
@@ -1824,7 +1833,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 265.0
+margin_bottom = 283.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -1860,23 +1869,6 @@ custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 text = "添加液体方块"
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="button2" type="Button" parent="msg"]
-visible = false
-margin_left = 4.95786
-margin_top = 45.0
-margin_right = 95.9579
-margin_bottom = 65.0
-mouse_filter = 1
-theme = ExtResource( 10 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-text = "添加植物方块"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1957,6 +1949,22 @@ custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 text = "添加大分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button8" type="Button" parent="msg"]
+margin_left = 5.0
+margin_top = 145.0
+margin_right = 96.0
+margin_bottom = 165.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "刷新"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2070,7 +2078,6 @@ align = 1
 valign = 1
 
 [node name="sure_window" type="ConfirmationDialog" parent="."]
-visible = true
 margin_left = 454.0
 margin_top = 300.0
 margin_right = 626.0

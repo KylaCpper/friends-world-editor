@@ -4,12 +4,13 @@ func _ready() -> void:
 	Overall.msg_node = self
 	$button0.connect("pressed",self,"on_pressed0")
 	$button1.connect("pressed",self,"on_pressed1")
-	$button2.connect("pressed",self,"on_pressed2")
+#	$button2.connect("pressed",self,"on_pressed2")
 	$button3.connect("pressed",self,"on_pressed3")
 	$button4.connect("pressed",self,"on_pressed4")
 	$button5.connect("pressed",self,"on_pressed5")
 	$button6.connect("pressed",self,"on_pressed6")
 	$button7.connect("pressed",self,"on_pressed7")
+	$button8.connect("pressed",self,"on_pressed8")
 	
 func _show() -> void:
 	show()
@@ -41,6 +42,8 @@ func on_pressed6() -> void:
 	pass
 func on_pressed7() -> void:
 	Overall.add_class_node._show()
+func on_pressed8() -> void:
+	Overall.left_node._update()
 func _input(event) ->void:
 	if event.is_action_pressed("mouse_left"):
 		yield(get_tree(),"idle_frame")

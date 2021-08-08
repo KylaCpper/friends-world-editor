@@ -28,6 +28,15 @@ func on_pressed(press:bool) -> void:
 		$ui6.editable = true
 	
 func on_changed(d,i) -> void:
+	if i == 0:
+		if d in Overall.data["tool"]:
+			$ui0.text = data.key
+			return
+		else:
+			Overall.data["tool"][d] = data
+			Overall.data["tool"].erase(data.key)
+			Overall.update_order(data.key,d)
+			data.key = d
 	if i==17:
 		var data_be = str2var(d)
 		data["tool"] = data_be 

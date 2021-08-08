@@ -16,6 +16,15 @@ func _ready() -> void:
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 	
 func on_changed(d,i) -> void:
+	if i == 0:
+		if d in Overall.data.armor:
+			$ui0.text = data.key
+			return
+		else:
+			Overall.data.armor[d] = data
+			Overall.data.armor.erase(data.key)
+			Overall.update_order(data.key,d)
+			data.key = d
 	if i==7 || i==8 || i ==9 || i==10:
 		pass
 	else:

@@ -129,3 +129,9 @@ func get_max(mass:float) -> int:
 	if mass >= 19.1:
 		max_ = 1
 	return max_
+
+func update_order(okey,nkey) -> void:
+	var i = order_key[okey] 
+	order[i] = nkey
+	order_key.erase(okey)
+	order_key[nkey] = i

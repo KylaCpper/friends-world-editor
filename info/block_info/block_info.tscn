@@ -35,6 +35,17 @@ margin_right = 850.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 850, 32 )
 
+[node name="delete" type="Button" parent="VBoxContainer/head"]
+margin_left = 790.0
+margin_top = 4.0
+margin_right = 845.0
+margin_bottom = 29.0
+theme = ExtResource( 1 )
+text = "删除"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 32.0
 margin_right = 850.0
@@ -786,14 +797,14 @@ margin_bottom = 68.0
 [node name="ui2" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 
 [node name="ui23" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
-visible = false
 margin_top = 108.0
 margin_bottom = 140.0
 TYPE = "uv"
 
 [node name="ui24" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
-margin_top = 108.0
-margin_bottom = 140.0
+visible = false
+margin_top = 144.0
+margin_bottom = 176.0
 
 [node name="ui3" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 4 )]
 margin_top = 144.0
