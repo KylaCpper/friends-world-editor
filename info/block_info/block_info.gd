@@ -31,6 +31,8 @@ var data_be := {
 	"liquid":false,
 	"branch":false,
 	"uv":[],
+	"img":"",
+	"tex":null,
 	"name_en":"","info_en":""
 }
 func _ready() -> void:

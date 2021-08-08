@@ -4,7 +4,7 @@ var data := {}
 
 var key_list = [
 	"key","name","info","img","armor","hp","mass","damage","fuel",
-	"food","composite","script","name_en","info_en"
+	"food","composite","script","name_en","info_en","img_material"
 ]
 func _ready() -> void:
 	var i := 0
@@ -12,7 +12,7 @@ func _ready() -> void:
 		child.connect("focus_exited",self,"on_focus_exited",[child])
 #		child.connect("text_changed",self,"on_text_changed",[child,i])
 		i = i+1
-	for ii in range(14):
+	for ii in range(15):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 	
 func on_changed(d,i) -> void:
@@ -45,6 +45,7 @@ func _update(data) -> void:
 	$ui12.text = data.name_en
 	$ui13.text = data.info_en
 	
+	$ui14.get_node("LineEdit").text = data.img_material
 	
 	$ui7.data = data.damage
 	$ui8.data = data.fuel

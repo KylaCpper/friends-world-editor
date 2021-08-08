@@ -6,7 +6,7 @@ func _ready() -> void:
 	
 func on_pressed() -> void:
 	var tscn = drop_tscn.instance()
-	tscn.get_node("ui0").text = "default"
+	tscn.get_node("ui0").text = ""
 	tscn.get_node("ui1").value = 1
 	tscn.get_node("ui2").value = 100.0
 	tscn.get_node("ui3").value = 0
@@ -18,7 +18,7 @@ func on_pressed() -> void:
 		Overall.drop_node.data[name] = data
 		
 		
-	data.append({"name":"default","num":1,"pro":100.0,"lv":0,"stop":true})
+	data.append({"name":"","num":1,"pro":100.0,"lv":0,"stop":true})
 	tscn.data = data[data.size()-1]
 	add_child(tscn)
 func _free() -> void:
@@ -30,7 +30,7 @@ func _add(arr:Array) -> void:
 	for data in arr:
 		if !data.empty():
 			var tscn = drop_tscn.instance()
-			if !"name" in data:data.name = "default"
+			if !"name" in data:data.name = ""
 			if !"num" in data:data.num = 1
 			if !"pro" in data:data.pro = 100.0
 			if !"lv" in data:data.lv = 0

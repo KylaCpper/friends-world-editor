@@ -25,12 +25,12 @@ func on_hide() -> void:
 		if !(key in Overall.g_data):
 			if path:
 				if name_:
-					Overall.g_data[key] = {"age":{"name":name_,"img":path,"key":key},"block":{},"liquid_block":{},"item":{},"tool":{},"armor":{}}
 					var img = Image.new()
 					img.load(g_path)
 					var tex = ImageTexture.new()
 					tex.create_from_image(img,0)
 					Overall.head_node.add_age(tex,name_,key)
+					Overall.g_data[key] = {"age":{"name":name_,"img":path,"key":key,"tex":tex},"block":{},"liquid_block":{},"item":{},"tool":{},"armor":{}}
 					$ScrollContainer/add_class/ui0.text = ""
 					$ScrollContainer/add_class/ui1.text = ""
 					$ScrollContainer/add_class/ui2.get_node("LineEdit").text = ""
