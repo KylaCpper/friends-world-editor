@@ -15,6 +15,15 @@ func _ready() -> void:
 	for ii in range(13):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
+	if i == 0:
+		if d in Overall.data.liquid_block:
+			$ui0.text = data.key
+			return
+		else:
+			Overall.data.liquid_block[d] = data
+			Overall.data.liquid_block.erase(data.key)
+			Overall.update_order(data.key,d)
+			data.key = d
 	if i==9:return
 	if !$ui6.get_node("check").pressed:
 		data.material = 6

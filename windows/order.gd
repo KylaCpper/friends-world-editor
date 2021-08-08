@@ -109,6 +109,7 @@ func _update() -> void:
 func _show() -> void:
 #	self.window_title = title
 #	$scroll/order._update(data)
+	_update()
 	popup()
 func on_hide() -> void:
 	grab_focus()

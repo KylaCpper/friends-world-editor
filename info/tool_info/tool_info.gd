@@ -28,7 +28,14 @@ var data_be := {
 }
 func _ready() -> void:
 	Overall.tool_node = self
+	$VBoxContainer/head/delete.connect("pressed",self,"on_delete")
 	hide()
+func on_delete() -> void:
+	Overall.sure_window_node._show("",self)
+func on_sure() -> void:
+	Overall.data["tool"].erase(data.key)
+	Overall.left_node._update()
+	Overall._hide()
 func _update(data) -> void:
 	self.data=data
 	$VBoxContainer/HBoxContainer/vbox2._update(data)

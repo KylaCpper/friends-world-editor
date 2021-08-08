@@ -37,7 +37,14 @@ var data_be := {
 }
 func _ready() -> void:
 	Overall.block_node = self
+	$VBoxContainer/head/delete.connect("pressed",self,"on_delete")
 	hide()
+func on_delete() -> void:
+	Overall.sure_window_node._show("",self)
+func on_sure() -> void:
+	Overall.data.block.erase(data.key)
+	Overall.left_node._update()
+	Overall._hide()
 func _update(data) -> void:
 	self.data=data
 	$VBoxContainer/HBoxContainer/vbox2._update(data)
@@ -56,6 +63,6 @@ func set_data(data:Dictionary) -> void:
 			elif key == "plant":
 				data[key] = []
 			elif key == "uv":
-				data[key] = []
+				data[key] = ["","","","","","",""]
 			else:
 				data[key] = data_be[key]

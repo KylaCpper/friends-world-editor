@@ -16,6 +16,15 @@ func _ready() -> void:
 	for ii in range(13):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
+	if i == 0:
+		if d in Overall.data.item:
+			$ui0.text = data.key
+			return
+		else:
+			Overall.data.item[d] = data
+			Overall.data.item.erase(data.key)
+			Overall.update_order(data.key,d)
+			data.key = d
 	if i==6 || i==7 || i==8 || i==9:return
 	if i==3:
 		var img = Image.new()

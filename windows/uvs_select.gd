@@ -6,32 +6,26 @@ func _ready() ->void:
 	Overall.uvs_select_node = self
 	connect("resized",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
-	
+	$ui0.connect("_changed",self,"on_changed")
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
 	self.data = data
-	if data.size()<7:
-		for i in range(7-data.size()):
-			data.append({})
-	$ui0.data = data[0]
-	$ui0.select = 0
-	$ui0._update(data[0])
-	$ScrollContainer/uvs_select._update(data,0)
+#	$ui0.data = data[0]
+	$ui0.get_node("LineEdit").text = data[0]
+	$ScrollContainer/uvs_select._update(data)
 	popup()
+func on_changed(path:String) -> void:
+	data[0] = path
 func _show_model(title:String,data:Array,obj) -> void:
 	self.obj = obj
-	self.window_title = title
+#	self.window_title = title
 	self.data = data
-	if data.size()<7:
-		for i in range(7-data.size()):
-			data.append({})
-	$ui0.data = data[0]
-	$ui0.select = 1
-	$ui0._update(data[0])
-	$ScrollContainer/uvs_select._update(data,1)
+#	$ui0.data = data[0]
+	$ui0.get_node("LineEdit").text = data[0]
+	$ScrollContainer/uvs_select._update(data)
 	popup()
 func on_hide() -> void:
 	grab_focus()

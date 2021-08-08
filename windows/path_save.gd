@@ -34,7 +34,6 @@ func on_hide(path:String) -> void:
 		var item = {}
 		var tool_ = {}
 		var armor = {}
-		var uv = []
 		for age in gdata:
 			composite[age] = {"default":{},"craft_table":{}}
 			for type in gdata[age]:
@@ -50,6 +49,10 @@ func on_hide(path:String) -> void:
 							#物
 							for keyy in gdata[age][type][key]:
 								gdata[age][type][key].erase("tex")
+								for i in range(8):
+									if !gdata[age][type][key].uv[i]:
+										gdata[age][type][key].uv[i] = gdata[age][type][key].uv[0]
+								gdata[age][type][key].uv.pop_front()
 								block[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "liquid_block":
 							#uv
