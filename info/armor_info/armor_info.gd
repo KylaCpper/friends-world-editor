@@ -9,6 +9,7 @@ var data_be := {
 	"name":"new_item",
 	"info":"",
 	"img":"",
+	"img_material":"",
 	"mass":1.0,
 	"max":1,
 	"fuel":false,

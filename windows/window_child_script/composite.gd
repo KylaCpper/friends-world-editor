@@ -18,6 +18,6 @@ func _update(data) -> void:
 func _add(data) -> void:
 	self.data = data
 	var tscn = composites_grid_tscn.instance()
-	data.append({"table":{},"name":"default","num":1,"time":1})
+	data.append({"table":{},"name":Overall.block_node.data.key,"num":1,"time":1,"craft":"default"})
 	tscn.data = data[data.size()-1]
 	add_child(tscn)

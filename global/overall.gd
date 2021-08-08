@@ -1,15 +1,15 @@
 extends Node
-var path = "friends_world/"
+var path = ""
 var block_img :Texture
 var block_img_model :Texture
+var block_img_path :=""
+var block_img_model_path :=""
 var side_size := 5
-
+var order :={}
+var order_key :={}
 var age := ""
 var g_data = {
-	"age1":{
 
-	},
-	"age2":{}
 }
 var data = {
 	"block":{
@@ -32,6 +32,10 @@ const head_node_type := preload("res://head.gd")
 var head_node :head_node_type
 const add_class_node_type := preload("res://windows/add_class.gd")
 var add_class_node:add_class_node_type
+const set_class_node_type := preload("res://windows/set_class.gd")
+var set_class_node:set_class_node_type
+const sure_window_node_type := preload("res://windows/sure_window.gd")
+var sure_window_node:sure_window_node_type
 
 const block_node_type := preload("res://info/block_info/block_info.gd")
 var block_node:block_node_type
@@ -52,16 +56,21 @@ var armor_node:armor_node_type
 #var armor_node:armor_node_type
 const msg_node_type := preload("res://left/msg.gd")
 var msg_node:msg_node_type
+const msg_head_node_type := preload("res://head/msg_head.gd")
+var msg_head_node:msg_head_node_type
+
+
 const left_node_type := preload("res://left/left.gd")
 var left_node:left_node_type
-
+const save_msg_node_type := preload("res://windows/save_msg.gd")
+var save_msg_node:save_msg_node_type
 const uvs_select_node_type :=preload("res://windows/uvs_select.gd")
 var uvs_select_node:uvs_select_node_type
 const uv_select_node_type :=preload("res://windows/uv_select.gd")
 var uv_select_node:uv_select_node_type
 const textedit_node_type := preload("res://windows/textedit.gd")
 var textedit_node :textedit_node_type
-#const path_g_node_type := preload("res://windows/path_g.gd")
+const path_g_node_type := preload("res://windows/path_g.gd")
 var path_g_node 
 const path_node_type := preload("res://windows/path.gd")
 var path_node :path_node_type
@@ -87,6 +96,8 @@ const select_tool_node_type := preload("res://windows/tool.gd")
 var select_tool_node:select_tool_node_type
 const damage_node_type := preload("res://windows/damage.gd")
 var damage_node:damage_node_type
+const order_node_type := preload("res://windows/order.gd")
+var order_node:order_node_type
 func _ready() -> void:
 	pass
 

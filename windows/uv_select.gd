@@ -9,13 +9,13 @@ func _ready() -> void:
 func _show(data:Dictionary,obj) -> void:
 	self.obj = obj
 	self.data = data
-	$ScrollContainer/texture.texture = Overall.block_img
+#	$ScrollContainer/texture.texture = Overall.block_img
 	$ScrollContainer/texture._update(Overall.side_size)
 	popup()
 func _show_model(data:Dictionary,obj) -> void:
 	self.obj = obj
 	self.data = data
-	$ScrollContainer/texture.texture = Overall.block_img_model
+#	$ScrollContainer/texture.texture = Overall.block_img_model
 	$ScrollContainer/texture._update(32)
 	popup()
 func _changed(vec2:Vector2) -> void:

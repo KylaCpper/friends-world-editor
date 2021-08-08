@@ -4,7 +4,7 @@ var data := {}
 var key_list = [
 	"key","name","info","intensity","intensity_dig","mass","max","smash","transparent",
 	"entity","model","material","audio","dire","drop","composite","fuel","food","plant","tick",
-	"script","name_en","info_en","uv"
+	"script","name_en","info_en","uv","img"
 ]
 
 func _ready() -> void:
@@ -12,7 +12,7 @@ func _ready() -> void:
 	for child in get_children():
 		child.connect("focus_exited",self,"on_focus_exited",[child])
 		i = i+1
-	for ii in range(24):
+	for ii in range(25):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
 	if i == 14 || i==15 || i==16 ||i ==17 || i==18 || i== 23:return
@@ -37,6 +37,13 @@ func on_changed(d,i) -> void:
 				else:
 					data.material = 0
 			$ui11.selected = data.material
+	if i == 24:
+		var img = Image.new()
+		img.load($ui24.get_node("LineEdit").hint_tooltip)
+		var tex = ImageTexture.new()
+		tex.create_from_image(img,0)
+		print(1111)
+		data["tex"] = tex
 	data[key_list[i]] = d
 	if data.material<=2:
 		$ui23.select = 0
@@ -68,6 +75,7 @@ func _update(data) -> void:
 	$ui21.text = data.name_en
 	$ui22.text = data.info_en
 	$ui23.get_node("text").text = var2str(data.uv)
+	$ui24.get_node("LineEdit").text = data.img
 	
 	$ui14.data = data.drop
 	$ui15.data = data.composite
