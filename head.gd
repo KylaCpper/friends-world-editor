@@ -133,7 +133,7 @@ func _update() -> void:
 	for n in $head/hbox.get_children():
 		n.free()
 	for age in Overall.g_data:
-		$head/hbox.add_grid(Overall.g_data[age].age.tex,Overall.g_data[age].age.name,Overall.g_data[age].age.key)
+		$head/hbox.add_grid(Overall.g_data[age].age.tex,Overall.g_data[age].age.name,age)
 
 func add_age(tex:Texture,text:String,key:String) -> void:
 	$head/hbox.add_grid(tex,text,key)

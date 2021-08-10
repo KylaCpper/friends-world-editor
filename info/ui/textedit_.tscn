@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://default.tres" type="Theme" id=1]
+[ext_resource path="res://assets/img/full.png" type="Texture" id=2]
+[ext_resource path="res://info/ui/textedit.gd" type="Script" id=3]
+
+[node name="text0" type="Control"]
+margin_top = -0.206383
+margin_right = 256.0
+margin_bottom = 31.7936
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 105.0
+margin_right = 133.0
+margin_bottom = 24.0
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_right = 100.0
+margin_bottom = 24.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

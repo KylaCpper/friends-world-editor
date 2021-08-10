@@ -34,8 +34,17 @@ func on_hide(path:String) -> void:
 		var item = {}
 		var tool_ = {}
 		var armor = {}
+		var class_ = {}
 		for age in gdata:
 			composite[age] = {"default":{},"craft_table":{}}
+			class_[age] = {}
+			class_[age].key = age
+			class_[age].name = gdata[age].age.name
+			class_[age].info = gdata[age].age.info
+			class_[age].name_en = gdata[age].age.name_en
+			class_[age].info_en = gdata[age].age.info_en
+			class_[age].img = gdata[age].age.img
+			
 			for type in gdata[age]:
 				if type != "age":
 					for key in gdata[age][type]:
@@ -99,6 +108,7 @@ func on_hide(path:String) -> void:
 		data["tool"] = tool_
 #		data["armor"] = armor
 		data["composite"] = composite
+		data["age"] = class_
 		Function.write_file(path,var2str(data),null)
 
 

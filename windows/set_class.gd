@@ -11,8 +11,11 @@ func _show(age:String) -> void:
 	var data = Overall.g_data[age].age
 	$ScrollContainer/add_class/ui0.text = data.key
 	$ScrollContainer/add_class/ui1.text= data.name
+	$ScrollContainer/add_class/ui3/TextEdit.text = data.info
 	$ScrollContainer/add_class/ui2.get_node("LineEdit").text = data.img
 	$ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip = ""
+	$ScrollContainer/add_class/ui4.text = data.name_en
+	$ScrollContainer/add_class/ui5/TextEdit.text = data.info_en
 	popup()
 
 func on_hide() -> void:
@@ -23,8 +26,11 @@ func on_hide() -> void:
 	hide()
 	var key = $ScrollContainer/add_class/ui0.text
 	var name_ = $ScrollContainer/add_class/ui1.text
+	var info = $ScrollContainer/add_class/ui3/TextEdit.text
 	var path = $ScrollContainer/add_class/ui2.get_node("LineEdit").text
 	var g_path = $ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip
+	var name_en = $ScrollContainer/add_class/ui4.text
+	var info_en = $ScrollContainer/add_class/ui5/TextEdit.text
 	if key:
 			if path:
 				if name_:
@@ -48,4 +54,6 @@ func on_hide() -> void:
 					$ScrollContainer/add_class/ui1.text = ""
 					$ScrollContainer/add_class/ui2.get_node("LineEdit").text = ""
 					$ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip = ""
-
+					$ScrollContainer/add_class/ui3/TextEdit.text = ""
+					$ScrollContainer/add_class/ui4.text = ""
+					$ScrollContainer/add_class/ui5/TextEdit.text = ""

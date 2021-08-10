@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -58,6 +58,7 @@
 [ext_resource path="res://head/msg_head.gd" type="Script" id=56]
 [ext_resource path="res://windows/set_class.gd" type="Script" id=57]
 [ext_resource path="res://windows/sure_window.gd" type="Script" id=58]
+[ext_resource path="res://info/ui/textedit_.tscn" type="PackedScene" id=59]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -98,6 +99,7 @@ border_width_bottom = 1
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 7.62939e-06
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -1642,10 +1644,10 @@ columns = 5
 script = ExtResource( 6 )
 
 [node name="add_class" type="WindowDialog" parent="."]
-margin_left = 430.0
+margin_left = 384.0
 margin_top = 267.0
-margin_right = 661.0
-margin_bottom = 391.0
+margin_right = 642.0
+margin_bottom = 476.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "添加大类"
@@ -1658,8 +1660,8 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="add_class"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 220.0
-margin_bottom = 120.0
+margin_right = 250.0
+margin_bottom = 204.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1705,17 +1707,36 @@ margin_top = 28.0
 margin_right = 173.0
 margin_bottom = 48.0
 
+[node name="Label4" type="Label" parent="add_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 55.0
+margin_right = 88.0
+margin_bottom = 77.0
+theme = ExtResource( 10 )
+text = "详情:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
+margin_left = 89.0
+margin_top = 54.0
+margin_right = 216.0
+margin_bottom = 81.0
+
 [node name="ui2" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 53 )]
 margin_left = 88.0
-margin_top = 54.0
+margin_top = 85.0
 margin_right = 196.0
-margin_bottom = 74.0
+margin_bottom = 105.0
 
 [node name="Label3" type="Label" parent="add_class/ScrollContainer/add_class"]
 margin_left = 34.0
-margin_top = 54.0
+margin_top = 85.0
 margin_right = 88.0
-margin_bottom = 74.0
+margin_bottom = 105.0
 theme = ExtResource( 10 )
 text = "图路径:"
 align = 1
@@ -1724,11 +1745,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label5" type="Label" parent="add_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 114.0
+margin_right = 88.0
+margin_bottom = 134.0
+theme = ExtResource( 10 )
+text = "英名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
+margin_left = 89.0
+margin_top = 114.0
+margin_right = 173.0
+margin_bottom = 134.0
+
+[node name="Label6" type="Label" parent="add_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 142.0
+margin_right = 88.0
+margin_bottom = 164.0
+theme = ExtResource( 10 )
+text = "英详情:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
+margin_left = 89.0
+margin_top = 140.0
+margin_right = 216.0
+margin_bottom = 167.0
+
 [node name="add" type="Button" parent="add_class/ScrollContainer/add_class"]
-margin_left = 83.0
-margin_top = 82.0
-margin_right = 121.0
-margin_bottom = 102.0
+margin_left = 98.595
+margin_top = 177.0
+margin_right = 136.595
+margin_bottom = 197.0
 theme = ExtResource( 10 )
 text = "添加"
 __meta__ = {
@@ -1736,10 +1795,10 @@ __meta__ = {
 }
 
 [node name="set_class" type="WindowDialog" parent="."]
-margin_left = 430.0
-margin_top = 267.0
-margin_right = 661.0
-margin_bottom = 391.0
+margin_left = 384.0
+margin_top = 266.0
+margin_right = 642.0
+margin_bottom = 480.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "修改大类"
@@ -1752,8 +1811,8 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="set_class"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 220.0
-margin_bottom = 120.0
+margin_right = 250.0
+margin_bottom = 208.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1793,23 +1852,80 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label5" type="Label" parent="set_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 56.0
+margin_right = 88.0
+margin_bottom = 79.0
+theme = ExtResource( 10 )
+text = "详情:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
+margin_left = 89.0
+margin_top = 56.0
+margin_right = 216.0
+margin_bottom = 83.0
+
 [node name="ui1" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 28.0
 margin_right = 173.0
 margin_bottom = 48.0
 
+[node name="Label4" type="Label" parent="set_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 115.0
+margin_right = 88.0
+margin_bottom = 135.0
+theme = ExtResource( 10 )
+text = "英名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="set_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 143.0
+margin_right = 88.0
+margin_bottom = 166.0
+theme = ExtResource( 10 )
+text = "英详情:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
+margin_left = 89.0
+margin_top = 143.0
+margin_right = 216.0
+margin_bottom = 170.0
+
+[node name="ui5" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
+margin_left = 89.0
+margin_top = 115.0
+margin_right = 173.0
+margin_bottom = 135.0
+
 [node name="ui2" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 53 )]
-margin_left = 88.0
-margin_top = 54.0
-margin_right = 196.0
-margin_bottom = 74.0
+margin_left = 86.595
+margin_top = 86.0
+margin_right = 194.595
+margin_bottom = 106.0
 
 [node name="Label3" type="Label" parent="set_class/ScrollContainer/add_class"]
-margin_left = 34.0
-margin_top = 54.0
-margin_right = 88.0
-margin_bottom = 74.0
+margin_left = 32.595
+margin_top = 86.0
+margin_right = 86.595
+margin_bottom = 106.0
 theme = ExtResource( 10 )
 text = "图路径:"
 align = 1
@@ -1819,10 +1935,10 @@ __meta__ = {
 }
 
 [node name="add" type="Button" parent="set_class/ScrollContainer/add_class"]
-margin_left = 83.0
-margin_top = 82.0
-margin_right = 121.0
-margin_bottom = 102.0
+margin_left = 96.0
+margin_top = 178.0
+margin_right = 134.0
+margin_bottom = 198.0
 theme = ExtResource( 10 )
 text = "修改"
 __meta__ = {
