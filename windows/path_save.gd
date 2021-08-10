@@ -47,13 +47,14 @@ func on_hide(path:String) -> void:
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
 							#物
-							for keyy in gdata[age][type][key]:
-								gdata[age][type][key].erase("tex")
-								for i in range(8):
-									if !gdata[age][type][key].uv[i]:
-										gdata[age][type][key].uv[i] = gdata[age][type][key].uv[0]
-								gdata[age][type][key].uv.pop_front()
-								block[gdata[age][type][key].key] = gdata[age][type][key]
+#							for keyy in gdata[age][type][key]:
+							gdata[age][type][key].erase("tex")
+							gdata[age][type][key].erase("img")
+							for i in range(7):
+								if !gdata[age][type][key].uv[i]:
+									gdata[age][type][key].uv[i] = gdata[age][type][key].uv[0]
+							gdata[age][type][key].uv.pop_front()
+							block[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "liquid_block":
 							#uv
 #							for d in gdata[age][type][key].uv:
@@ -62,34 +63,35 @@ func on_hide(path:String) -> void:
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
 							#物
-							for keyy in gdata[age][type][key]:
-								gdata[age][type][key].erase("tex")
-								liquid_block[gdata[age][type][key].key] = gdata[age][type][key]
+							gdata[age][type][key].erase("tex")
+							gdata[age][type][key].erase("img")
+#							for keyy in gdata[age][type][key]:
+							liquid_block[gdata[age][type][key].key] = gdata[age][type][key]
 								
 						if type == "item":
 							#合成表
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
 							#物
-							for keyy in gdata[age][type][key]:
-								gdata[age][type][key].erase("tex")
-								item[gdata[age][type][key].key] = gdata[age][type][key]
+							gdata[age][type][key].erase("tex")
+#							for keyy in gdata[age][type][key]:
+							item[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "tool":
 							#合成表
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
 							#物
-							for keyy in gdata[age][type][key]:
-								gdata[age][type][key].erase("tex")
-								tool_[gdata[age][type][key].key] = gdata[age][type][key]
+							gdata[age][type][key].erase("tex")
+#							for keyy in gdata[age][type][key]:
+							tool_[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "armor":
 							#合成表
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
 							#物
-							for keyy in gdata[age][type][key]:
-								gdata[age][type][key].erase("tex")
-								tool_[gdata[age][type][key].key] = gdata[age][type][key]
+							gdata[age][type][key].erase("tex")
+#							for keyy in gdata[age][type][key]:
+							tool_[gdata[age][type][key].key] = gdata[age][type][key]
 						
 		data["block"] = block
 		data["liquid_block"] = liquid_block

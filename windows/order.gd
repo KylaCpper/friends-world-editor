@@ -26,14 +26,17 @@ func _update() -> void:
 
 		for i in Overall.order:
 			var key = Overall.order[i]
+			
 			var tscn = grid_tscn.instance()
 			tscn.name = key
 			tscn.name_ = key
 			tscn.get_node("Label").text = key
 			tscn.get_node("TextureRect").show()
 			tscn.get_node("Sprite").hide()
-			if datas.block[key].img:
-				tscn.get_node("TextureRect").texture = datas.block[key].tex
+			if key in datas.block:
+				if "img" in datas.block[key]:
+					if datas.block[key].img:
+						tscn.get_node("TextureRect").texture = datas.block[key].tex
 #			var n = tscn.get_node("Sprite")
 #			if datas.block[key].material<=2:
 #				n.texture = Overall.block_img
@@ -69,8 +72,8 @@ func _update() -> void:
 			tscn.get_node("Label").text = key
 			tscn.get_node("TextureRect").show()
 			tscn.get_node("Sprite").hide()
-			if datas.blocks[key].img:
-				tscn.get_node("TextureRect").texture = datas.blocks[key].tex
+			if datas.block[key].img:
+				tscn.get_node("TextureRect").texture = datas.block[key].tex
 #			var n = tscn.get_node("Sprite")
 #			n.show()
 #			if datas.block[key].material<=2:
@@ -109,7 +112,9 @@ func _update() -> void:
 func _show() -> void:
 #	self.window_title = title
 #	$scroll/order._update(data)
-	_update()
+	if Overall.order_c:
+		_update()
+		Overall.order_c = false
 	popup()
 func on_hide() -> void:
 	grab_focus()

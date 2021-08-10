@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 func on_changed(d,i) -> void:
 	if i == 0:
-		if d in Overall.data.armor:
+		if d in Overall.key_list:
 			$ui0.text = data.key
 			return
 		else:
@@ -52,7 +52,7 @@ func _update(data) -> void:
 
 	$ui11.get_node("LineEdit").text = data.script
 	$ui12.text = data.name_en
-	$ui13.text = data.info_en
+	$ui13.get_node("TextEdit").text = data.info_en
 	
 	$ui14.get_node("LineEdit").text = data.img_material
 	

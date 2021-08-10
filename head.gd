@@ -18,7 +18,7 @@ func _ready() -> void:
 	$import_img0/num.connect("value_changed",self,"on_changed")
 func on_new() -> void:
 	open_dir = 1
-	Overall.path_dir_node._show("选择目录",self)
+	Overall.path_dir_node._show("选择工作目录",self)
 	
 func on_open() -> void:
 	open_dir = 0
@@ -69,6 +69,7 @@ func _changed_dir(path:String) -> void:
 		Overall.side_size = data.side_size
 		Overall.order = data.order
 		Overall.order_key = data.order_key
+		Overall.key_list = data.key_list
 		for age in data.g_data:
 			var img1 = Image.new()
 			img1.load(Overall.path+data.g_data[age].age.img)
@@ -115,6 +116,7 @@ func _changed_dir(path:String) -> void:
 			"side_size":Overall.side_size,
 			"order":Overall.order,
 			"order_key":Overall.order_key,
+			"key_list":Overall.key_list,
 		}
 		Overall.save_msg_node.popup()
 		Function.write_file(path+"/config.cfg",data,null,true)
@@ -149,8 +151,8 @@ func _input(event) -> void:
 				"side_size":Overall.side_size,
 				"order":Overall.order,
 				"order_key":Overall.order_key,
+				"key_list":Overall.key_list,
 			}
-			
 			Overall.save_msg_node.popup()
 			Function.write_file(Overall.path+"/config.cfg",data,null,true)
 			for i in range(20):
