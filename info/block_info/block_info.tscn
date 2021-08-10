@@ -18,7 +18,7 @@
 margin_left = 166.0
 margin_top = 66.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 598.0
 custom_styles/bg = ExtResource( 2 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 850.0
-margin_bottom = 892.0
+margin_bottom = 940.0
 custom_constants/separation = 0
 
 [node name="head" type="Control" parent="VBoxContainer"]
@@ -893,6 +893,12 @@ margin_bottom = 788.0
 margin_top = 792.0
 margin_bottom = 824.0
 
-[node name="ui22" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 13 )]
+[node name="ui22" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 margin_top = 828.0
 margin_bottom = 860.0
+
+[node name="offset" type="Control" parent="VBoxContainer"]
+margin_top = 892.0
+margin_right = 850.0
+margin_bottom = 940.0
+rect_min_size = Vector2( 0, 48 )

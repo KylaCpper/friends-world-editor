@@ -7,6 +7,11 @@ var block_img_model_path :=""
 var side_size := 5
 var order :={}
 var order_key :={}
+var key_list := {
+	
+}
+var order_c := false
+var item_c := false
 var age := ""
 var g_data = {
 
@@ -36,7 +41,8 @@ const set_class_node_type := preload("res://windows/set_class.gd")
 var set_class_node:set_class_node_type
 const sure_window_node_type := preload("res://windows/sure_window.gd")
 var sure_window_node:sure_window_node_type
-
+const msg_warn_node_type := preload("res://windows/msg_warn.gd")
+var msg_warn_node:msg_warn_node_type
 const block_node_type := preload("res://info/block_info/block_info.gd")
 var block_node:block_node_type
 const liquid_block_node_type := preload("res://info/liquid_block_info/liquid_block_info.gd")
@@ -131,7 +137,27 @@ func get_max(mass:float) -> int:
 	return max_
 
 func update_order(okey,nkey) -> void:
-	var i = order_key[okey] 
-	order[i] = nkey
-	order_key.erase(okey)
-	order_key[nkey] = i
+	key_list.erase(okey)
+	key_list[nkey]=1
+	if okey in order_key:
+		var i = order_key[okey] 
+		order[i] = nkey
+		order_key.erase(okey)
+		order_key[nkey] = i
+		order_c = true
+		item_c = true
+	
+func next_key_list(name_:String,i:int) -> String:
+	if !(name_+str(i) in key_list):
+		return name_+str(i)
+	else:
+		return next_key_list(name_,i+1)
+	item_c = true
+
+func clear_order(key:String) -> void:
+	if key in Overall.order_key:
+		var i = Overall.order_key[key]
+		Overall.order_key.erase(key)
+		Overall.order.erase(i)
+		order_c = true
+		item_c = true

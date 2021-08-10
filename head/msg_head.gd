@@ -9,8 +9,12 @@ func _show(age:String) -> void:
 	self.age = age
 	show()
 func _check(index:int,type:String) -> String:
-	if "new_"+type+str(index) in Overall.data[type]:
-		return _check(index+1,type)
+	for age in Overall.g_data:
+		for type1 in Overall.g_data[age]:
+			if type1 !="age":
+				if "new_"+type+str(index) in Overall.data[type]:
+					return _check(index+1,type)
+				return "new_"+type+str(index)
 	return "new_"+type+str(index)
 func new_data(type:String,node) -> void:
 	var key = _check(0,type)

@@ -29,7 +29,7 @@ func on_pressed(press:bool) -> void:
 	
 func on_changed(d,i) -> void:
 	if i == 0:
-		if d in Overall.data["tool"]:
+		if d in Overall.key_list:
 			$ui0.text = data.key
 			return
 		else:
@@ -85,7 +85,7 @@ func _update(data) -> void:
 	$ui13.get_node("text").text = var2str(data.fuel)
 	$ui14.get_node("text").text = var2str(data.food)
 	$ui15.text = data.name_en
-	$ui16.text = data.info_en
+	$ui16.get_node("TextEdit").text = data.info_en
 	
 	
 	$ui10.data = data.damage

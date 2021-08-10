@@ -16,8 +16,9 @@ func _ready() -> void:
 	for ii in range(13):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
+	if i==6 || i==7 || i==8 || i==9:return
 	if i == 0:
-		if d in Overall.data.item:
+		if d in Overall.key_list:
 			$ui0.text = data.key
 			return
 		else:
@@ -25,7 +26,7 @@ func on_changed(d,i) -> void:
 			Overall.data.item.erase(data.key)
 			Overall.update_order(data.key,d)
 			data.key = d
-	if i==6 || i==7 || i==8 || i==9:return
+	data[key_list[i]] = d
 	if i==3:
 		var img = Image.new()
 		img.load($ui3.get_node("LineEdit").hint_tooltip)
@@ -36,7 +37,7 @@ func on_changed(d,i) -> void:
 		if !$ui5.get_node("check").pressed:
 			data["max"] = Overall.get_max(d)
 			$ui5.value = data["max"]
-	data[key_list[i]] = d
+	
 func _update(data) -> void:
 	self.data = data
 	$ui0.text = data.key
@@ -51,7 +52,7 @@ func _update(data) -> void:
 	$ui9.get_node("text").text = var2str(data.composite)
 	$ui10.get_node("LineEdit").text = data.script
 	$ui11.text = data.name_en
-	$ui12.text = data.info_en
+	$ui2.get_node("TextEdit").text = data.info_en
 	
 	
 	$ui6.data = data.fuel

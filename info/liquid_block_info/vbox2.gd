@@ -16,7 +16,7 @@ func _ready() -> void:
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
 	if i == 0:
-		if d in Overall.data.liquid_block:
+		if d in Overall.key_list:
 			$ui0.text = data.key
 			return
 		else:
@@ -25,10 +25,11 @@ func on_changed(d,i) -> void:
 			Overall.update_order(data.key,d)
 			data.key = d
 	if i==9:return
+	data[key_list[i]] = d
 	if !$ui6.get_node("check").pressed:
 		data.material = 6
 		$ui6.selected = data.material
-	data[key_list[i]] = d
+	
 func _update(data) -> void:
 	self.data = data
 	$ui0.text = data.key
@@ -43,7 +44,7 @@ func _update(data) -> void:
 	$ui9.get_node("text").text = var2str(data.branch)
 	$ui10.get_node("LineEdit").text = data.audio
 	$ui11.text = data.name_en
-	$ui12.text = data.info_en
+	$ui12.get_node("TextEdit").text = data.info_en
 	
 	$ui9.data = data.branch
 	

@@ -14,12 +14,15 @@ func _ready() -> void:
 	
 func _show() -> void:
 	show()
-func _check(index:int,type:String) -> String:
-	if "new_"+type+str(index) in Overall.data[type]:
-		return _check(index+1,type)
-	return "new_"+type+str(index)
 func new_data(type:String,node) -> void:
-	var key = _check(0,type)
+	if !Overall.head_node.open_project:
+		Overall.msg_warn_node._show("错误","需要新建项目")
+		return
+	if !"age" in Overall.data:
+		Overall.msg_warn_node._show("错误","无选择分类")
+		return
+	var key = Overall.next_key_list("new_"+type,0)
+	Overall.key_list[key]=1
 	Overall.data[type][key]={"key":key}
 	node.set_data(Overall.data[type][key])
 	Overall.left_node._update()
@@ -41,6 +44,9 @@ func on_pressed5() -> void:
 func on_pressed6() -> void:
 	pass
 func on_pressed7() -> void:
+	if !Overall.head_node.open_project:
+		Overall.msg_warn_node._show("错误","需要新建项目")
+		return
 	Overall.add_class_node._show()
 func on_pressed8() -> void:
 	Overall.left_node._update()

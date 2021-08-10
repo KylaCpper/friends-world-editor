@@ -26,6 +26,8 @@ func _ready() -> void:
 func on_delete() -> void:
 	Overall.sure_window_node._show("",self)
 func on_sure() -> void:
+	Overall.key_list.erase(data.key)
+	Overall.clear_order(data.key)
 	Overall.data.item.erase(data.key)
 	Overall.left_node._update()
 	Overall._hide()

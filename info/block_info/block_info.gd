@@ -42,6 +42,9 @@ func _ready() -> void:
 func on_delete() -> void:
 	Overall.sure_window_node._show("",self)
 func on_sure() -> void:
+	Overall.key_list.erase(data.key)
+	Overall.clear_order(data.key)
+
 	Overall.data.block.erase(data.key)
 	Overall.left_node._update()
 	Overall._hide()
@@ -66,3 +69,10 @@ func set_data(data:Dictionary) -> void:
 				data[key] = ["","","","","","",""]
 			else:
 				data[key] = data_be[key]
+func update_block_tex() -> void:
+	data.img = data.uv[0]
+	var img = Image.new()
+	img.load(Overall.path+data.img)
+	var tex = ImageTexture.new()
+	tex.create_from_image(img,0)
+	data["tex"] = tex

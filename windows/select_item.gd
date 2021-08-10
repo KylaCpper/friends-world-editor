@@ -41,52 +41,57 @@ func on_resized() -> void:
 	$tool.rect_size = rect_size - Vector2(22,32)
 	$armor.rect_size = rect_size - Vector2(22,32)
 func _update() -> void:
-	
-	var datas = Overall.data
-	for d in ["block","item","tool","armor"]:
-		var node = get_node(d+"/select_item")
+	for key in ["block","item","tool","armor"]:
+		var node = get_node(key+"/select_item")
 		for c in node.get_children():
 			c.free()
-		var key = d
-#		if key == "block":
-#			for keyy in datas[key]:
-#				var tscn = grid_tscn.instance()
-#				tscn.name = keyy
-#				tscn.name_ = keyy
-#				tscn.get_node("Label").text = keyy
-#				tscn.get_node("TextureRect").hide()
-#				var n = tscn.get_node("Sprite")
-#				n.show()
-#				if datas[key][keyy].material<=2:
-#					n.texture = Overall.block_img
-#				else:
-#					n.texture = Overall.block_img_model
-#				var vec2 = Vector2()
-#				if datas[key][keyy].uv.size() > 0:
-#					var be = datas[key][keyy].uv[0]
-#					if !be.empty():
-#						vec2 = Vector2(be.x,be.y)*16
-#				n.region_rect = Rect2(vec2,Vector2(16,16))
-#				n.scale = Vector2(2,2)
-##				tscn.get_node("TextureRect").texture = Overall.block_img
-#				tscn.hint_tooltip = keyy
-#				node.add_child(tscn)
-		if key == "item" || key == "tool" || key == "armor" || key == "block":
-			for keyy in datas[key]:
-				var tscn = grid_tscn.instance()
-				tscn.name = keyy
-				tscn.name_ = keyy
-				tscn.get_node("Label").text = keyy
-				tscn.get_node("Sprite").hide()
-				var n = tscn.get_node("TextureRect")
-				n.show()
-				n.texture = datas[key][keyy].tex
-				tscn.hint_tooltip = keyy
-				node.add_child(tscn)
+#	var datas = Overall.data
+	for age in Overall.g_data:
+		var datas = Overall.g_data[age]
+		for key in ["block","item","tool","armor"]:
+			var node = get_node(key+"/select_item")
+	#		if key == "block":
+	#			for keyy in datas[key]:
+	#				var tscn = grid_tscn.instance()
+	#				tscn.name = keyy
+	#				tscn.name_ = keyy
+	#				tscn.get_node("Label").text = keyy
+	#				tscn.get_node("TextureRect").hide()
+	#				var n = tscn.get_node("Sprite")
+	#				n.show()
+	#				if datas[key][keyy].material<=2:
+	#					n.texture = Overall.block_img
+	#				else:
+	#					n.texture = Overall.block_img_model
+	#				var vec2 = Vector2()
+	#				if datas[key][keyy].uv.size() > 0:
+	#					var be = datas[key][keyy].uv[0]
+	#					if !be.empty():
+	#						vec2 = Vector2(be.x,be.y)*16
+	#				n.region_rect = Rect2(vec2,Vector2(16,16))
+	#				n.scale = Vector2(2,2)
+	##				tscn.get_node("TextureRect").texture = Overall.block_img
+	#				tscn.hint_tooltip = keyy
+	#				node.add_child(tscn)
+			if key == "item" || key == "tool" || key == "armor" || key == "block":
+				for keyy in datas[key]:
+					var tscn = grid_tscn.instance()
+					tscn.name = keyy
+					tscn.name_ = keyy
+					tscn.get_node("Label").text = keyy
+					tscn.get_node("Sprite").hide()
+					var n = tscn.get_node("TextureRect")
+					n.show()
+					n.texture = datas[key][keyy].tex
+					tscn.hint_tooltip = keyy
+					node.add_child(tscn)
 func _show(title:String,data:String,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
 	self.data = data
+	if Overall.item_c:
+		_update()
+		Overall.item_c = false
 	get_node(key+"/select_item")._update(data)
 	popup()
 func on_hide() -> void:

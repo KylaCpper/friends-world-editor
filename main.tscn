@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -49,6 +49,7 @@
 [ext_resource path="res://windows/window_child_script/texture.gd" type="Script" id=47]
 [ext_resource path="res://windows/uvs_select.gd" type="Script" id=48]
 [ext_resource path="res://windows/window_child_script/uvs_select.gd" type="Script" id=49]
+[ext_resource path="res://windows/msg_warn.gd" type="Script" id=50]
 [ext_resource path="res://info/ui/linetext_.tscn" type="PackedScene" id=51]
 [ext_resource path="res://windows/add_class.gd" type="Script" id=52]
 [ext_resource path="res://info/ui/path_.tscn" type="PackedScene" id=53]
@@ -146,17 +147,17 @@ margin_left = 72.0181
 margin_right = 110.018
 margin_bottom = 27.0
 theme = ExtResource( 10 )
-text = "打开"
+text = "打开项目"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="save" type="Button" parent="head"]
-margin_left = 122.74
-margin_right = 160.74
+margin_left = 144.99
+margin_right = 182.99
 margin_bottom = 27.0
 theme = ExtResource( 10 )
-text = "保存"
+text = "保存项目"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -207,8 +208,8 @@ __meta__ = {
 }
 
 [node name="export" type="Button" parent="head"]
-margin_left = 194.688
-margin_right = 232.688
+margin_left = 221.0
+margin_right = 259.0
 margin_bottom = 27.0
 theme = ExtResource( 10 )
 text = "导出"
@@ -217,11 +218,11 @@ __meta__ = {
 }
 
 [node name="export_order" type="Button" parent="head"]
-margin_left = 247.311
-margin_right = 311.311
+margin_left = 266.0
+margin_right = 330.0
 margin_bottom = 27.0
 theme = ExtResource( 10 )
-text = "导出顺序"
+text = "导出块顺序"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2071,11 +2072,33 @@ window_title = "保存中..."
 script = ExtResource( 55 )
 
 [node name="Label" type="Label" parent="save_msg"]
-margin_right = 393.0
+margin_right = 397.0
 margin_bottom = 68.0
 text = "保存中..."
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="msg_warn" type="WindowDialog" parent="."]
+margin_left = 323.0
+margin_top = 198.0
+margin_right = 720.0
+margin_bottom = 355.0
+theme = ExtResource( 10 )
+window_title = "保存中..."
+script = ExtResource( 50 )
+
+[node name="Label" type="Label" parent="msg_warn"]
+margin_right = 397.0
+margin_bottom = 157.0
+text = "保存中..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sure_window" type="ConfirmationDialog" parent="."]
 margin_left = 454.0
