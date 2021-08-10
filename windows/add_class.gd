@@ -19,8 +19,11 @@ func on_hide() -> void:
 	hide()
 	var key = $ScrollContainer/add_class/ui0.text
 	var name_ = $ScrollContainer/add_class/ui1.text
+	var info = $ScrollContainer/add_class/ui3/TextEdit.text
 	var path = $ScrollContainer/add_class/ui2.get_node("LineEdit").text
 	var g_path = $ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip
+	var name_en = $ScrollContainer/add_class/ui4.text
+	var info_en = $ScrollContainer/add_class/ui5/TextEdit.text
 	if key:
 		if !(key in Overall.g_data):
 			if path:
@@ -30,9 +33,12 @@ func on_hide() -> void:
 					var tex = ImageTexture.new()
 					tex.create_from_image(img,0)
 					Overall.head_node.add_age(tex,name_,key)
-					Overall.g_data[key] = {"age":{"name":name_,"img":path,"key":key,"tex":tex},"block":{},"liquid_block":{},"item":{},"tool":{},"armor":{}}
+					Overall.g_data[key] = {"age":{"name":name_,"img":path,"key":key,"tex":tex,"name_en":name_en,"info_en":info_en},"block":{},"liquid_block":{},"item":{},"tool":{},"armor":{}}
 					$ScrollContainer/add_class/ui0.text = ""
 					$ScrollContainer/add_class/ui1.text = ""
 					$ScrollContainer/add_class/ui2.get_node("LineEdit").text = ""
 					$ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip = ""
+					$ScrollContainer/add_class/ui3/TextEdit.text = ""
+					$ScrollContainer/add_class/ui4.text = ""
+					$ScrollContainer/add_class/ui5/TextEdit.text = ""
 
