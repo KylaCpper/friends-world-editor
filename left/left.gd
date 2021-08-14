@@ -8,6 +8,11 @@ var plant_block:TreeItem
 var item:TreeItem
 var tool_:TreeItem
 var armor:TreeItem
+var block_img :=preload("res://assets/img/type1.png")
+var liquid_img :=preload("res://assets/img/type2.png")
+var item_img :=preload("res://assets/img/type3.png")
+var tool_img :=preload("res://assets/img/type4.png")
+var armor_img :=preload("res://assets/img/type5.png")
 func _ready():
 	Overall.left_node = self
 	
@@ -23,24 +28,35 @@ func _update() -> void:
 	
 	block = create_item(root)
 	block.set_text(0, "block")
+	block.set_icon(0, block_img)
+	block.set_tooltip(0, "block")
+	
 	liquid_block = create_item(root)
 	liquid_block.set_text(0, "liquid_block")
-	
+	liquid_block.set_icon(0, liquid_img)
+	liquid_block.set_tooltip(0, "liquid_block")
 #	plant_block = create_item(root)
 #	plant_block.set_text(0, "plant_block")
 
 	item = create_item(root)
 	item.set_text(0, "item")
-	
+	item.set_icon(0, item_img)
+	item.set_tooltip(0, "item")
 	
 	tool_ = create_item(root)
 	tool_.set_text(0, "tool")
+	tool_.set_icon(0, tool_img)
+	tool_.set_tooltip(0, "tool")
 	
 	armor = create_item(root)
 	armor.set_text(0, "armor")
+	armor.set_icon(0, armor_img)
+	armor.set_tooltip(0, "armor")
 	for key in data.block:
 		var be = create_item(block)
 		be.set_text(0,key)
+		if data.block[key].tex:
+			be.set_icon(0,data.block[key].tex)
 		be.set_tooltip(0,data.block[key].name)
 	for key in data.liquid_block:
 		var be = create_item(liquid_block)
@@ -53,14 +69,20 @@ func _update() -> void:
 	for key in data.item:
 		var be = create_item(item)
 		be.set_text(0,key)
+		if data.item[key].tex:
+			be.set_icon(0,data.item[key].tex)
 		be.set_tooltip(0,data.item[key].name)
 	for key in data["tool"]:
 		var be = create_item(tool_)
 		be.set_text(0,key)
+		if data["tool"][key].tex:
+			be.set_icon(0,data["tool"][key].tex)
 		be.set_tooltip(0,data["tool"][key].name)
 	for key in data.armor:
 		var be = create_item(armor)
 		be.set_text(0,key)
+		if data.armor[key].tex:
+			be.set_icon(0,data.armor[key].tex)
 		be.set_tooltip(0,data.armor[key].name)
 	
 func on_select() -> void:

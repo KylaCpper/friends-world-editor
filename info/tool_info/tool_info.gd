@@ -39,7 +39,10 @@ func on_sure() -> void:
 	Overall.left_node._update()
 	Overall._hide()
 func _update(data) -> void:
+
 	self.data=data
+	if data.tex:
+		$VBoxContainer/head/texture.texture = data.tex
 	$VBoxContainer/HBoxContainer/vbox2._update(data)
 	show()
 func set_data(data:Dictionary) -> void:

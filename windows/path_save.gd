@@ -35,6 +35,16 @@ func on_hide(path:String) -> void:
 		var tool_ = {}
 		var armor = {}
 		var class_ = {}
+		var order = []
+		var buff = {
+#			"key":deplete_time,move,absorb,atk,hand_speed,sub_hp,img,time,nutrition_absorb,nutrition_deplete_time
+		}
+		var g_buff = Overall.buff.duplicate(true)
+		for d in g_buff:
+			d.erase("tex")
+			buff[d.key] = d
+		for key in Overall.order:
+			order.append(Overall.order[key])
 		for age in gdata:
 			composite[age] = {"default":{},"craft_table":{}}
 			class_[age] = {}
@@ -52,6 +62,12 @@ func on_hide(path:String) -> void:
 							#uv
 #							for d in gdata[age][type][key].uv:
 #								uv[gdata[age][type][key].key] = d
+							if !"aabb" in gdata[age][type][key]:
+								gdata[age][type][key]["aabb"]=null
+							else:
+								var aabb = gdata[age][type][key].aabb
+								if !aabb[0]&&!aabb[1]&&!aabb[2]&&!aabb[3]&&!aabb[4]&&!aabb[5]:
+									gdata[age][type][key]["aabb"]=null
 							#合成表
 							for d in gdata[age][type][key].composite:
 								composite[age][d.craft][d.name]=d
@@ -64,7 +80,14 @@ func on_hide(path:String) -> void:
 									gdata[age][type][key].uv[i] = gdata[age][type][key].uv[0]
 							gdata[age][type][key].uv.pop_front()
 							block[gdata[age][type][key].key] = gdata[age][type][key]
+							
 						if type == "liquid_block":
+							if !"aabb" in gdata[age][type][key]:
+								gdata[age][type][key]["aabb"]=null
+							else:
+								var aabb = gdata[age][type][key].aabb
+								if !aabb[0]&&!aabb[1]&&!aabb[2]&&!aabb[3]&&!aabb[4]&&!aabb[5]:
+									gdata[age][type][key]["aabb"]=null
 							#uv
 #							for d in gdata[age][type][key].uv:
 #								uv[gdata[age][type][key].key] = d
@@ -75,7 +98,7 @@ func on_hide(path:String) -> void:
 							gdata[age][type][key].erase("tex")
 							gdata[age][type][key].erase("img")
 #							for keyy in gdata[age][type][key]:
-							liquid_block[gdata[age][type][key].key] = gdata[age][type][key]
+							block[gdata[age][type][key].key] = gdata[age][type][key]
 								
 						if type == "item":
 							#合成表
@@ -103,12 +126,14 @@ func on_hide(path:String) -> void:
 							tool_[gdata[age][type][key].key] = gdata[age][type][key]
 						
 		data["block"] = block
-		data["liquid_block"] = liquid_block
+#		data["liquid_block"] = liquid_block
 		data["item"] = item
 		data["tool"] = tool_
 #		data["armor"] = armor
 		data["composite"] = composite
 		data["age"] = class_
+		data["order"] = order
+		data["buff"] = buff
 		Function.write_file(path,var2str(data),null)
 
 

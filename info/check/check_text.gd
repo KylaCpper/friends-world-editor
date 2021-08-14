@@ -19,4 +19,5 @@ func on_pressed() -> void:
 	
 
 func on_changed(text_:String) -> void:
+	hint_tooltip = text_
 	emit_signal("_changed",text_)

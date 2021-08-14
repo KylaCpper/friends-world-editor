@@ -10,6 +10,7 @@ var order_key :={}
 var key_list := {
 	
 }
+var buff := []
 var order_c := false
 var item_c := false
 var age := ""
@@ -64,8 +65,10 @@ const msg_node_type := preload("res://left/msg.gd")
 var msg_node:msg_node_type
 const msg_head_node_type := preload("res://head/msg_head.gd")
 var msg_head_node:msg_head_node_type
-
-
+const buff_node_type := preload("res://windows/buff.gd")
+var buff_node:buff_node_type
+const aabb_node_type := preload("res://windows/aabb.gd")
+var aabb_node:aabb_node_type
 const left_node_type := preload("res://left/left.gd")
 var left_node:left_node_type
 const save_msg_node_type := preload("res://windows/save_msg.gd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -59,6 +59,10 @@
 [ext_resource path="res://windows/set_class.gd" type="Script" id=57]
 [ext_resource path="res://windows/sure_window.gd" type="Script" id=58]
 [ext_resource path="res://info/ui/textedit_.tscn" type="PackedScene" id=59]
+[ext_resource path="res://windows/buff.gd" type="Script" id=60]
+[ext_resource path="res://windows/window_child_script/buff.gd" type="Script" id=61]
+[ext_resource path="res://windows/aabb.gd" type="Script" id=62]
+[ext_resource path="res://windows/window_child_script/aabb.gd" type="Script" id=63]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -229,6 +233,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="buff" type="Button" parent="head"]
+margin_left = 354.0
+margin_right = 431.0
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "buff系统"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="head_grid" type="Control" parent="head"]
 margin_left = 84.0
 margin_top = 27.0
@@ -270,7 +284,6 @@ margin_left = 166.0
 margin_top = 27.0
 margin_right = 1024.0
 margin_bottom = 102.0
-mouse_filter = 2
 theme = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
 script = ExtResource( 4 )
@@ -852,7 +865,7 @@ __meta__ = {
 [node name="text0" type="Label" parent="branch/ScrollContainer/branch"]
 margin_top = 4.0
 margin_right = 49.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "上分支:"
@@ -866,7 +879,7 @@ __meta__ = {
 margin_left = 164.0
 margin_top = 4.0
 margin_right = 210.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "下分支:"
@@ -880,7 +893,7 @@ __meta__ = {
 margin_left = -1.0
 margin_top = 39.0
 margin_right = 39.0
-margin_bottom = 59.0
+margin_bottom = 63.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "源头:"
@@ -894,7 +907,7 @@ __meta__ = {
 margin_left = 164.0
 margin_top = 39.0
 margin_right = 210.0
-margin_bottom = 59.0
+margin_bottom = 63.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "末分支:"
@@ -908,23 +921,25 @@ __meta__ = {
 margin_left = 49.0
 margin_top = 4.0
 margin_right = 133.0
+margin_bottom = 28.0
 
 [node name="ui1" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
 margin_left = 210.0
 margin_top = 4.0
 margin_right = 294.0
+margin_bottom = 28.0
 
 [node name="ui2" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
 margin_left = 40.0
 margin_top = 39.0
 margin_right = 124.0
-margin_bottom = 59.0
+margin_bottom = 63.0
 
 [node name="ui3" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
 margin_left = 210.0
 margin_top = 39.0
 margin_right = 294.0
-margin_bottom = 59.0
+margin_bottom = 63.0
 
 [node name="fuel" type="WindowDialog" parent="."]
 margin_left = 330.0
@@ -1032,7 +1047,7 @@ __meta__ = {
 [node name="text0" type="Label" parent="plant/ScrollContainer/plant"]
 margin_top = 4.0
 margin_right = 72.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "下一个方块:"
@@ -1046,7 +1061,7 @@ __meta__ = {
 margin_left = 187.0
 margin_top = 4.0
 margin_right = 267.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "下方块需求:"
@@ -1060,11 +1075,13 @@ __meta__ = {
 margin_left = 72.0
 margin_top = 4.0
 margin_right = 156.0
+margin_bottom = 28.0
 
 [node name="ui1" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
 margin_left = 267.0
 margin_top = 4.0
 margin_right = 351.0
+margin_bottom = 28.0
 
 [node name="select_tool" type="WindowDialog" parent="."]
 margin_left = 309.0
@@ -1308,6 +1325,148 @@ margin_right = 272.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 110, 20 )
 
+[node name="aabb" type="WindowDialog" parent="."]
+margin_left = 313.0
+margin_top = 247.0
+margin_right = 705.0
+margin_bottom = 322.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "aabb"
+resizable = true
+script = ExtResource( 62 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="aabb"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 386.0
+margin_bottom = 67.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="aabb" type="GridContainer" parent="aabb/ScrollContainer"]
+margin_right = 372.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 32 )
+mouse_filter = 2
+custom_constants/vseparation = 12
+custom_constants/hseparation = 6
+columns = 6
+script = ExtResource( 63 )
+
+[node name="Label" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_right = 14.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "x:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 120.0
+margin_bottom = 20.0
+max_value = 10.0
+
+[node name="Label2" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_left = 126.0
+margin_right = 140.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "y:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 146.0
+margin_top = 0.0
+margin_right = 246.0
+margin_bottom = 20.0
+max_value = 10.0
+
+[node name="Label4" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_left = 252.0
+margin_right = 266.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "z:"
+align = 1
+valign = 1
+
+[node name="ui2" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 272.0
+margin_top = 0.0
+margin_right = 372.0
+margin_bottom = 20.0
+max_value = 10.0
+
+[node name="Label3" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_top = 32.0
+margin_right = 14.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+text = "x:"
+align = 1
+valign = 1
+
+[node name="ui3" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 20.0
+margin_top = 32.0
+margin_right = 120.0
+margin_bottom = 52.0
+max_value = 10.0
+
+[node name="Label5" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_left = 126.0
+margin_top = 32.0
+margin_right = 140.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+text = "y:"
+align = 1
+valign = 1
+
+[node name="ui4" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 146.0
+margin_top = 32.0
+margin_right = 246.0
+margin_bottom = 52.0
+max_value = 10.0
+
+[node name="Label6" type="Label" parent="aabb/ScrollContainer/aabb"]
+margin_left = 252.0
+margin_top = 32.0
+margin_right = 266.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+text = "z:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" parent="aabb/ScrollContainer/aabb" instance=ExtResource( 34 )]
+margin_left = 272.0
+margin_top = 32.0
+margin_right = 372.0
+margin_bottom = 52.0
+max_value = 10.0
+
 [node name="damage" type="WindowDialog" parent="."]
 margin_left = 211.0
 margin_top = 214.0
@@ -1348,6 +1507,47 @@ __meta__ = {
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 41 )
+
+[node name="buff" type="WindowDialog" parent="."]
+margin_left = 107.0
+margin_top = 83.0
+margin_right = 934.0
+margin_bottom = 571.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "buff系统"
+resizable = true
+script = ExtResource( 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="buff"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 20 )
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="buff"]
+margin_left = 10.0
+margin_top = 28.0
+margin_right = 805.0
+margin_bottom = 479.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buff" type="GridContainer" parent="buff/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 61 )
 
 [node name="select_item" type="WindowDialog" parent="."]
 margin_left = 266.0
@@ -1852,6 +2052,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ui2" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 53 )]
+margin_left = 86.595
+margin_top = 86.0
+margin_right = 194.595
+margin_bottom = 106.0
+
 [node name="Label5" type="Label" parent="set_class/ScrollContainer/add_class"]
 margin_left = 34.0
 margin_top = 56.0
@@ -1903,23 +2109,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui4" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
-margin_left = 89.0
-margin_top = 143.0
-margin_right = 216.0
-margin_bottom = 170.0
-
-[node name="ui5" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
+[node name="ui4" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 115.0
 margin_right = 173.0
 margin_bottom = 135.0
 
-[node name="ui2" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 53 )]
-margin_left = 86.595
-margin_top = 86.0
-margin_right = 194.595
-margin_bottom = 106.0
+[node name="ui5" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
+margin_left = 89.0
+margin_top = 143.0
+margin_right = 216.0
+margin_bottom = 170.0
 
 [node name="Label3" type="Label" parent="set_class/ScrollContainer/add_class"]
 margin_left = 32.595
@@ -1950,7 +2150,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 283.0
+margin_bottom = 265.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2040,9 +2240,9 @@ __meta__ = {
 }
 
 [node name="button6" type="Button" parent="msg"]
-margin_left = 4.95786
+margin_left = 5.0
 margin_top = 125.0
-margin_right = 95.9579
+margin_right = 96.0
 margin_bottom = 145.0
 mouse_filter = 1
 theme = ExtResource( 10 )
@@ -2056,6 +2256,7 @@ __meta__ = {
 }
 
 [node name="button7" type="Button" parent="msg"]
+visible = false
 margin_left = 5.0
 margin_top = 105.0
 margin_right = 96.0
@@ -2073,9 +2274,9 @@ __meta__ = {
 
 [node name="button8" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 145.0
+margin_top = 105.0
 margin_right = 96.0
-margin_bottom = 165.0
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2092,7 +2293,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 164.0
+margin_bottom = 185.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2103,9 +2304,9 @@ __meta__ = {
 
 [node name="button0" type="Button" parent="msg_head"]
 margin_left = 4.95786
-margin_top = 5.0
+margin_top = 25.0
 margin_right = 95.9579
-margin_bottom = 25.0
+margin_bottom = 45.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2118,16 +2319,32 @@ __meta__ = {
 }
 
 [node name="button1" type="Button" parent="msg_head"]
-margin_left = 4.95786
-margin_top = 25.0
-margin_right = 95.9579
-margin_bottom = 45.0
+margin_left = 5.0
+margin_top = 45.0
+margin_right = 96.0
+margin_bottom = 65.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 text = "删除"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="msg_head"]
+margin_left = 4.95786
+margin_top = 5.0
+margin_right = 95.9579
+margin_bottom = 25.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false

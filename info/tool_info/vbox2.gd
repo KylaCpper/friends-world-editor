@@ -20,9 +20,9 @@ func on_pressed(press:bool) -> void:
 	if press:
 		$ui5.disabled = true
 		$ui6.editable = false
-		if !$ui17.data:
-			$ui17.data = []
-		data["tool"] = $ui17.data
+#		if !$ui17.data:
+#			$ui17.data = []
+#		data["tool"] = $ui17.data
 	else:
 		$ui5.disabled = false
 		$ui6.editable = true
@@ -38,12 +38,14 @@ func on_changed(d,i) -> void:
 			Overall.update_order(data.key,d)
 			data.key = d
 	if i==17:
+		return
 		var data_be = str2var(d)
 		data["tool"] = data_be 
 	else:
 		if i==3:
 			var img = Image.new()
 			img.load($ui3.get_node("LineEdit").hint_tooltip)
+			img.resize(16,16)
 			var tex = ImageTexture.new()
 			tex.create_from_image(img,0)
 			data["tex"] = tex
@@ -92,6 +94,7 @@ func _update(data) -> void:
 	$ui11.data = data.composite
 	$ui13.data = data.fuel
 	$ui14.data = data.food
+#	$ui17.data = data.food
 	
 func on_focus_exited(node) -> void:
 	if node.has_method("deselect"):

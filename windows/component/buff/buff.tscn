@@ -1,0 +1,345 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://windows/component/buff/buff.gd" type="Script" id=1]
+[ext_resource path="res://info/ui/path_.tscn" type="PackedScene" id=2]
+[ext_resource path="res://default.tres" type="Theme" id=3]
+[ext_resource path="res://info/ui/num_.tscn" type="PackedScene" id=4]
+[ext_resource path="res://info/ui/textedit_.tscn" type="PackedScene" id=5]
+[ext_resource path="res://info/ui/linetext_.tscn" type="PackedScene" id=6]
+
+[node name="buff" type="Control"]
+margin_top = 1.59027
+margin_right = 570.0
+margin_bottom = 151.59
+rect_min_size = Vector2( 570, 150 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="."]
+margin_top = 86.7249
+margin_right = 44.0
+margin_bottom = 108.725
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "时间:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Label" parent="."]
+margin_left = 181.0
+margin_top = 2.0
+margin_right = 253.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "移动偏差:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="."]
+margin_left = 539.0
+margin_top = 2.0
+margin_right = 573.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "手:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Label" parent="."]
+margin_left = 539.0
+margin_top = 30.0
+margin_right = 572.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "攻击:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text4" type="Label" parent="."]
+margin_left = 180.523
+margin_top = 30.0
+margin_right = 252.523
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "饱腹消耗率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text5" type="Label" parent="."]
+margin_left = 361.845
+margin_top = 30.0
+margin_right = 433.845
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "吸收率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text6" type="Label" parent="."]
+margin_left = 180.523
+margin_top = 59.2601
+margin_right = 252.523
+margin_bottom = 81.2601
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "营养消耗率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text7" type="Label" parent="."]
+margin_left = 361.845
+margin_top = 59.2601
+margin_right = 433.845
+margin_bottom = 81.2601
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "营养吸收率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text8" type="Label" parent="."]
+margin_left = 361.845
+margin_top = 2.0
+margin_right = 433.845
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "固定扣血:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text9" type="Label" parent="."]
+margin_left = 180.523
+margin_top = 86.7249
+margin_right = 252.523
+margin_bottom = 108.725
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "图片:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text10" type="Label" parent="."]
+margin_top = 30.0
+margin_right = 44.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text11" type="Label" parent="."]
+margin_top = 58.0
+margin_right = 44.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "详情:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text12" type="Label" parent="."]
+margin_top = 116.661
+margin_right = 44.0
+margin_bottom = 138.661
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "英名:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text13" type="Label" parent="."]
+margin_left = 181.0
+margin_top = 117.0
+margin_right = 225.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "英详:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text14" type="Label" parent="."]
+margin_top = 2.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 3 )
+text = "key:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="." instance=ExtResource( 4 )]
+margin_left = 44.0
+margin_top = 87.0
+margin_right = 168.0
+margin_bottom = 109.0
+step = 1.0
+
+[node name="ui1" parent="." instance=ExtResource( 4 )]
+margin_left = 253.0
+margin_top = 2.0
+margin_right = 353.0
+margin_bottom = 24.0
+max_value = 10.0
+
+[node name="ui2" parent="." instance=ExtResource( 4 )]
+margin_left = 573.0
+margin_top = 2.0
+margin_right = 673.0
+margin_bottom = 24.0
+max_value = 10.0
+
+[node name="ui3" parent="." instance=ExtResource( 4 )]
+margin_left = 573.0
+margin_top = 30.0
+margin_right = 673.0
+margin_bottom = 52.0
+max_value = 10.0
+
+[node name="ui4" parent="." instance=ExtResource( 4 )]
+margin_left = 253.0
+margin_top = 30.0
+margin_right = 353.0
+margin_bottom = 52.0
+max_value = 10.0
+
+[node name="ui5" parent="." instance=ExtResource( 4 )]
+margin_left = 434.0
+margin_top = 30.0
+margin_right = 534.0
+margin_bottom = 52.0
+max_value = 10.0
+
+[node name="ui6" parent="." instance=ExtResource( 4 )]
+margin_left = 253.0
+margin_top = 59.0
+margin_right = 353.0
+margin_bottom = 82.0
+max_value = 10.0
+
+[node name="ui7" parent="." instance=ExtResource( 4 )]
+margin_left = 434.0
+margin_top = 59.0
+margin_right = 534.0
+margin_bottom = 81.0
+max_value = 10.0
+
+[node name="ui8" parent="." instance=ExtResource( 4 )]
+margin_left = 434.0
+margin_top = 2.0
+margin_right = 534.0
+margin_bottom = 24.0
+max_value = 10.0
+
+[node name="ui9" parent="." instance=ExtResource( 2 )]
+margin_left = 253.0
+margin_top = 87.0
+margin_right = 358.0
+margin_bottom = 111.0
+
+[node name="ui10" parent="." instance=ExtResource( 6 )]
+margin_left = 44.0
+margin_top = 30.0
+margin_right = 168.0
+margin_bottom = 52.0
+
+[node name="ui11" parent="." instance=ExtResource( 5 )]
+margin_left = 44.0
+margin_top = 58.0
+margin_right = 177.0
+margin_bottom = 82.0
+
+[node name="ui12" parent="." instance=ExtResource( 6 )]
+margin_left = 44.0
+margin_top = 117.0
+margin_right = 168.0
+margin_bottom = 139.0
+
+[node name="ui13" parent="." instance=ExtResource( 5 )]
+margin_left = 224.523
+margin_top = 116.661
+margin_right = 357.523
+margin_bottom = 140.661
+
+[node name="ui14" parent="." instance=ExtResource( 6 )]
+margin_left = 44.0
+margin_top = 2.0
+margin_right = 168.0
+margin_bottom = 24.0
+
+[node name="delete" type="Button" parent="."]
+margin_left = 685.192
+margin_top = 2.21619
+margin_right = 704.192
+margin_bottom = 24.2162
+theme = ExtResource( 3 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="."]
+margin_left = 376.023
+margin_top = 87.0
+margin_right = 424.023
+margin_bottom = 135.0
+rect_min_size = Vector2( 48, 48 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

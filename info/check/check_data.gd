@@ -9,12 +9,13 @@ func _ready() -> void:
 	$button2.connect("pressed",self,"on_pressed2")
 	$text.connect("text_changed",self,"on_changed")
 	$check.connect("toggled",self,"on_checked")
-	on_checked(true)
+	on_checked(true,true)
 func on_pressed() -> void:
 	Overall.textedit_node._show("edit",$text.text,$text)
-func on_checked(pressed:bool) -> void:
+func on_checked(pressed:bool,s:=false) -> void:
 	$check.pressed = pressed
-	emit_signal("_pressed",pressed)
+	if !s:
+		emit_signal("_pressed",pressed)
 	if pressed:
 		$text.readonly = false
 		$button.disabled = false

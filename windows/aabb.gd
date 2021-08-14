@@ -1,23 +1,17 @@
 extends WindowDialog
 var obj
 var data :=[]
-
 func _ready() ->void:
-	Overall.select_tool_node = self
+	Overall.aabb_node = self
 	connect("resized",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
-	$add.connect("pressed",self,"on_pressed")
-func on_pressed() -> void:
-	data.append(["pickaxe",1.0])
-	$ScrollContainer/select_tool._update(data)
-	print(data)
 func on_resized() -> void:
-	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
+	$ScrollContainer.rect_size = rect_size - Vector2(22,12)
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
 	self.data = data
-	$ScrollContainer/select_tool._update(data)
+	$ScrollContainer/aabb._update(data)
 	popup()
 func on_hide() -> void:
 	grab_focus()

@@ -9,4 +9,5 @@ func on_pressed() -> void:
 	Overall.textedit_node._show("edit",$TextEdit.text,$TextEdit)
 
 func on_changed() -> void:
+	hint_tooltip = $TextEdit.text
 	emit_signal("_changed",$TextEdit.text)

@@ -9,6 +9,7 @@ func on_resized() -> void:
 func _show(age:String) -> void:
 	self.age = age
 	var data = Overall.g_data[age].age
+	if !"info" in data:data["info"] = ""
 	$ScrollContainer/add_class/ui0.text = data.key
 	$ScrollContainer/add_class/ui1.text= data.name
 	$ScrollContainer/add_class/ui3/TextEdit.text = data.info
@@ -38,6 +39,7 @@ func on_hide() -> void:
 					if g_path:
 						var img = Image.new()
 						img.load(g_path)
+						img.resize(16,16)
 						tex = ImageTexture.new()
 						tex.create_from_image(img,0)
 					Overall.g_data[age].age.name = name_

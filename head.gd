@@ -9,6 +9,7 @@ func _ready() -> void:
 	$save.connect("pressed",self,"on_save")
 	$export.connect("pressed",self,"on_export")
 	$export_order.connect("pressed",self,"on_export_order")
+	$buff.connect("pressed",self,"on_buff")
 #	$import_img0.connect("pressed",self,"on_import_img0")
 #	$import_img1.connect("pressed",self,"on_import_img1")
 	var p = Function.get_save("set.cfg",null,true)
@@ -32,6 +33,11 @@ func on_export() -> void:
 	Overall.path_save_node._show(1)
 func on_export_order() -> void:
 	Overall.order_node._show()
+func on_buff() -> void:
+	if !Overall.head_node.open_project:
+		Overall.msg_warn_node._show("错误","需要新建项目")
+		return
+	Overall.buff_node._show()
 func on_import_img0() -> void:
 	select_png = 0
 	Overall.path_g_node._show("导入方块图",self)
@@ -44,6 +50,7 @@ func _changed(path:String) -> void:
 
 	var img = Image.new()
 	img.load(path)
+	img.resize(16,16)
 	var tex = ImageTexture.new()
 	tex.create_from_image(img,0)
 	if select_png == 0:
@@ -70,9 +77,18 @@ func _changed_dir(path:String) -> void:
 		Overall.order = data.order
 		Overall.order_key = data.order_key
 		Overall.key_list = data.key_list
+		Overall.buff = data.buff
+		for d in data.buff:
+			var img1 = Image.new()
+			img1.load(Overall.path+d.img)
+			img1.resize(16,16)
+			var tex1 = ImageTexture.new()
+			tex1.create_from_image(img1,0)
+			d.tex = tex1
 		for age in data.g_data:
 			var img1 = Image.new()
 			img1.load(Overall.path+data.g_data[age].age.img)
+			img1.resize(16,16)
 			var tex1 = ImageTexture.new()
 			tex1.create_from_image(img1,0)
 			data.g_data[age].age.tex = tex1
@@ -85,6 +101,7 @@ func _changed_dir(path:String) -> void:
 						if data.g_data[age][type][key].img:
 							var img = Image.new()
 							img.load(Overall.path+data.g_data[age][type][key].img)
+							img.resize(16,16)
 							var tex = ImageTexture.new()
 							tex.create_from_image(img,0)
 							data.g_data[age][type][key]["tex"] = tex
@@ -117,6 +134,7 @@ func _changed_dir(path:String) -> void:
 			"order":Overall.order,
 			"order_key":Overall.order_key,
 			"key_list":Overall.key_list,
+			"buff":Overall.buff
 		}
 		Overall.save_msg_node.popup()
 		Function.write_file(path+"/config.cfg",data,null,true)
@@ -152,6 +170,7 @@ func _input(event) -> void:
 				"order":Overall.order,
 				"order_key":Overall.order_key,
 				"key_list":Overall.key_list,
+				"buff":Overall.buff,
 			}
 			Overall.save_msg_node.popup()
 			Function.write_file(Overall.path+"/config.cfg",data,null,true)
