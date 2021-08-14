@@ -9,7 +9,7 @@ func _ready() -> void:
 	$button4.connect("pressed",self,"on_pressed4")
 	$button5.connect("pressed",self,"on_pressed5")
 	$button6.connect("pressed",self,"on_pressed6")
-	$button7.connect("pressed",self,"on_pressed7")
+
 	$button8.connect("pressed",self,"on_pressed8")
 	
 func _show() -> void:
@@ -43,11 +43,7 @@ func on_pressed5() -> void:
 	new_data("armor",Overall.armor_node)
 func on_pressed6() -> void:
 	pass
-func on_pressed7() -> void:
-	if !Overall.head_node.open_project:
-		Overall.msg_warn_node._show("错误","需要新建项目")
-		return
-	Overall.add_class_node._show()
+
 func on_pressed8() -> void:
 	Overall.left_node._update()
 func _input(event) ->void:

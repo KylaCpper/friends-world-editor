@@ -30,6 +30,7 @@ func on_changed(d,i) -> void:
 	if i==3:
 		var img = Image.new()
 		img.load($ui3.get_node("LineEdit").hint_tooltip)
+		img.resize(16,16)
 		var tex = ImageTexture.new()
 		tex.create_from_image(img,0)
 		data["tex"] = tex

@@ -15,8 +15,8 @@ __meta__ = {
 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_right = 84.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 22 )
 theme = ExtResource( 2 )
 align = 1
 clear_button_enabled = true
@@ -28,7 +28,7 @@ __meta__ = {
 [node name="Button" type="Button" parent="."]
 margin_left = 85.854
 margin_right = 104.854
-margin_bottom = 20.0
+margin_bottom = 22.0
 theme = ExtResource( 2 )
 text = "."
 __meta__ = {

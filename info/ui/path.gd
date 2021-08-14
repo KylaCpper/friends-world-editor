@@ -10,4 +10,5 @@ func on_press() -> void:
 
 func on_change(text:String) -> void:
 	$LineEdit.text = text
+#	hint_tooltip = Overall.text
 	emit_signal("_changed",text)

@@ -45,8 +45,10 @@ func _update(data) -> void:
 	$ui10.get_node("LineEdit").text = data.audio
 	$ui11.text = data.name_en
 	$ui12.get_node("TextEdit").text = data.info_en
+	$ui13.get_node("text").text = var2str(data.aabb)
 	
 	$ui9.data = data.branch
+	$ui13.data = data.aabb
 	
 func on_focus_exited(node) -> void:
 	if node.has_method("deselect"):

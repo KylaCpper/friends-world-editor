@@ -1,5 +1,5 @@
 extends Control
-export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv")var TYPE = "drop"
+export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv","aabb")var TYPE = "drop"
 signal _changed(text_)
 var data
 var select := 0
@@ -32,6 +32,8 @@ func on_pressed2() -> void:
 			Overall.uvs_select_node._show("uv_select",data,$text)
 		else:
 			Overall.uvs_select_node._show_model("uv_select",data,$text)
+	if TYPE == "aabb":
+		Overall.aabb_node._show("aabb",data,$text)
 func on_changed() -> void:
 	var data = str2var($text.text)
 	if TYPE == "drop":
@@ -81,6 +83,13 @@ func on_changed() -> void:
 			self.data[i] = d
 			i = i+1
 	if TYPE == "uv":
+		if typeof(data) != TYPE_ARRAY:return
+		var i := 0
+		for d in data:
+			self.data[i] = d
+			i = i+1
+			i = i+1
+	if TYPE == "aabb":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:

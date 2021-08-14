@@ -15,7 +15,7 @@ func _ready() -> void:
 	for ii in range(24):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_changed(d,i) -> void:
-	if i == 14 || i==15 || i==16 ||i ==17 || i==18 || i== 23:return
+	if i == 14 || i==15 || i==16 ||i ==17 || i==18 || i== 23 || i==24:return
 	if i == 0:
 		if d in Overall.key_list:
 			$ui0.text = data.key
@@ -79,7 +79,7 @@ func _update(data) -> void:
 	$ui21.text = data.name_en
 	$ui22.get_node("TextEdit").text = data.info_en
 	$ui23.get_node("text").text = var2str(data.uv)
-#	$ui24.get_node("LineEdit").text = data.img
+	$ui24.get_node("text").text = var2str(data.aabb)
 	
 	$ui14.data = data.drop
 	$ui15.data = data.composite
@@ -87,6 +87,7 @@ func _update(data) -> void:
 	$ui17.data = data.food
 	$ui18.data = data.plant
 	$ui23.data = data.uv
+	$ui24.data = data.aabb
 	
 func on_focus_exited(node) -> void:
 	if node.has_method("deselect"):

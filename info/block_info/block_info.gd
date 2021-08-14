@@ -33,6 +33,7 @@ var data_be := {
 	"uv":[],
 	"img":"",
 	"tex":null,
+	"aabb":[],
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
@@ -50,6 +51,10 @@ func on_sure() -> void:
 	Overall._hide()
 func _update(data) -> void:
 	self.data=data
+	if !"aabb" in data:
+		data["aabb"] = [0,0,0,0,0,0]
+	if data.tex:
+		$VBoxContainer/head/texture.texture = data.tex
 	$VBoxContainer/HBoxContainer/vbox2._update(data)
 	show()
 func set_data(data:Dictionary) -> void:
@@ -67,12 +72,15 @@ func set_data(data:Dictionary) -> void:
 				data[key] = []
 			elif key == "uv":
 				data[key] = ["","","","","","",""]
+			elif key == "aabb":
+				data[key] = [0,0,0,0,0,0]
 			else:
 				data[key] = data_be[key]
 func update_block_tex() -> void:
 	data.img = data.uv[0]
 	var img = Image.new()
 	img.load(Overall.path+data.img)
+	img.resize(16,16)
 	var tex = ImageTexture.new()
 	tex.create_from_image(img,0)
 	data["tex"] = tex
