@@ -1,4 +1,5 @@
 extends Node
+var windows :={}
 var path = ""
 var block_img :Texture
 var block_img_model :Texture
@@ -7,9 +8,7 @@ var block_img_model_path :=""
 var side_size := 5
 var order :={}
 var order_key :={}
-var key_list := {
-	
-}
+var key_list := {}
 var buff := []
 var order_c := false
 var item_c := false
@@ -164,3 +163,5 @@ func clear_order(key:String) -> void:
 		Overall.order.erase(i)
 		order_c = true
 		item_c = true
+func get_g_node(key:String):
+	return self[key]

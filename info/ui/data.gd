@@ -88,7 +88,6 @@ func on_changed() -> void:
 		for d in data:
 			self.data[i] = d
 			i = i+1
-			i = i+1
 	if TYPE == "aabb":
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0

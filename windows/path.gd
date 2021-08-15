@@ -7,12 +7,14 @@ signal _changed(text)
 func _ready() ->void:
 	Overall.path_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("file_selected",self,"on_hide")
 	if Overall.path:
 		current_dir = Overall.path
 		
 func on_resized() -> void:
 	size = rect_size
+	Overall.windows["path_node"]=[rect_size,rect_position]
 	
 func _show(title:String,obj) -> void:
 #	self.filters = arr

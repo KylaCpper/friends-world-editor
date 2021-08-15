@@ -6,6 +6,7 @@ var key := "block"
 func _ready() ->void:
 	Overall.select_item_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$ui0.connect("text_changed",self,"on_changed")
 	$num.connect("value_changed",self,"on_numed")
@@ -40,6 +41,7 @@ func on_resized() -> void:
 	$item.rect_size = rect_size - Vector2(22,32)
 	$tool.rect_size = rect_size - Vector2(22,32)
 	$armor.rect_size = rect_size - Vector2(22,32)
+	Overall.windows["select_item_node"]=[rect_size,rect_position]
 func _update() -> void:
 	for key in ["block","item","tool","armor"]:
 		var node = get_node(key+"/select_item")

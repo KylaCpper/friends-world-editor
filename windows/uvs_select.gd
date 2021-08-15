@@ -5,10 +5,12 @@ var data :=[]
 func _ready() ->void:
 	Overall.uvs_select_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$ui0.connect("_changed",self,"on_changed")
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
+	Overall.windows["uvs_select_node"]=[rect_size,rect_position]
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title

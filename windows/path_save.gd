@@ -8,12 +8,13 @@ signal _changed(text)
 func _ready() ->void:
 	Overall.path_save_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("file_selected",self,"on_hide")
 	if Overall.path:
 		current_dir = Overall.path
 func on_resized() -> void:
 	size = rect_size
-	
+	Overall.windows["path_save_node"]=[rect_size,rect_position]
 func _show(type:int) -> void:
 	self.type = type
 	if type == 0:

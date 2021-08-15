@@ -3,9 +3,11 @@ var age := ""
 func _ready() -> void:
 	Overall.set_class_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	$ScrollContainer/add_class/add.connect("pressed",self,"on_hide")
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,12)
+	Overall.windows["set_class_node"]=[rect_size,rect_position]
 func _show(age:String) -> void:
 	self.age = age
 	var data = Overall.g_data[age].age
@@ -17,6 +19,7 @@ func _show(age:String) -> void:
 	$ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip = ""
 	$ScrollContainer/add_class/ui4.text = data.name_en
 	$ScrollContainer/add_class/ui5/TextEdit.text = data.info_en
+	$ScrollContainer/add_class/ui6.value = data.index
 	popup()
 
 func on_hide() -> void:
@@ -32,6 +35,7 @@ func on_hide() -> void:
 	var g_path = $ScrollContainer/add_class/ui2.get_node("LineEdit").hint_tooltip
 	var name_en = $ScrollContainer/add_class/ui4.text
 	var info_en = $ScrollContainer/add_class/ui5/TextEdit.text
+	var index = $ScrollContainer/add_class/ui6.value
 	if key:
 			if path:
 				if name_:
@@ -46,6 +50,7 @@ func on_hide() -> void:
 					Overall.g_data[age].age.img = path
 					Overall.g_data[age].age.key = key
 					Overall.g_data[age].age.tex = tex
+					Overall.g_data[age].age["index"] = index
 					if !(key in Overall.g_data):
 						Overall.g_data[key] = Overall.g_data[age]
 						Overall.g_data.erase(age)

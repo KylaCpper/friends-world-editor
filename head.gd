@@ -12,7 +12,7 @@ func _ready() -> void:
 	$buff.connect("pressed",self,"on_buff")
 #	$import_img0.connect("pressed",self,"on_import_img0")
 #	$import_img1.connect("pressed",self,"on_import_img1")
-	var p = Function.get_save("set.cfg",null,true)
+	var p = Function.get_save("set.cfg")
 	if p:
 		Overall.path = p
 
@@ -63,12 +63,13 @@ func _changed_dir(path:String) -> void:
 	Overall.path_g_node.current_dir = path
 	Overall.path_dir_node.current_dir = path
 	if open_dir == 0:
-		Function.set_save("set.cfg",path,null,true)
+		Function.set_save("set.cfg",path)
 		Overall.path = path
-		var data = Function.read_file(path+"/config.cfg",null,true)
+		var data = Function.read_file(path+"/config.cfg")
 		if !data:
 			open_project = false
 			return
+		data = str2var(data)
 		open_project = true
 		Overall.g_data = data.g_data
 		Overall.block_img_path = data.block_img_path
@@ -78,6 +79,13 @@ func _changed_dir(path:String) -> void:
 		Overall.order_key = data.order_key
 		Overall.key_list = data.key_list
 		Overall.buff = data.buff
+		if "windows" in data:
+			Overall.windows = data.windows
+			for key in data.windows:
+				var node = Overall.get_g_node(key)
+				node.rect_position = data.windows[key][1]
+				node.rect_size = data.windows[key][0]
+#				node.on_resized()
 		for d in data.buff:
 			var img1 = Image.new()
 			img1.load(Overall.path+d.img)
@@ -124,7 +132,7 @@ func _changed_dir(path:String) -> void:
 		return
 	if open_dir == 1:
 		Overall.path = path
-		Function.set_save("set.cfg",path,null,true)
+		Function.set_save("set.cfg",path)
 		open_project = true
 		var data = {
 			"g_data":Overall.g_data,
@@ -134,10 +142,26 @@ func _changed_dir(path:String) -> void:
 			"order":Overall.order,
 			"order_key":Overall.order_key,
 			"key_list":Overall.key_list,
-			"buff":Overall.buff
+			"buff":Overall.buff,
+			"windows":Overall.windows
 		}
 		Overall.save_msg_node.popup()
-		Function.write_file(path+"/config.cfg",data,null,true)
+		data = data.duplicate(true)
+		for d in data.buff:
+			d.tex = null
+		var g_data = data.g_data
+		for age in g_data:
+			g_data[age].age.tex = null
+			var d = g_data[age]
+			for key in d.block:
+				d.block[key].tex = null
+			for key in d.item:
+				d.item[key].tex = null
+			for key in d["tool"]:
+				d["tool"][key].tex = null
+			for key in d.armor:
+				d.armor[key].tex = null
+		Function.write_file(path+"/config.cfg",var2str(data))
 		for i in range(20):
 			yield(get_tree(),"idle_frame")
 		Overall.save_msg_node.hide()
@@ -150,9 +174,26 @@ func delete_age(age) -> void:
 func _update() -> void:
 	for n in $head/hbox.get_children():
 		n.free()
+	var ages = {}
 	for age in Overall.g_data:
-		$head/hbox.add_grid(Overall.g_data[age].age.tex,Overall.g_data[age].age.name,age)
+		ages[age] = 1
+	__update__(0,ages)
+func __update__(i:int,ages:Dictionary) -> void:
 
+	for age in ages:
+		if Overall.g_data[age].age.index<=i:
+			$head/hbox.add_grid(Overall.g_data[age].age.tex,Overall.g_data[age].age.name,age)
+			i += 1
+			ages.erase(age)
+			__update__(i,ages)
+			break
+	var g_size:int = ages.size()
+	if g_size >0:
+		var num = 999
+		for age in ages:
+			if Overall.g_data[age].age.index<=num:
+				num = Overall.g_data[age].age.index
+		__update__(num,ages)
 func add_age(tex:Texture,text:String,key:String) -> void:
 	$head/hbox.add_grid(tex,text,key)
 	
@@ -171,9 +212,25 @@ func _input(event) -> void:
 				"order_key":Overall.order_key,
 				"key_list":Overall.key_list,
 				"buff":Overall.buff,
+				"windows":Overall.windows
 			}
 			Overall.save_msg_node.popup()
-			Function.write_file(Overall.path+"/config.cfg",data,null,true)
+			data = data.duplicate(true)
+			for d in data.buff:
+				d.tex = null
+			var g_data = data.g_data
+			for age in g_data:
+				g_data[age].age.tex = null
+				var d = g_data[age]
+				for key in d.block:
+					d.block[key].tex = null
+				for key in d.item:
+					d.item[key].tex = null
+				for key in d["tool"]:
+					d["tool"][key].tex = null
+				for key in d.armor:
+					d.armor[key].tex = null
+			Function.write_file(Overall.path+"/config.cfg",var2str(data))
 			for i in range(20):
 				yield(get_tree(),"idle_frame")
 			Overall.save_msg_node.hide()

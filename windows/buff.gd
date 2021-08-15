@@ -3,6 +3,7 @@ var data :=[]
 func _ready() ->void:
 	Overall.buff_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$add.connect("pressed",self,"on_pressed")
 func get_buff_key(s:String,i:int) ->String:
@@ -17,6 +18,7 @@ func on_pressed() -> void:
 	$ScrollContainer/buff._update(data)
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
+	Overall.windows["buff_node"]=[rect_size,rect_position]
 func _show() -> void:
 	data = Overall.buff
 #	self.window_title = title
