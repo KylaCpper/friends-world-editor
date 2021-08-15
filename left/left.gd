@@ -113,5 +113,31 @@ func on_select() -> void:
 				Overall.armor_node._update(data.armor[key])
 func on_select_rmb(vec2:Vector2) -> void:
 	var key = get_selected().get_text(0)
+	var parent_name = get_selected().get_parent().get_text(0)
 	Overall.msg_node.rect_position = vec2+Vector2(0,100)
-	Overall.msg_node.show()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	var be := false
+	if parent_name != "root":
+		if parent_name == "block":
+			if key in data.block:
+				be = true
+		if parent_name == "liquid_block":
+			if key in data.liquid_block:
+				be = true
+#		if parent_name == "plant_block":
+#			Overall.plant_block_node._update(data.plant_block[key])
+		if parent_name == "item":
+			if key in data.item:
+				be = true
+		if parent_name == "tool":
+			if key in data["tool"]:
+				be = true
+		if parent_name == "armor":
+			if key in data.armor:
+				be = true
+	if be == true:
+		Overall.msg_node._show(key)
+	else:
+		Overall.msg_node._show("")
