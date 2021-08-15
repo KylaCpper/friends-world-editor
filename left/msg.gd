@@ -1,5 +1,5 @@
 extends Panel
-
+var key = ""
 func _ready() -> void:
 	Overall.msg_node = self
 	$button0.connect("pressed",self,"on_pressed0")
@@ -12,7 +12,14 @@ func _ready() -> void:
 
 	$button8.connect("pressed",self,"on_pressed8")
 	
-func _show() -> void:
+func _show(key:String) -> void:
+	self.key = key
+	if key:
+		$button6.show()
+		rect_size.y = 150
+	else:
+		$button6.hide()
+		rect_size.y = 129
 	show()
 func new_data(type:String,node) -> void:
 	if !Overall.head_node.open_project:
@@ -42,8 +49,14 @@ func on_pressed4() -> void:
 func on_pressed5() -> void:
 	new_data("armor",Overall.armor_node)
 func on_pressed6() -> void:
-	pass
-
+	Overall.sure_window_node._show("",self)
+func on_sure() -> void:
+	if key:
+		Overall.key_list.erase(key)
+		Overall.clear_order(key)
+		Overall.data.block.erase(key)
+		Overall.left_node._update()
+		Overall._hide()
 func on_pressed8() -> void:
 	Overall.left_node._update()
 func _input(event) ->void:
