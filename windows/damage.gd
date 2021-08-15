@@ -4,6 +4,7 @@ var data :=[]
 func _ready() ->void:
 	Overall.damage_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$add.connect("pressed",self,"on_pressed")
 func on_pressed() -> void:
@@ -11,6 +12,7 @@ func on_pressed() -> void:
 	$ScrollContainer/damage._update(data)
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
+	Overall.windows["damage_node"]=[rect_size,rect_position]
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title

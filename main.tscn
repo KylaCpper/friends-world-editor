@@ -1844,9 +1844,9 @@ columns = 5
 script = ExtResource( 6 )
 
 [node name="add_class" type="WindowDialog" parent="."]
-margin_left = 384.0
-margin_top = 267.0
-margin_right = 642.0
+margin_left = 381.0
+margin_top = 235.0
+margin_right = 639.0
 margin_bottom = 476.0
 focus_mode = 2
 theme = ExtResource( 10 )
@@ -1861,7 +1861,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 6.0
 margin_right = 250.0
-margin_bottom = 204.0
+margin_bottom = 236.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1878,6 +1878,19 @@ margin_right = 88.0
 margin_bottom = 20.0
 theme = ExtResource( 10 )
 text = "唯一key:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="add_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 174.0
+margin_right = 88.0
+margin_bottom = 194.0
+theme = ExtResource( 10 )
+text = "排序:"
 align = 1
 valign = 1
 __meta__ = {
@@ -1966,7 +1979,7 @@ margin_bottom = 134.0
 
 [node name="Label6" type="Label" parent="add_class/ScrollContainer/add_class"]
 margin_left = 34.0
-margin_top = 142.0
+margin_top = 140.0
 margin_right = 88.0
 margin_bottom = 164.0
 theme = ExtResource( 10 )
@@ -1983,11 +1996,18 @@ margin_top = 140.0
 margin_right = 216.0
 margin_bottom = 167.0
 
+[node name="ui6" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 34 )]
+margin_left = 89.595
+margin_top = 174.0
+margin_right = 189.595
+margin_bottom = 194.0
+step = 1.0
+
 [node name="add" type="Button" parent="add_class/ScrollContainer/add_class"]
-margin_left = 98.595
-margin_top = 177.0
-margin_right = 136.595
-margin_bottom = 197.0
+margin_left = 99.0
+margin_top = 202.0
+margin_right = 137.0
+margin_bottom = 222.0
 theme = ExtResource( 10 )
 text = "添加"
 __meta__ = {
@@ -1996,9 +2016,9 @@ __meta__ = {
 
 [node name="set_class" type="WindowDialog" parent="."]
 margin_left = 384.0
-margin_top = 266.0
+margin_top = 236.0
 margin_right = 642.0
-margin_bottom = 480.0
+margin_bottom = 476.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "修改大类"
@@ -2012,7 +2032,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 6.0
 margin_right = 250.0
-margin_bottom = 208.0
+margin_bottom = 235.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2029,6 +2049,19 @@ margin_right = 88.0
 margin_bottom = 20.0
 theme = ExtResource( 10 )
 text = "唯一key:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="set_class/ScrollContainer/add_class"]
+margin_left = 34.0
+margin_top = 175.0
+margin_right = 88.0
+margin_bottom = 195.0
+theme = ExtResource( 10 )
+text = "排序:"
 align = 1
 valign = 1
 __meta__ = {
@@ -2121,6 +2154,13 @@ margin_top = 143.0
 margin_right = 216.0
 margin_bottom = 170.0
 
+[node name="ui6" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 34 )]
+margin_left = 89.0
+margin_top = 175.0
+margin_right = 189.0
+margin_bottom = 195.0
+step = 1.0
+
 [node name="Label3" type="Label" parent="set_class/ScrollContainer/add_class"]
 margin_left = 32.595
 margin_top = 86.0
@@ -2136,9 +2176,9 @@ __meta__ = {
 
 [node name="add" type="Button" parent="set_class/ScrollContainer/add_class"]
 margin_left = 96.0
-margin_top = 178.0
+margin_top = 205.0
 margin_right = 134.0
-margin_bottom = 198.0
+margin_bottom = 225.0
 theme = ExtResource( 10 )
 text = "修改"
 __meta__ = {

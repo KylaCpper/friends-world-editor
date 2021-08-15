@@ -5,6 +5,7 @@ var grid_tscn = load("res://windows/component/order/order_block.tscn")
 func _ready() ->void:
 	Overall.order_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$ui0.connect("text_changed",self,"on_changed")
 	$num.connect("value_changed",self,"on_numed")
@@ -17,6 +18,7 @@ func on_numed(num:int) -> void:
 	$scroll/order.columns = num
 func on_resized() -> void:
 	$scroll.rect_size = rect_size - Vector2(22,32)
+	Overall.windows["order_node"]=[rect_size,rect_position]
 func _update() -> void:
 	for age in Overall.g_data:
 		var datas = Overall.g_data[age]

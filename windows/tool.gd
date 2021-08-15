@@ -5,14 +5,15 @@ var data :=[]
 func _ready() ->void:
 	Overall.select_tool_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 	$add.connect("pressed",self,"on_pressed")
 func on_pressed() -> void:
 	data.append(["pickaxe",1.0])
 	$ScrollContainer/select_tool._update(data)
-	print(data)
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)
+	Overall.windows["select_tool_node"]=[rect_size,rect_position]
 func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title

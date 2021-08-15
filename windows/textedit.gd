@@ -5,10 +5,12 @@ var obj
 func _ready() ->void:
 	Overall.textedit_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 func on_resized() -> void:
 	size = rect_size
-	$TextEdit.rect_size = rect_size
+	$TextEdit.rect_size = size
+	Overall.windows["textedit_node"]=[rect_size,rect_position]
 func _show(title:String,text:String,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
@@ -23,3 +25,4 @@ func on_hide() -> void:
 	if obj:
 		obj.text = $TextEdit.text
 		obj.emit_signal("text_changed")
+	

@@ -4,9 +4,11 @@ var data :={}
 func _ready() ->void:
 	Overall.drop_node = self
 	connect("resized",self,"on_resized")
+	connect("popup_hide",self,"on_resized")
 	connect("popup_hide",self,"on_hide")
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(77,10)
+	Overall.windows["drop_node"]=[rect_size,rect_position]
 func _show(title:String,data:Dictionary,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
