@@ -37,12 +37,13 @@ func on_changed(d,i) -> void:
 	if i == 8 || i == 10:
 		if !$ui11.get_node("check").pressed:
 			if data.model:
+				
 				if data.transparent:
 					data.material = 4
 				else:
 					data.material = 3
 			else:
-				if data.transparnet:
+				if data.transparent:
 					data.material = 1
 				else:
 					data.material = 0
