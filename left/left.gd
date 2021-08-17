@@ -20,6 +20,10 @@ func _ready():
 
 	connect("item_selected",self,"on_select")
 	connect("item_rmb_selected",self,"on_select_rmb")
+func _change(nkey,ntool) -> void:
+	var obj = get_selected()
+	obj.set_text(0,nkey)
+	obj.set_tooltip(0,ntool)
 func _update() -> void:
 	data = Overall.data
 	clear()
@@ -92,25 +96,33 @@ func on_select() -> void:
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
+	var be := false
 	if parent_name != "root":
 		Overall._hide()
 		if parent_name == "block":
 			if key in data.block:
 				Overall.block_node._update(data.block[key])
+				be = true
 		if parent_name == "liquid_block":
 			if key in data.liquid_block:
 				Overall.liquid_block_node._update(data.liquid_block[key])
+				be = true
 #		if parent_name == "plant_block":
 #			Overall.plant_block_node._update(data.plant_block[key])
 		if parent_name == "item":
 			if key in data.item:
 				Overall.item_node._update(data.item[key])
+				be = true
 		if parent_name == "tool":
 			if key in data["tool"]:
 				Overall.tool_node._update(data["tool"][key])
+				be = true
 		if parent_name == "armor":
 			if key in data.armor:
 				Overall.armor_node._update(data.armor[key])
+				be = true
+	if be == true:
+		$"../info".key = key
 func on_select_rmb(vec2:Vector2) -> void:
 	var key = get_selected().get_text(0)
 	var parent_name = get_selected().get_parent().get_text(0)
@@ -119,6 +131,7 @@ func on_select_rmb(vec2:Vector2) -> void:
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
 	var be := false
+	
 	if parent_name != "root":
 		if parent_name == "block":
 			if key in data.block:
@@ -138,6 +151,7 @@ func on_select_rmb(vec2:Vector2) -> void:
 			if key in data.armor:
 				be = true
 	if be == true:
+		$"../info".key = key
 		Overall.msg_node._show(key)
 	else:
 		Overall.msg_node._show("")

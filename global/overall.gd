@@ -120,25 +120,25 @@ func _hide() -> void:
 
 func get_max(mass:float) -> int:
 	var max_ := 1
-	if mass >= 0.1:
+	if mass >= 0.0:
 		max_ = 99
-	if mass >= 0.2:
+	if mass > 0.1:
 		max_ = 64
 	if mass >= 0.5:
 		max_ = 32
-	if mass >= 1.1:
+	if mass >= 1.0:
 		max_ = 16
-	if mass >= 2.3:
+	if mass >= 2.0:
 		max_ = 8
-	if mass >= 4.7:
+	if mass >= 4.0:
 		max_ = 4
-	if mass >= 9.5:
+	if mass >= 8.0:
 		max_ = 2
-	if mass >= 19.1:
+	if mass >= 16.0:
 		max_ = 1
 	return max_
 
-func update_order(okey,nkey) -> void:
+func update_order(okey,nkey,name_) -> void:
 	key_list.erase(okey)
 	key_list[nkey]=1
 	if okey in order_key:
@@ -146,22 +146,32 @@ func update_order(okey,nkey) -> void:
 		order[i] = nkey
 		order_key.erase(okey)
 		order_key[nkey] = i
-		order_c = true
-		item_c = true
-	
+		Overall.order_node._update()
+#		order_c = true
+	item_c = true
+	Overall.left_node._change(nkey,name_)
+#		update_list()
 func next_key_list(name_:String,i:int) -> String:
+	item_c = true
+#	update_list()
 	if !(name_+str(i) in key_list):
 		return name_+str(i)
 	else:
 		return next_key_list(name_,i+1)
-	item_c = true
 
 func clear_order(key:String) -> void:
 	if key in Overall.order_key:
 		var i = Overall.order_key[key]
 		Overall.order_key.erase(key)
 		Overall.order.erase(i)
-		order_c = true
-		item_c = true
+		Overall.order_node._update()
+#		order_c = true
+	item_c = true
+#		update_list()
 func get_g_node(key:String):
 	return self[key]
+
+func update_list() -> void:
+	select_item_node._update()
+	
+	

@@ -14,6 +14,7 @@ var data_be := {
 	"mass":1.0,
 	"max":1,
 	"tool":"",
+	"lock_tool":true,
 	"lv":0,
 	"hp":10,
 	"speed":1,

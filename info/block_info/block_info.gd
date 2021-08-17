@@ -12,13 +12,16 @@ var data_be := {
 	"info":"",
 	"intensity":1.0,
 	"intensity_dig":1.0,
+	"lock_intensity_dig":true,
 	"mass":1.0,
 	"max":16,
+	"lock_max":true,
 	"smash":0,
 	"transparent":false,
 	"entity":true,
 	"model":"",
 	"material":0,
+	"lock_material":true,
 	"audio":"",
 	"dire":0,
 	"fuel":[],
@@ -55,6 +58,8 @@ func _update(data) -> void:
 		data["aabb"] = [0,0,0,0,0,0]
 	if data.tex:
 		$VBoxContainer/head/texture.texture = data.tex
+	else:
+		$VBoxContainer/head/texture.texture = null
 	$VBoxContainer/HBoxContainer/vbox2._update(data)
 	show()
 func set_data(data:Dictionary) -> void:
@@ -76,6 +81,7 @@ func set_data(data:Dictionary) -> void:
 				data[key] = [0,0,0,0,0,0]
 			else:
 				data[key] = data_be[key]
+
 func update_block_tex() -> void:
 	data.img = data.uv[0]
 	var img = Image.new()

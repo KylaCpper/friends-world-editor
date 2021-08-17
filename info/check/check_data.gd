@@ -1,7 +1,6 @@
 extends Control
 export (String ,"drop","food","composite","branch","fuel","plant","tool","damage")var TYPE = "drop"
 signal _changed(text_)
-
 signal _pressed(be)
 var data
 func _ready() -> void:
@@ -12,6 +11,17 @@ func _ready() -> void:
 	on_checked(true,true)
 func on_pressed() -> void:
 	Overall.textedit_node._show("edit",$text.text,$text)
+func switch(be:bool) -> void:
+	be = !be
+	$check.pressed = be
+	if be:
+		$text.readonly = false
+		$button.disabled = false
+		$button2.disabled = false
+	else:
+		$text.readonly = true
+		$button.disabled = true
+		$button2.disabled = true
 func on_checked(pressed:bool,s:=false) -> void:
 	$check.pressed = pressed
 	if !s:

@@ -11,6 +11,7 @@ var data_be := {
 	"img":"",
 	"mass":1.0,
 	"max":16,
+	"lock_max":true,
 	"fuel":false,
 	"food":[],
 	"plant":[],

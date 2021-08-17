@@ -26,19 +26,20 @@ func on_pressed(press:bool) -> void:
 	else:
 		$ui5.disabled = false
 		$ui6.editable = true
+#	data.lock_tool = press
 	
 func on_changed(d,i) -> void:
 	if i == 0:
 		if d in Overall.key_list:
-			$ui0.text = data.key
+#			$ui0.text = data.key
 			return
 		else:
 			Overall.data["tool"][d] = data
 			Overall.data["tool"].erase(data.key)
-			Overall.update_order(data.key,d)
+			Overall.update_order(data.key,d,data.name)
 			data.key = d
 	if i==17:
-		return
+#		if typeof(d) == TYPE_ARRAY:
 		var data_be = str2var(d)
 		data["tool"] = data_be 
 	else:
@@ -94,6 +95,7 @@ func _update(data) -> void:
 	$ui11.data = data.composite
 	$ui13.data = data.fuel
 	$ui14.data = data.food
+#	$ui17.switch(!data.lock_tool)
 #	$ui17.data = data.food
 	
 func on_focus_exited(node) -> void:

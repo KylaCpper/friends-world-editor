@@ -94,7 +94,7 @@ func _show(title:String,data:String,obj) -> void:
 	if Overall.item_c:
 		_update()
 		Overall.item_c = false
-	get_node(key+"/select_item")._update(data)
+	get_node(key+"/select_item")._update("")
 	popup()
 func on_hide() -> void:
 	grab_focus()
