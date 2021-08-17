@@ -15,17 +15,20 @@ func _ready() -> void:
 		i = i+1
 	for ii in range(13):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
+	$ui5.connect("_switch",self,"on_switch",[5])
 func on_changed(d,i) -> void:
 	if i==6 || i==7 || i==8 || i==9:return
 	if i == 0:
 		if d in Overall.key_list:
-			$ui0.text = data.key
+#			$ui0.text = data.key
 			return
 		else:
 			Overall.data.item[d] = data
 			Overall.data.item.erase(data.key)
-			Overall.update_order(data.key,d)
+			Overall.update_order(data.key,d,data.name)
 			data.key = d
+	if i == 5 && !$ui5.get_node("check").pressed:
+		return
 	data[key_list[i]] = d
 	if i==3:
 		var img = Image.new()
@@ -38,15 +41,20 @@ func on_changed(d,i) -> void:
 		if !$ui5.get_node("check").pressed:
 			data["max"] = Overall.get_max(d)
 			$ui5.value = data["max"]
-	
+func on_switch(be:bool,i:int) -> void:
+	if i == 5:
+		data.lock_max = !be
 func _update(data) -> void:
 	self.data = data
+	$ui5.switch(true)
+	$ui5.value = data["max"]
+	$ui5.switch(!data.lock_max)
+	
 	$ui0.text = data.key
 	$ui1.text = data.name
 	$ui2.get_node("TextEdit").text = data.info
 	$ui3.get_node("LineEdit").text = data.img
 	$ui4.value = data.mass
-	$ui5.value = data["max"]
 	$ui6.get_node("text").text = var2str(data.fuel)
 	$ui7.get_node("text").text = var2str(data.food)
 	$ui8.get_node("text").text = var2str(data.plant)

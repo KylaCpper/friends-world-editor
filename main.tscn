@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -63,6 +63,7 @@
 [ext_resource path="res://windows/window_child_script/buff.gd" type="Script" id=61]
 [ext_resource path="res://windows/aabb.gd" type="Script" id=62]
 [ext_resource path="res://windows/window_child_script/aabb.gd" type="Script" id=63]
+[ext_resource path="res://info.gd" type="Script" id=64]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -302,7 +303,7 @@ __meta__ = {
 [node name="left" type="Tree" parent="."]
 margin_top = 102.0
 margin_right = 166.0
-margin_bottom = 640.0
+margin_bottom = 599.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/bg = SubResource( 4 )
@@ -318,6 +319,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
+script = ExtResource( 64 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -325,31 +327,31 @@ __meta__ = {
 [node name="block_info" parent="info" instance=ExtResource( 3 )]
 visible = false
 margin_top = 102.0
-margin_bottom = 636.0
+margin_bottom = 598.0
 
 [node name="liquid_block_info" parent="info" instance=ExtResource( 21 )]
 visible = false
 margin_top = 103.0
-margin_bottom = 637.0
+margin_bottom = 598.0
 
 [node name="plant_block_info" parent="info" instance=ExtResource( 24 )]
 margin_top = 103.0
-margin_bottom = 637.0
+margin_bottom = 599.0
 
 [node name="item_info" parent="info" instance=ExtResource( 32 )]
 visible = false
 margin_top = 103.0
-margin_bottom = 637.0
+margin_bottom = 600.0
 
 [node name="tool_info" parent="info" instance=ExtResource( 38 )]
 visible = false
 margin_top = 103.0
-margin_bottom = 637.0
+margin_bottom = 600.0
 
 [node name="armor_info" parent="info" instance=ExtResource( 43 )]
 visible = false
 margin_top = 103.0
-margin_bottom = 637.0
+margin_bottom = 598.0
 
 [node name="textedit" type="WindowDialog" parent="."]
 margin_left = 266.0
@@ -2190,7 +2192,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 265.0
+margin_bottom = 285.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2199,11 +2201,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button0" type="Button" parent="msg"]
+[node name="button2" type="Button" parent="msg"]
 margin_left = 4.95786
 margin_top = 5.0
 margin_right = 95.9579
 margin_bottom = 25.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加当前副本"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button0" type="Button" parent="msg"]
+margin_left = 4.95786
+margin_top = 25.0
+margin_right = 95.9579
+margin_bottom = 45.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2217,9 +2235,9 @@ __meta__ = {
 
 [node name="button1" type="Button" parent="msg"]
 margin_left = 4.95786
-margin_top = 25.0
+margin_top = 45.0
 margin_right = 95.9579
-margin_bottom = 45.0
+margin_bottom = 65.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2233,9 +2251,9 @@ __meta__ = {
 
 [node name="button3" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 45.0
+margin_top = 65.0
 margin_right = 96.0
-margin_bottom = 65.0
+margin_bottom = 85.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2249,9 +2267,9 @@ __meta__ = {
 
 [node name="button4" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 65.0
+margin_top = 85.0
 margin_right = 96.0
-margin_bottom = 85.0
+margin_bottom = 105.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2265,9 +2283,9 @@ __meta__ = {
 
 [node name="button5" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 85.0
+margin_top = 105.0
 margin_right = 96.0
-margin_bottom = 105.0
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2281,9 +2299,9 @@ __meta__ = {
 
 [node name="button6" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 125.0
+margin_top = 145.0
 margin_right = 96.0
-margin_bottom = 145.0
+margin_bottom = 165.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2314,9 +2332,9 @@ __meta__ = {
 
 [node name="button8" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 105.0
+margin_top = 125.0
 margin_right = 96.0
-margin_bottom = 125.0
+margin_bottom = 145.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )

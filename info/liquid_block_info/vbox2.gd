@@ -14,31 +14,36 @@ func _ready() -> void:
 		i = i+1
 	for ii in range(13):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
+	$ui6.connect("_switch",self,"on_switch",[6])
 func on_changed(d,i) -> void:
 	if i == 0:
 		if d in Overall.key_list:
-			$ui0.text = data.key
+#			$ui0.text = data.key
 			return
 		else:
 			Overall.data.liquid_block[d] = data
 			Overall.data.liquid_block.erase(data.key)
-			Overall.update_order(data.key,d)
+			Overall.update_order(data.key,d,data.name)
 			data.key = d
 	if i==9:return
 	data[key_list[i]] = d
 	if !$ui6.get_node("check").pressed:
 		data.material = 6
 		$ui6.selected = data.material
-	
+func on_switch(be:bool,i:int) -> void:
+	if i == 6:
+		data.lock_material = !be
 func _update(data) -> void:
 	self.data = data
+	$ui6.switch(true)
+	$ui6.selected = data.material
+	$ui6.switch(!data.lock_material)
 	$ui0.text = data.key
 	$ui1.text = data.name
 	$ui2.get_node("TextEdit").text = data.info
 	$ui3.value = data.mass
 	$ui4.pressed = data.transparent
 	$ui5.get_node("LineEdit").text = data.model
-	$ui6.selected = data.material
 	$ui7.pressed = data.tick
 	$ui8.get_node("LineEdit").text = data.script
 	$ui9.get_node("text").text = var2str(data.branch)

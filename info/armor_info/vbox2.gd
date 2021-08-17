@@ -18,12 +18,12 @@ func _ready() -> void:
 func on_changed(d,i) -> void:
 	if i == 0:
 		if d in Overall.key_list:
-			$ui0.text = data.key
+#			$ui0.text = data.key
 			return
 		else:
 			Overall.data.armor[d] = data
 			Overall.data.armor.erase(data.key)
-			Overall.update_order(data.key,d)
+			Overall.update_order(data.key,d,data.name)
 			data.key = d
 	if i==7 || i==8 || i ==9 || i==10:
 		pass
