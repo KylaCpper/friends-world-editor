@@ -13,6 +13,7 @@ var buff := []
 var order_c := false
 var item_c := false
 var age := ""
+var model_img := preload("res://assets/img/block.png")
 var g_data = {
 
 }

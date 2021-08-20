@@ -7,6 +7,7 @@ var data := {
 }
 var index := 0
 var data_be := {
+	"class":"tool",
 	"key":"",
 	"name":"new_tool",
 	"info":"",

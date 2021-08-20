@@ -6,7 +6,6 @@ func _input(event) -> void:
 func on_sure() -> void:
 	if key:
 		Overall.key_list.erase(key)
-		
 		if Overall.block_node.visible:
 			Overall.data.block.erase(key)
 		if Overall.liquid_block_node.visible:

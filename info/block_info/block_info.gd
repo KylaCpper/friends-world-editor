@@ -7,6 +7,7 @@ var data := {
 }
 var index := 0
 var data_be := {
+	"class":"block",
 	"key":"",
 	"name":"new_block",
 	"info":"",
@@ -83,9 +84,17 @@ func set_data(data:Dictionary) -> void:
 				data[key] = data_be[key]
 func update_block_tex() -> void:
 	data.img = data.uv[0]
-	var img = Image.new()
-	img.load(Overall.path+data.img)
-	img.resize(16,16)
-	var tex = ImageTexture.new()
-	tex.create_from_image(img,0)
-	data["tex"] = tex
+	if data.model:
+		data.tex = Overall.model_img
+		Overall.left_node._update()
+		return
+	if data.img:
+		var img = Image.new()
+		img.load(Overall.path+data.img)
+		img.resize(16,16)
+		var tex = ImageTexture.new()
+		tex.create_from_image(img,0)
+		data.tex = tex
+	else:
+		data.tex = null
+	Overall.left_node._update()

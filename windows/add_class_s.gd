@@ -21,11 +21,12 @@ func on_hide() -> void:
 	var type = $ScrollContainer/add_class/ui1.selected
 	var img_path = $ScrollContainer/add_class/ui2/LineEdit.text
 	if name_:
-		var tex = ImageTexture.new()
+		var tex = null
 		if img_path:
 			var img = Image.new()
 			img.load(img_path)
 			img.resize(16,16)
+			tex = ImageTexture.new()
 			tex.create_from_image(img,0)
 #						Overall.head_node.add_age(tex,name_,age)
 		Overall.data.age["group"].append([name_,type,img_path,tex])

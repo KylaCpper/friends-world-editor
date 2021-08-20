@@ -5,6 +5,7 @@ var data := {
 }
 var index := 0
 var data_be := {
+	"class":"item",
 	"key":"",
 	"name":"new_item",
 	"info":"",
