@@ -57,7 +57,7 @@ func on_hide(path:String) -> void:
 			class_[age].img = gdata[age].age.img
 			
 			for type in gdata[age]:
-				if type != "age":
+				if type=="block" ||type=="liquid_block" ||type=="item" ||type=="tool" ||type=="armor":
 					for key in gdata[age][type]:
 						if type == "block":
 							#uv

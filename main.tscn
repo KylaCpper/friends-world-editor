@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -64,6 +64,9 @@
 [ext_resource path="res://windows/aabb.gd" type="Script" id=62]
 [ext_resource path="res://windows/window_child_script/aabb.gd" type="Script" id=63]
 [ext_resource path="res://info.gd" type="Script" id=64]
+[ext_resource path="res://windows/set_class_s.gd" type="Script" id=65]
+[ext_resource path="res://windows/add_class_s.gd" type="Script" id=66]
+[ext_resource path="res://info/ui/option_button.tscn" type="PackedScene" id=67]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -310,6 +313,7 @@ custom_styles/bg = SubResource( 4 )
 allow_reselect = true
 allow_rmb_select = true
 hide_root = true
+drop_mode_flags = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1554,7 +1558,7 @@ script = ExtResource( 61 )
 [node name="select_item" type="WindowDialog" parent="."]
 margin_left = 266.0
 margin_top = 166.0
-margin_right = 812.0
+margin_right = 826.0
 margin_bottom = 467.0
 focus_mode = 2
 theme = ExtResource( 10 )
@@ -1667,6 +1671,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="liquid_btn" type="Button" parent="select_item"]
+margin_left = 513.319
+margin_top = 2.0
+margin_right = 551.319
+margin_bottom = 22.0
+theme = ExtResource( 10 )
+text = "液体"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="update" type="Button" parent="select_item"]
 margin_left = 275.0
 margin_top = 2.0
@@ -1741,6 +1756,23 @@ __meta__ = {
 }
 
 [node name="select_item" type="GridContainer" parent="select_item/armor"]
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 7
+script = ExtResource( 27 )
+
+[node name="liquid_block" type="ScrollContainer" parent="select_item"]
+visible = false
+margin_left = 10.0
+margin_top = 26.0
+margin_right = 538.0
+margin_bottom = 296.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_item" type="GridContainer" parent="select_item/liquid_block"]
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 7
@@ -1901,7 +1933,7 @@ __meta__ = {
 
 [node name="ui0" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
-margin_right = 173.0
+margin_right = 213.0
 
 [node name="Label2" type="Label" parent="add_class/ScrollContainer/add_class"]
 margin_left = 34.0
@@ -1919,7 +1951,7 @@ __meta__ = {
 [node name="ui1" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 28.0
-margin_right = 173.0
+margin_right = 211.0
 margin_bottom = 48.0
 
 [node name="Label4" type="Label" parent="add_class/ScrollContainer/add_class"]
@@ -1976,7 +2008,7 @@ __meta__ = {
 [node name="ui4" parent="add_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 114.0
-margin_right = 173.0
+margin_right = 213.0
 margin_bottom = 134.0
 
 [node name="Label6" type="Label" parent="add_class/ScrollContainer/add_class"]
@@ -2010,6 +2042,105 @@ margin_left = 99.0
 margin_top = 202.0
 margin_right = 137.0
 margin_bottom = 222.0
+theme = ExtResource( 10 )
+text = "添加"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add_class_s" type="WindowDialog" parent="."]
+margin_left = 400.0
+margin_top = 247.0
+margin_right = 658.0
+margin_bottom = 375.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "添加新组"
+resizable = true
+script = ExtResource( 66 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="add_class_s"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 250.0
+margin_bottom = 128.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add_class" type="Control" parent="add_class_s/ScrollContainer"]
+margin_right = 180.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 180, 80 )
+
+[node name="Label2" type="Label" parent="add_class_s/ScrollContainer/add_class"]
+margin_left = 36.0
+margin_top = 7.0
+margin_right = 90.0
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="add_class_s/ScrollContainer/add_class"]
+margin_left = 36.0
+margin_top = 34.0
+margin_right = 90.0
+margin_bottom = 56.0
+theme = ExtResource( 10 )
+text = "类别:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="add_class_s/ScrollContainer/add_class"]
+margin_left = 36.0
+margin_top = 62.5
+margin_right = 90.0
+margin_bottom = 84.5
+theme = ExtResource( 10 )
+text = "图片:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="add_class_s/ScrollContainer/add_class" instance=ExtResource( 51 )]
+margin_left = 91.0
+margin_top = 7.0
+margin_right = 199.0
+margin_bottom = 27.0
+
+[node name="ui1" parent="add_class_s/ScrollContainer/add_class" instance=ExtResource( 67 )]
+margin_left = 91.0
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 22 )
+TYPE = "type_class"
+
+[node name="ui2" parent="add_class_s/ScrollContainer/add_class" instance=ExtResource( 53 )]
+margin_left = 91.0
+margin_top = 62.5
+margin_right = 347.0
+margin_bottom = 94.5
+
+[node name="add" type="Button" parent="add_class_s/ScrollContainer/add_class"]
+margin_left = 94.0
+margin_top = 96.0
+margin_right = 132.0
+margin_bottom = 116.0
 theme = ExtResource( 10 )
 text = "添加"
 __meta__ = {
@@ -2072,7 +2203,7 @@ __meta__ = {
 
 [node name="ui0" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
-margin_right = 173.0
+margin_right = 210.0
 
 [node name="Label2" type="Label" parent="set_class/ScrollContainer/add_class"]
 margin_left = 34.0
@@ -2115,7 +2246,7 @@ margin_bottom = 83.0
 [node name="ui1" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 28.0
-margin_right = 173.0
+margin_right = 210.0
 margin_bottom = 48.0
 
 [node name="Label4" type="Label" parent="set_class/ScrollContainer/add_class"]
@@ -2147,7 +2278,7 @@ __meta__ = {
 [node name="ui4" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 51 )]
 margin_left = 89.0
 margin_top = 115.0
-margin_right = 173.0
+margin_right = 210.0
 margin_bottom = 135.0
 
 [node name="ui5" parent="set_class/ScrollContainer/add_class" instance=ExtResource( 59 )]
@@ -2187,12 +2318,87 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="set_class_s" type="WindowDialog" parent="."]
+margin_left = 394.0
+margin_top = 244.0
+margin_right = 652.0
+margin_bottom = 352.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "修改组"
+resizable = true
+script = ExtResource( 65 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="set_class_s"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 250.0
+margin_bottom = 103.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="set_class" type="Control" parent="set_class_s/ScrollContainer"]
+margin_right = 180.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 90 )
+
+[node name="Label" type="Label" parent="set_class_s/ScrollContainer/set_class"]
+margin_left = 34.0
+margin_right = 88.0
+margin_bottom = 20.0
+theme = ExtResource( 10 )
+text = "名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="set_class_s/ScrollContainer/set_class"]
+margin_left = 34.0
+margin_top = 37.0
+margin_right = 88.0
+margin_bottom = 57.0
+theme = ExtResource( 10 )
+text = "图片:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="set_class_s/ScrollContainer/set_class" instance=ExtResource( 51 )]
+margin_left = 89.0
+margin_right = 210.0
+
+[node name="ui2" parent="set_class_s/ScrollContainer/set_class" instance=ExtResource( 53 )]
+margin_left = 89.0
+margin_top = 36.0
+margin_right = 345.0
+margin_bottom = 68.0
+
+[node name="add" type="Button" parent="set_class_s/ScrollContainer/set_class"]
+margin_left = 92.0
+margin_top = 71.0
+margin_right = 130.0
+margin_bottom = 91.0
+theme = ExtResource( 10 )
+text = "修改"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="msg" type="Panel" parent="."]
 visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 285.0
+margin_bottom = 244.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2227,7 +2433,7 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加方块"
+text = "添加至当前组"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2243,13 +2449,14 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加液体方块"
+text = "修改组"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button3" type="Button" parent="msg"]
+visible = false
 margin_left = 5.0
 margin_top = 65.0
 margin_right = 96.0
@@ -2266,6 +2473,7 @@ __meta__ = {
 }
 
 [node name="button4" type="Button" parent="msg"]
+visible = false
 margin_left = 5.0
 margin_top = 85.0
 margin_right = 96.0
@@ -2282,6 +2490,7 @@ __meta__ = {
 }
 
 [node name="button5" type="Button" parent="msg"]
+visible = false
 margin_left = 5.0
 margin_top = 105.0
 margin_right = 96.0
@@ -2299,9 +2508,9 @@ __meta__ = {
 
 [node name="button6" type="Button" parent="msg"]
 margin_left = 5.0
-margin_top = 145.0
+margin_top = 105.0
 margin_right = 96.0
-margin_bottom = 165.0
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2314,27 +2523,26 @@ __meta__ = {
 }
 
 [node name="button7" type="Button" parent="msg"]
-visible = false
-margin_left = 5.0
-margin_top = 105.0
-margin_right = 96.0
-margin_bottom = 125.0
+margin_left = 5.04214
+margin_top = 65.0
+margin_right = 96.0421
+margin_bottom = 85.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加大分类"
+text = "添加新组"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button8" type="Button" parent="msg"]
-margin_left = 5.0
-margin_top = 125.0
-margin_right = 96.0
-margin_bottom = 145.0
+margin_left = 5.04214
+margin_top = 85.0
+margin_right = 96.0421
+margin_bottom = 105.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )

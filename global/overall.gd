@@ -16,7 +16,11 @@ var age := ""
 var g_data = {
 
 }
+var type_list = ["block","liquid_block","item","tool","armor"]
 var data = {
+	"age":{
+		"group":[]
+	},
 	"block":{
 	},
 	"liquid_block":{
@@ -55,7 +59,8 @@ var tool_node:tool_node_type
 const armor_node_type := preload("res://info/armor_info/armor_info.gd")
 var armor_node:armor_node_type
 
-
+var add_class_s_node
+var set_class_s_node
 #const tool_node_type := preload("res://info/tool_info/tool_info.gd")
 #var tool_node:tool_node_type
 #const armor_node_type := preload("res://info/armor_info/armor_info.gd")
@@ -110,13 +115,13 @@ func _ready() -> void:
 	pass
 
 func _hide() -> void:
-	
 	block_node.hide()
 	liquid_block_node.hide()
-	plant_block_node.hide()
 	item_node.hide()
 	tool_node.hide()
 	armor_node.hide()
+
+	
 
 func get_max(mass:float) -> int:
 	var max_ := 1
@@ -151,14 +156,25 @@ func update_order(okey,nkey,name_) -> void:
 	item_c = true
 	Overall.left_node._change(nkey,name_)
 #		update_list()
-func next_key_list(name_:String,i:int) -> String:
+func next_key_list(name_:String) -> String:
 	item_c = true
 #	update_list()
-	if !(name_+str(i) in key_list):
-		return name_+str(i)
+	var num_t = get_str_num(name_,0)
+	if num_t:
+		var num = name_.right(name_.length()-num_t)
+		name_ = name_.left(name_.length()-num_t) + str(int(num)+1)
 	else:
-		return next_key_list(name_,i+1)
-
+		name_ = name_ + "0"
+	if !(name_ in key_list):
+		return name_
+	else:
+		return next_key_list(name_)
+func get_str_num(name_:String,i:int) -> int:
+	var num = name_[name_.length()-1]
+	name_ = name_.left(name_.length()-1)
+	if num=="0" ||num=="1" ||num=="2" ||num=="3" ||num=="4" ||num=="5" ||num=="6" ||num=="7" || num=="8" || num =="9":
+		return get_str_num(name_,i+1)
+	return i
 func clear_order(key:String) -> void:
 	if key in Overall.order_key:
 		var i = Overall.order_key[key]

@@ -20,25 +20,69 @@ func on_resized() -> void:
 	$scroll.rect_size = rect_size - Vector2(22,32)
 	Overall.windows["order_node"]=[rect_size,rect_position]
 func _update() -> void:
-	for age in Overall.g_data:
-		var datas = Overall.g_data[age]
-		var node = $scroll/order
-		for c in node.get_children():
-			c.free()
-
-		for i in Overall.order:
+	var node = $scroll/order
+	var delete_arr := []
+	for i in Overall.order:
+		var be := true
+		for age in Overall.g_data:
+			var datas = Overall.g_data[age]
 			var key = Overall.order[i]
-			
-			var tscn = grid_tscn.instance()
-			tscn.name = key
-			tscn.name_ = key
-			tscn.get_node("Label").text = key
-			tscn.get_node("TextureRect").show()
-			tscn.get_node("Sprite").hide()
 			if key in datas.block:
+				be = false
+				break
+			else:
+				if key in datas.liquid_block:
+					be = false
+					break
+		if be:
+			delete_arr.append(i)
+	for key in delete_arr:
+		Overall.order_key.erase(Overall.order[key])
+		Overall.order.erase(key)
+#		print(key)
+	for c in node.get_children():
+		c.free()
+#	for age in Overall.g_data:
+#		var datas = Overall.g_data[age]
+#		print(age)
+	var index := 0
+	for i in Overall.order:
+		for age in Overall.g_data:
+			var key = Overall.order[i]
+			var datas = Overall.g_data[age]
+			if key in datas.block:
+				var tscn = grid_tscn.instance()
+				tscn.name = key
+				tscn.name_ = key
+				tscn.get_node("Label").text = key
+				var texture = tscn.get_node("TextureRect")
+				texture.show()
+				tscn.get_node("Sprite").hide()
+				
 				if "img" in datas.block[key]:
 					if datas.block[key].img:
-						tscn.get_node("TextureRect").texture = datas.block[key].tex
+						texture.texture = datas.block[key].tex
+				tscn.index = i
+				tscn.hint_tooltip = key
+				node.add_child(tscn)
+				index = i+1
+				break
+			else:
+				if key in datas.liquid_block:
+					var tscn = grid_tscn.instance()
+					tscn.name = key
+					tscn.name_ = key
+					tscn.get_node("Label").text = key
+					var texture = tscn.get_node("TextureRect")
+					texture.hide()
+					tscn.get_node("Sprite").hide()
+					tscn.index = i
+					tscn.hint_tooltip = key
+					node.add_child(tscn)
+					index = i+1
+					break
+
+		
 #			var n = tscn.get_node("Sprite")
 #			if datas.block[key].material<=2:
 #				n.texture = Overall.block_img
@@ -57,49 +101,51 @@ func _update() -> void:
 #			n.region_rect = Rect2(vec2,Vector2(16,16))
 #			n.scale = Vector2(2,2)
 	#				tscn.get_node("TextureRect").texture = Overall.block_img
-			tscn.index = i
-			tscn.hint_tooltip = key
-			node.add_child(tscn)
-		var i = Overall.order.size()
+
+#	var i = Overall.order.size()
+	for age in Overall.g_data:
+		var datas = Overall.g_data[age]
+		
 		for key in datas.block:
 			if key in Overall.order_key:
 				continue
 			else:
-				Overall.order[i] = key
-				Overall.order_key[key] = i
+				Overall.order[index] = key
+				Overall.order_key[key] = index
 				
 			var tscn = grid_tscn.instance()
 			tscn.name = key
 			tscn.name_ = key
 			tscn.get_node("Label").text = key
-			tscn.get_node("TextureRect").show()
+			var texture = tscn.get_node("TextureRect")
+			texture.show()
 			tscn.get_node("Sprite").hide()
 			if datas.block[key].img:
-				tscn.get_node("TextureRect").texture = datas.block[key].tex
-#			var n = tscn.get_node("Sprite")
-#			n.show()
-#			if datas.block[key].material<=2:
-#				n.texture = Overall.block_img
-#			else:
-#				n.texture = Overall.block_img_model
-#			var vec2 = Vector2()
-#			if datas.block[key].uv.size() > 0:
-#				var be = datas.block[key].uv[0]
-#				if !be.empty():
-#					vec2 = Vector2(be.x,be.y)*16
-#			n.region_rect = Rect2(vec2,Vector2(16,16))
-#			n.scale = Vector2(2,2)
-#	#				tscn.get_node("TextureRect").texture = Overall.block_img
+				texture.texture = datas.block[key].tex
+	#			var n = tscn.get_node("Sprite")
+	#			n.show()
+	#			if datas.block[key].material<=2:
+	#				n.texture = Overall.block_img
+	#			else:
+	#				n.texture = Overall.block_img_model
+	#			var vec2 = Vector2()
+	#			if datas.block[key].uv.size() > 0:
+	#				var be = datas.block[key].uv[0]
+	#				if !be.empty():
+	#					vec2 = Vector2(be.x,be.y)*16
+	#			n.region_rect = Rect2(vec2,Vector2(16,16))
+	#			n.scale = Vector2(2,2)
+	#	#				tscn.get_node("TextureRect").texture = Overall.block_img
 			tscn.hint_tooltip = key
-			tscn.index = i
+			tscn.index = index
 			node.add_child(tscn)
-			i =i+1
+			index =index+1
 		for key in datas.liquid_block:
 			if key in Overall.order_key:
 				continue
 			else:
-				Overall.order[i] = key
-				Overall.order_key[key] = i
+				Overall.order[index] = key
+				Overall.order_key[key] = index
 				
 			var tscn = grid_tscn.instance()
 			tscn.name = key
@@ -108,9 +154,9 @@ func _update() -> void:
 			tscn.get_node("TextureRect").hide()
 			tscn.get_node("Sprite").hide()
 			tscn.hint_tooltip = key
-			tscn.index = i
+			tscn.index = index
 			node.add_child(tscn)
-			i =i+1
+			index =index+1
 func _show() -> void:
 #	self.window_title = title
 #	$scroll/order._update(data)

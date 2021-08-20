@@ -1,25 +1,41 @@
 extends Panel
+
 var key = ""
+var class_key = -1
+var type := "item"#class
 func _ready() -> void:
 	Overall.msg_node = self
 	$button0.connect("pressed",self,"on_pressed0")
 	$button1.connect("pressed",self,"on_pressed1")
 	$button2.connect("pressed",self,"on_pressed2")
-	$button3.connect("pressed",self,"on_pressed3")
-	$button4.connect("pressed",self,"on_pressed4")
-	$button5.connect("pressed",self,"on_pressed5")
+#	$button3.connect("pressed",self,"on_pressed3")
+#	$button4.connect("pressed",self,"on_pressed4")
+#	$button5.connect("pressed",self,"on_pressed5")
 	$button6.connect("pressed",self,"on_pressed6")
-
+	$button7.connect("pressed",self,"on_pressed7")
 	$button8.connect("pressed",self,"on_pressed8")
 	
 func _show(key:String) -> void:
 	self.key = key
 	if key:
 		$button6.show()
-		rect_size.y = 170
+		if rect_position.y > 470:
+			rect_position.y = 470
+		rect_size.y = 130
 	else:
 		$button6.hide()
-		rect_size.y = 150
+		if rect_position.y > 490:
+			rect_position.y = 490
+		rect_size.y = 110
+	type = "item"
+	show()
+func _show_int(key:int) -> void:
+	if rect_position.y > 470:
+		rect_position.y = 470
+	self.class_key = key
+	$button6.show()
+	rect_size.y = 130
+	type = "class"
 	show()
 func new_data(type:String,name_:String,node,copy_data=null) -> void:
 	if !Overall.head_node.open_project:
@@ -28,11 +44,12 @@ func new_data(type:String,name_:String,node,copy_data=null) -> void:
 	if !"age" in Overall.data:
 		Overall.msg_warn_node._show("错误","无选择分类")
 		return
-	var key = Overall.next_key_list(name_,0)
+	var key = Overall.next_key_list(name_)
 	Overall.key_list[key]=1
 	Overall.data[type][key]={"key":key}
 	if !copy_data:
 		node.set_data(Overall.data[type][key])
+		Overall.data[type][key]["g"] = class_key
 	else:
 		Overall.data[type][key] = copy_data.duplicate(true)
 		Overall.data[type][key].key = key
@@ -42,11 +59,18 @@ func new_data(type:String,name_:String,node,copy_data=null) -> void:
 	Overall.order_node._update()
 #	Overall.select_item_node._update()
 	hide()
+#添加当前组
 func on_pressed0() -> void:
-	new_data("block","new_block",Overall.block_node)
-	
+	if class_key > -1:
+		var g = Overall.data.age.group[class_key]
+		var type = Overall.type_list[g[1]]
+		var O = Overall
+		new_data(type,"new_"+type,O[type+"_node"])
+#修改
 func on_pressed1() -> void:
-	new_data("liquid_block","new_liquid_block",Overall.liquid_block_node)
+	if class_key > -1:
+		Overall.set_class_s_node._show(class_key)
+#	new_data("liquid_block","new_liquid_block",Overall.liquid_block_node)
 func  on_pressed2() -> void:
 	if key:
 		if Overall.block_node.visible:
@@ -69,25 +93,52 @@ func on_pressed5() -> void:
 	new_data("armor","new_armor",Overall.armor_node)
 func on_pressed6() -> void:
 	Overall.sure_window_node._show("",self)
+
+var block_info_tscn := preload("res://info/block_info/block_info.tscn")
+func on_pressed7() -> void:
+	Overall.add_class_s_node._show()
+
 func on_sure() -> void:
-	if key:
-		Overall.key_list.erase(key)
-		Overall.clear_order(key)
-		if Overall.block_node.visible:
-			Overall.data.block.erase(key)
-		if Overall.liquid_block_node.visible:
-			Overall.data.liquid_block.erase(key)
-		if Overall.item_node.visible:
-			Overall.data.item.erase(key)
-		if Overall.tool_node.visible:
-			Overall.data["tool"].erase(key)
-		if Overall.armor_node.visible:
-			Overall.data.armor.erase(key)
-		Overall.left_node._update()
-		Overall._hide()
+	if type == "item":
+		if key:
+			if Overall.block_node.visible:
+				Overall.data.block.erase(key)
+			if Overall.liquid_block_node.visible:
+				Overall.data.liquid_block.erase(key)
+			if Overall.item_node.visible:
+				Overall.data.item.erase(key)
+			if Overall.tool_node.visible:
+				Overall.data["tool"].erase(key)
+			if Overall.armor_node.visible:
+				Overall.data.armor.erase(key)
+			Overall.key_list.erase(key)
+			Overall.clear_order(key)
+			Overall.left_node._update()
+			Overall._hide()
+	if type == "class":
+		if class_key > -1:
+			var type = Overall.type_list[Overall.data.age.group[class_key][1]]
+			Overall.data.age.group.remove(class_key)
+			var d = Overall.data[type]
+			var deletes := []
+			for k in d:
+				if d[k].g > class_key:
+					d[k].g = d[k].g -1
+				else:
+					if d[k].g == class_key:
+						deletes.append(k)
+			for k in deletes:
+				d.erase(k)
+				Overall.key_list.erase(k)
+			Overall.order_node._update()
+			Overall.left_node._update()
 func on_pressed8() -> void:
 	Overall.left_node._update()
 func _input(event) ->void:
 	if event.is_action_pressed("mouse_left"):
 		yield(get_tree(),"idle_frame")
 		hide()
+	if event.is_action_pressed("ctrl+d"):
+		yield(get_tree(),"idle_frame")
+		hide()
+		on_pressed2()
