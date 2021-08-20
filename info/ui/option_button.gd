@@ -1,12 +1,13 @@
 extends OptionButton
 signal _changed(num)
-export (String ,"smash","dire","tool","armor","craft") var TYPE = "smash"
+export (String ,"smash","dire","tool","armor","craft","type_class") var TYPE = "smash"
 var list := {
 	"smash":["默认","硬型","脆型"],
 	"dire":["无方向","4方向","6方向"],
 	"tool":["稿","斧","锄","锤","剑","铲"],
 	"armor":["帽","衣","裤","鞋"],
 	"craft":["默认","工作台"],
+	"type_class":["block","liquid_block","item","tool","armor"],
 	
 }
 var tool_ :=["pickaxe","axe","hoe","hammer","sword","shovel"]

@@ -19,6 +19,8 @@ func on_resized() -> void:
 func _show(title:String,obj) -> void:
 #	self.filters = arr
 	self.obj = obj
+	if obj.text:
+		current_path = Overall.path+obj.text
 #	self.window_title = title
 	popup()
 

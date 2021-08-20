@@ -94,6 +94,16 @@ func _changed_dir(path:String) -> void:
 			tex1.create_from_image(img1,0)
 			d.tex = tex1
 		for age in data.g_data:
+			for g in data.g_data[age].age.group:
+				if g[2]:
+					var img = Image.new()
+					img.load(Overall.path+g[2])
+					img.resize(16,16)
+					var tex = ImageTexture.new()
+					tex.create_from_image(img,0)
+					g[3] = tex
+#			data.g_data[age].age["group"]=[["block",0,"",null],["liquid_block",1,"",null],["item",2,"",null],["tool",3,"",null],["armor",4,"",null]]
+			
 			var img1 = Image.new()
 			img1.load(Overall.path+data.g_data[age].age.img)
 			img1.resize(16,16)
@@ -104,6 +114,7 @@ func _changed_dir(path:String) -> void:
 			for type in data.g_data[age]:
 				if type == "item" || type == "tool" || type == "armor" || type == "block":
 					for key in data.g_data[age][type]:
+						
 						if !("img" in data.g_data[age][type][key]):data.g_data[age][type][key]["img"]=""
 						data.g_data[age][type][key]["tex"]=null
 						if data.g_data[age][type][key].img:
@@ -113,6 +124,7 @@ func _changed_dir(path:String) -> void:
 							var tex = ImageTexture.new()
 							tex.create_from_image(img,0)
 							data.g_data[age][type][key]["tex"] = tex
+							
 		Overall.order_node._update()
 		Overall.select_item_node._update()
 		_update()
@@ -151,6 +163,8 @@ func _changed_dir(path:String) -> void:
 			d.tex = null
 		var g_data = data.g_data
 		for age in g_data:
+			for g in g_data[age].age.group:
+				g[3] = null
 			g_data[age].age.tex = null
 			var d = g_data[age]
 			for key in d.block:
@@ -220,6 +234,8 @@ func _input(event) -> void:
 				d.tex = null
 			var g_data = data.g_data
 			for age in g_data:
+				for g in g_data[age].age.group:
+					g[3] = null
 				g_data[age].age.tex = null
 				var d = g_data[age]
 				for key in d.block:

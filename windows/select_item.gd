@@ -15,6 +15,7 @@ func _ready() ->void:
 	$item_btn.connect("pressed",self,"on_pressed",["item"])
 	$tool_btn.connect("pressed",self,"on_pressed",["tool"])
 	$armor_btn.connect("pressed",self,"on_pressed",["armor"])
+	$liquid_btn.connect("pressed",self,"on_pressed",["liquid_block"])
 	
 	$update.connect("pressed",self,"on_update")
 	
@@ -22,6 +23,7 @@ func _ready() ->void:
 	$item.hide()
 	$tool.hide()
 	$armor.hide()
+	$liquid_block.hide()
 func on_changed(text_:String) -> void:
 	get_node(key+"/select_item")._update(text_)
 func on_pressed(key:String) -> void:
@@ -30,6 +32,7 @@ func on_pressed(key:String) -> void:
 	$item.hide()
 	$tool.hide()
 	$armor.hide()
+	$liquid_block.hide()
 	get_node(key).show()
 func on_numed(num:int) -> void:
 	$block/select_item.columns = num
@@ -43,14 +46,14 @@ func on_resized() -> void:
 	$armor.rect_size = rect_size - Vector2(22,32)
 	Overall.windows["select_item_node"]=[rect_size,rect_position]
 func _update() -> void:
-	for key in ["block","item","tool","armor"]:
+	for key in ["block","item","tool","armor","liquid_block"]:
 		var node = get_node(key+"/select_item")
 		for c in node.get_children():
 			c.free()
 #	var datas = Overall.data
 	for age in Overall.g_data:
 		var datas = Overall.g_data[age]
-		for key in ["block","item","tool","armor"]:
+		for key in ["block","item","tool","armor","liquid_block"]:
 			var node = get_node(key+"/select_item")
 	#		if key == "block":
 	#			for keyy in datas[key]:
@@ -75,6 +78,18 @@ func _update() -> void:
 	##				tscn.get_node("TextureRect").texture = Overall.block_img
 	#				tscn.hint_tooltip = keyy
 	#				node.add_child(tscn)
+			if key == "liquid_block":
+				for keyy in datas[key]:
+					var tscn = grid_tscn.instance()
+					tscn.name = keyy
+					tscn.name_ = keyy
+					tscn.get_node("Label").text = keyy
+					tscn.get_node("Sprite").hide()
+					var n = tscn.get_node("TextureRect")
+					n.hide()
+#					n.texture = datas[key][keyy].tex
+					tscn.hint_tooltip = datas[key][keyy].name
+					node.add_child(tscn)
 			if key == "item" || key == "tool" || key == "armor" || key == "block":
 				for keyy in datas[key]:
 					var tscn = grid_tscn.instance()
@@ -85,8 +100,9 @@ func _update() -> void:
 					var n = tscn.get_node("TextureRect")
 					n.show()
 					n.texture = datas[key][keyy].tex
-					tscn.hint_tooltip = keyy
+					tscn.hint_tooltip = datas[key][keyy].name
 					node.add_child(tscn)
+			
 func _show(title:String,data:String,obj) -> void:
 	self.obj = obj
 #	self.window_title = title

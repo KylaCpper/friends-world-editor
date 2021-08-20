@@ -14,8 +14,7 @@ func _ready() -> void:
 func on_pressed() -> void:
 	var tscn = composite_grid_tscn.instance()
 	if !"table" in data:data["table"]={}
-#	if !"name" in data:data["name"]=Overall.block_node.data.key
-	if !"name" in data:data["name"]=Overall.block_node.data.key
+	if !"name" in data:data["name"]=Overall.data.key
 	if !"num" in data:data["num"]=1
 	if !"time" in data:data["time"]=1
 	if !"craft" in data:data["craft"]="default"

@@ -6,6 +6,8 @@ func _ready() -> void:
 	$button1.connect("pressed",self,"on_pressed1")
 	$button2.connect("pressed",self,"on_pressed2")
 func _show(age:String) -> void:
+	if rect_position.x > 924:
+		rect_position.x = 924
 	self.age = age
 	if !age:
 		$button0.hide()
