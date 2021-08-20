@@ -114,7 +114,7 @@ func _changed_dir(path:String) -> void:
 			for type in data.g_data[age]:
 				if type == "item" || type == "tool" || type == "armor" || type == "block":
 					for key in data.g_data[age][type]:
-						
+#						data.g_data[age][type][key]["class"] = type
 						if !("img" in data.g_data[age][type][key]):data.g_data[age][type][key]["img"]=""
 						data.g_data[age][type][key]["tex"]=null
 						if data.g_data[age][type][key].img:
@@ -124,6 +124,11 @@ func _changed_dir(path:String) -> void:
 							var tex = ImageTexture.new()
 							tex.create_from_image(img,0)
 							data.g_data[age][type][key]["tex"] = tex
+				if type == "block" || type == "liquid_block":
+					for key in data.g_data[age][type]:
+#						data.g_data[age][type][key]["class"] = type
+						if data.g_data[age][type][key].model:
+							data.g_data[age][type][key]["tex"] = Overall.model_img
 							
 		Overall.order_node._update()
 		Overall.select_item_node._update()
@@ -213,6 +218,7 @@ func add_age(tex:Texture,text:String,key:String) -> void:
 	
 func on_grid_press(tex:Texture,text:String,key:String) -> void:
 	$head_grid.on_grid_press(tex,text,key)
+	$"../info".key = ""
 	
 func _input(event) -> void:
 	if event.is_action_pressed("ctrl+s"):

@@ -8,6 +8,7 @@ var data := {
 }
 var index := 0
 var data_be := {
+	"class":"liquid_block",
 	"key":"",
 	"name":"new_liquid_block",
 	"info":"",
@@ -34,6 +35,7 @@ var data_be := {
 	"plant":"",
 	"aabb":[],
 	"uv":[],
+	"tex":Overall.model_img,
 	"name_en":"","info_en":""
 }
 

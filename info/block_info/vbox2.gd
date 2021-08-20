@@ -46,7 +46,7 @@ func on_changed(d,i) -> void:
 	if i == 8 || i == 10:
 		if !$ui11.get_node("check").pressed:
 			if data.model:
-				
+				data.tex = Overall.model_img
 				if data.transparent:
 					data.material = 4
 				else:

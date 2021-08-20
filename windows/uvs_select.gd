@@ -20,8 +20,9 @@ func _show(title:String,data:Array,obj) -> void:
 	$ScrollContainer/uvs_select._update(data)
 	popup()
 func on_changed(path:String) -> void:
-	data[0] = path
-#	Overall.block_node.update_block_tex()
+	if data[0] != path:
+		data[0] = path
+		Overall.block_node.update_block_tex()
 func _show_model(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title

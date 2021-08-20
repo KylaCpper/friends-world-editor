@@ -2398,7 +2398,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 244.0
+margin_bottom = 265.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2417,7 +2417,7 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加当前副本"
+text = "新添当前副本"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2433,17 +2433,17 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加至当前组"
+text = "新添至当前组"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button1" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 45.0
-margin_right = 95.9579
-margin_bottom = 65.0
+margin_left = 5.04215
+margin_top = 65.0
+margin_right = 96.0422
+margin_bottom = 85.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2456,7 +2456,6 @@ __meta__ = {
 }
 
 [node name="button3" type="Button" parent="msg"]
-visible = false
 margin_left = 5.0
 margin_top = 65.0
 margin_right = 96.0
@@ -2466,14 +2465,13 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加物品"
+text = "复制"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button4" type="Button" parent="msg"]
-visible = false
 margin_left = 5.0
 margin_top = 85.0
 margin_right = 96.0
@@ -2483,7 +2481,7 @@ theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-text = "添加工具"
+text = "粘贴"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2507,10 +2505,10 @@ __meta__ = {
 }
 
 [node name="button6" type="Button" parent="msg"]
-margin_left = 5.0
-margin_top = 105.0
-margin_right = 96.0
-margin_bottom = 125.0
+margin_left = 4.95786
+margin_top = 125.0
+margin_right = 95.9579
+margin_bottom = 145.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2524,9 +2522,9 @@ __meta__ = {
 
 [node name="button7" type="Button" parent="msg"]
 margin_left = 5.04214
-margin_top = 65.0
+margin_top = 45.0
 margin_right = 96.0421
-margin_bottom = 85.0
+margin_bottom = 65.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2539,10 +2537,10 @@ __meta__ = {
 }
 
 [node name="button8" type="Button" parent="msg"]
-margin_left = 5.04214
-margin_top = 85.0
-margin_right = 96.0421
-margin_bottom = 105.0
+margin_left = 5.0
+margin_top = 105.0
+margin_right = 96.0
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )

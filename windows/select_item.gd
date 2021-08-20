@@ -86,8 +86,8 @@ func _update() -> void:
 					tscn.get_node("Label").text = keyy
 					tscn.get_node("Sprite").hide()
 					var n = tscn.get_node("TextureRect")
-					n.hide()
-#					n.texture = datas[key][keyy].tex
+					n.show()
+					n.texture = datas[key][keyy].tex
 					tscn.hint_tooltip = datas[key][keyy].name
 					node.add_child(tscn)
 			if key == "item" || key == "tool" || key == "armor" || key == "block":

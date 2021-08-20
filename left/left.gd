@@ -13,6 +13,7 @@ var liquid_img :=preload("res://assets/img/type2.png")
 var item_img :=preload("res://assets/img/type3.png")
 var tool_img :=preload("res://assets/img/type4.png")
 var armor_img :=preload("res://assets/img/type5.png")
+
 var class_list := [block_img,liquid_img,item_img,tool_img,armor_img]
 var group := []
 func _ready():
@@ -66,8 +67,7 @@ func _update() -> void:
 		if data.age.group[i][3]:
 			g.set_icon(0, data.age.group[i][3])
 		else:
-			if i <= 4:
-				g.set_icon(0, class_list[i])
+			g.set_icon(0, class_list[data.age.group[i][1]])
 		g.set_tooltip(0, data.age.group[i][0])
 		group.append(g)
 	for key in data.block:
@@ -86,6 +86,8 @@ func _update() -> void:
 		var be = create_item(group[d.g])
 		be.set_text(0,key)
 		be.set_tooltip(0,d.name)
+		if d.tex:
+			be.set_icon(0,d.tex)
 #	for key in data.plant_block:
 #		var be = create_item(plant_block)
 #		be.set_text(0,key)
@@ -129,14 +131,22 @@ func on_select() -> void:
 	var be := false
 	if parent_name != "root":
 		Overall._hide()
+		var i := 0
 		for d in Overall.data.age.group:
 			if parent_name == d[0]:
 				var type = Overall.type_list[d[1]]
 				var O = Overall
 				O[type+"_node"]._update(data[type][key])
+				Overall.msg_node.class_key = i
 				be = true
 				break 
-				
+			i = i +1
+	else:
+		var i := 0
+		for d in Overall.data.age.group:
+			if key == d[0]:
+				Overall.msg_node.class_key = i
+			i = i+1
 	if be == true:
 		$"../info".key = key
 		Overall.msg_node.key = key
