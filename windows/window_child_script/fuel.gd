@@ -7,10 +7,10 @@ func _update(data:Array) -> void:
 	self.data = data
 	if data.size() < 2:
 		if data.size()==0:
-			data.append(1.0)
-			data.append(10.0)
+			data.append(0.0)
+			data.append(0.0)
 		elif data.size()==1:
-			data.append(10.0)
+			data.append(0.0)
 	$ui0.value = data[0]
 	$ui1.value = data[1]
 func on_change0(num:float) -> void:

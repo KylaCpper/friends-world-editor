@@ -436,7 +436,7 @@ script = ExtResource( 31 )
 [node name="drop" type="WindowDialog" parent="."]
 margin_left = 126.0
 margin_top = 66.0
-margin_right = 905.0
+margin_right = 947.0
 margin_bottom = 544.0
 focus_mode = 2
 theme = ExtResource( 10 )
@@ -450,7 +450,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="drop"]
 margin_left = 40.0
 margin_top = 10.0
-margin_right = 779.0
+margin_right = 811.0
 margin_bottom = 478.0
 theme = ExtResource( 10 )
 __meta__ = {
@@ -837,10 +837,10 @@ margin_right = 634.0
 margin_bottom = 74.0
 
 [node name="branch" type="WindowDialog" parent="."]
-margin_left = 330.0
-margin_top = 234.0
-margin_right = 661.0
-margin_bottom = 326.0
+margin_left = 297.0
+margin_top = 227.0
+margin_right = 776.0
+margin_bottom = 314.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "分支"
@@ -853,8 +853,8 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="branch"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 324.0
-margin_bottom = 87.0
+margin_right = 475.0
+margin_bottom = 99.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -882,9 +882,9 @@ __meta__ = {
 }
 
 [node name="text1" type="Label" parent="branch/ScrollContainer/branch"]
-margin_left = 164.0
+margin_left = 231.0
 margin_top = 4.0
-margin_right = 210.0
+margin_right = 277.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -910,10 +910,10 @@ __meta__ = {
 }
 
 [node name="text3" type="Label" parent="branch/ScrollContainer/branch"]
-margin_left = 164.0
-margin_top = 39.0
-margin_right = 210.0
-margin_bottom = 63.0
+margin_left = 231.0
+margin_top = 40.0
+margin_right = 277.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "末分支:"
@@ -924,28 +924,28 @@ __meta__ = {
 }
 
 [node name="ui0" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
-margin_left = 49.0
+margin_left = 53.405
 margin_top = 4.0
-margin_right = 133.0
+margin_right = 201.405
 margin_bottom = 28.0
 
 [node name="ui1" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
-margin_left = 210.0
+margin_left = 285.0
 margin_top = 4.0
-margin_right = 294.0
+margin_right = 433.0
 margin_bottom = 28.0
 
 [node name="ui2" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
-margin_left = 40.0
+margin_left = 44.0
 margin_top = 39.0
-margin_right = 124.0
+margin_right = 192.0
 margin_bottom = 63.0
 
 [node name="ui3" parent="branch/ScrollContainer/branch" instance=ExtResource( 29 )]
-margin_left = 210.0
-margin_top = 39.0
-margin_right = 294.0
-margin_bottom = 63.0
+margin_left = 285.0
+margin_top = 40.0
+margin_right = 433.0
+margin_bottom = 64.0
 
 [node name="fuel" type="WindowDialog" parent="."]
 margin_left = 330.0
@@ -1019,10 +1019,10 @@ margin_right = 283.0
 margin_bottom = 24.0
 
 [node name="plant" type="WindowDialog" parent="."]
-margin_left = 330.0
-margin_top = 244.0
-margin_right = 721.0
-margin_bottom = 302.0
+margin_left = 266.0
+margin_top = 248.0
+margin_right = 811.0
+margin_bottom = 306.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "植物"
@@ -1035,7 +1035,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="plant"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 389.0
+margin_right = 536.0
 margin_bottom = 48.0
 theme = ExtResource( 10 )
 __meta__ = {
@@ -1064,9 +1064,9 @@ __meta__ = {
 }
 
 [node name="text1" type="Label" parent="plant/ScrollContainer/plant"]
-margin_left = 187.0
+margin_left = 253.329
 margin_top = 4.0
-margin_right = 267.0
+margin_right = 333.329
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
@@ -1080,13 +1080,13 @@ __meta__ = {
 [node name="ui0" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
 margin_left = 72.0
 margin_top = 4.0
-margin_right = 156.0
+margin_right = 223.0
 margin_bottom = 28.0
 
 [node name="ui1" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
-margin_left = 267.0
+margin_left = 344.0
 margin_top = 4.0
-margin_right = 351.0
+margin_right = 495.0
 margin_bottom = 28.0
 
 [node name="select_tool" type="WindowDialog" parent="."]
@@ -1476,8 +1476,8 @@ max_value = 10.0
 [node name="damage" type="WindowDialog" parent="."]
 margin_left = 211.0
 margin_top = 214.0
-margin_right = 748.0
-margin_bottom = 332.0
+margin_right = 826.0
+margin_bottom = 447.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "工具破坏"
@@ -1502,7 +1502,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="damage"]
 margin_left = 10.0
 margin_top = 28.0
-margin_right = 527.0
+margin_right = 599.0
 margin_bottom = 120.0
 theme = ExtResource( 10 )
 __meta__ = {
@@ -2398,7 +2398,7 @@ visible = false
 margin_left = 211.0
 margin_top = 115.0
 margin_right = 312.0
-margin_bottom = 265.0
+margin_bottom = 285.0
 mouse_filter = 2
 theme = ExtResource( 10 )
 custom_styles/panel = SubResource( 6 )
@@ -2456,10 +2456,10 @@ __meta__ = {
 }
 
 [node name="button3" type="Button" parent="msg"]
-margin_left = 5.0
-margin_top = 65.0
-margin_right = 96.0
-margin_bottom = 85.0
+margin_left = 5.12643
+margin_top = 85.0
+margin_right = 96.1264
+margin_bottom = 105.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2472,10 +2472,10 @@ __meta__ = {
 }
 
 [node name="button4" type="Button" parent="msg"]
-margin_left = 5.0
-margin_top = 85.0
-margin_right = 96.0
-margin_bottom = 105.0
+margin_left = 5.12643
+margin_top = 105.0
+margin_right = 96.1264
+margin_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2505,10 +2505,10 @@ __meta__ = {
 }
 
 [node name="button6" type="Button" parent="msg"]
-margin_left = 4.95786
-margin_top = 125.0
-margin_right = 95.9579
-margin_bottom = 145.0
+margin_left = 5.08429
+margin_top = 145.0
+margin_right = 96.0843
+margin_bottom = 165.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )
@@ -2521,9 +2521,9 @@ __meta__ = {
 }
 
 [node name="button7" type="Button" parent="msg"]
-margin_left = 5.04214
+margin_left = 5.08429
 margin_top = 45.0
-margin_right = 96.0421
+margin_right = 96.0843
 margin_bottom = 65.0
 mouse_filter = 1
 theme = ExtResource( 10 )
@@ -2537,10 +2537,10 @@ __meta__ = {
 }
 
 [node name="button8" type="Button" parent="msg"]
-margin_left = 5.0
-margin_top = 105.0
-margin_right = 96.0
-margin_bottom = 125.0
+margin_left = 5.12643
+margin_top = 125.0
+margin_right = 96.1264
+margin_bottom = 145.0
 mouse_filter = 1
 theme = ExtResource( 10 )
 custom_styles/hover = SubResource( 7 )

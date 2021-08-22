@@ -4,8 +4,8 @@ var data := {}
 
 var key_list = [
 	"key","name","info","img","mass","tool","speed","lv",
-	"hp","atk","damage","script","fuel","food",
-	"name_en","info_en"
+	"hp","atk","damage","composite","script","fuel","food",
+	"name_en","info_en","tool"
 ]
 func _ready() -> void:
 	var i := 0
@@ -44,12 +44,15 @@ func on_changed(d,i) -> void:
 		data["tool"] = data_be 
 	else:
 		if i==3:
-			var img = Image.new()
-			img.load($ui3.get_node("LineEdit").hint_tooltip)
-			img.resize(16,16)
-			var tex = ImageTexture.new()
-			tex.create_from_image(img,0)
-			data["tex"] = tex
+			if data[key_list[i]] != d:
+				data[key_list[i]] = d
+				var img = Image.new()
+				img.load($ui3.get_node("LineEdit").hint_tooltip)
+				img.resize(16,16)
+				var tex = ImageTexture.new()
+				tex.create_from_image(img,0)
+				data["tex"] = tex
+				Overall.left_node._update()
 		if i==10 || i==11 || i ==13 || i==14:
 			pass
 		else:
@@ -85,6 +88,8 @@ func _update(data) -> void:
 	$ui10.get_node("text").text = var2str(data.damage)
 	$ui11.get_node("text").text = var2str(data.composite)
 	$ui12.get_node("LineEdit").text = data.script
+	if typeof(data.fuel) != TYPE_ARRAY:
+		data.fuel = []
 	$ui13.get_node("text").text = var2str(data.fuel)
 	$ui14.get_node("text").text = var2str(data.food)
 	$ui15.text = data.name_en

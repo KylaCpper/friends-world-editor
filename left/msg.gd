@@ -20,25 +20,25 @@ func _show(key:String) -> void:
 	self.key = key
 	if key:
 		$button6.show()
+		if rect_position.y > 430:
+			rect_position.y = 430
+		rect_size.y = 170
+	else:
+		$button6.hide()
 		if rect_position.y > 450:
 			rect_position.y = 450
 		rect_size.y = 150
-	else:
-		$button6.hide()
-		if rect_position.y > 470:
-			rect_position.y = 470
-		rect_size.y = 130
 	type = "item"
 	show()
 func _show_int(key:int) -> void:
-	if rect_position.y > 450:
-		rect_position.y = 450
+	if rect_position.y > 430:
+		rect_position.y = 430
 	self.class_key = key
 	$button6.show()
-	rect_size.y = 150
+	rect_size.y = 170
 	type = "class"
 	show()
-func new_data(type:String,name_:String,node,copy_data=null) -> void:
+func new_data(type:String,name_:String,node,copy_data=null,class_:=false) -> void:
 	if !Overall.head_node.open_project:
 		Overall.msg_warn_node._show("错误","需要新建项目")
 		return
@@ -55,6 +55,8 @@ func new_data(type:String,name_:String,node,copy_data=null) -> void:
 		Overall.data[type][key] = copy_data.duplicate(true)
 		Overall.data[type][key].key = key
 		node.data = Overall.data
+		if class_:
+			Overall.data[type][key]["g"] = class_key
 		
 	Overall.left_node._update()
 	Overall.order_node._update()
@@ -90,22 +92,23 @@ func  on_pressed2() -> void:
 func on_pressed3() -> void:
 	if key:
 		if Overall.block_node.visible:
-			c_data = Overall.data.block[key].duplicate(true)
+			c_data = Overall.data.block[key]
 		if Overall.liquid_block_node.visible:
-			c_data = Overall.data.liquid_block[key].duplicate(true)
+			c_data = Overall.data.liquid_block[key]
 		if Overall.item_node.visible:
-			c_data = Overall.data.item[key].duplicate(true)
+			c_data = Overall.data.item[key]
 		if Overall.tool_node.visible:
-			c_data = Overall.data["tool"][key].duplicate(true)
+			c_data = Overall.data["tool"][key]
 		if Overall.armor_node.visible:
-			c_data = Overall.data.armor[key].duplicate(true)
+			c_data = Overall.data.armor[key]
 	
 #ctrl v
 func on_pressed4() -> void:
 	if c_data && class_key > -1:
 		var type = Overall.type_list[Overall.data.age.group[class_key][1]]
 		if c_data["class"] == type:
-			new_data(type,c_data.key,Overall.block_node,c_data)
+			new_data(type,c_data.key,Overall.block_node,c_data,true)
+			
 		else:
 			Overall.msg_warn_node._show("错误","类型不匹配")
 #		if Overall.liquid_block_node.visible:
@@ -174,11 +177,5 @@ func _input(event) ->void:
 	if event.is_action_pressed("mouse_left"):
 		yield(get_tree(),"idle_frame")
 		hide()
-	if event.is_action_pressed("ctrl+d"):
-		yield(get_tree(),"idle_frame")
-		hide()
-		on_pressed2()
-	if event.is_action_pressed("ctrl+c"):
-		on_pressed3()
-	if event.is_action_pressed("ctrl+v"):
-		on_pressed4()
+
+

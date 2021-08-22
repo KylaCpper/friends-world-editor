@@ -23,16 +23,17 @@ func _ready():
 
 	connect("item_selected",self,"on_select")
 	connect("item_rmb_selected",self,"on_select_rmb")
-func _change(nkey,ntool) -> void:
+func _change(nkey,nname) -> void:
 	var obj = get_selected()
-	obj.set_text(0,nkey)
-	obj.set_tooltip(0,ntool)
+	if Function.is_obj(obj):
+		obj.set_text(0,nname)
+		obj.set_tooltip(0,nkey)
 func _update() -> void:
 	data = Overall.data
 	clear()
 	root = create_item(self)
 	root.set_text(0, "root")
-	
+	root.set_tooltip(0, "root")
 #	block = create_item(root)
 #	block.set_text(0, "block")
 #	block.set_icon(0, block_img)
@@ -75,17 +76,17 @@ func _update() -> void:
 		if !"g" in d:
 			d.g = 0
 		var be = create_item(group[d.g])
-		be.set_text(0,key)
+		be.set_tooltip(0,key)
 		if d.tex:
 			be.set_icon(0,d.tex)
-		be.set_tooltip(0,d.name)
+		be.set_text(0,d.name)
 	for key in data.liquid_block:
 		var d = data.liquid_block[key]
 		if !"g" in d:
 			d.g = 1
 		var be = create_item(group[d.g])
-		be.set_text(0,key)
-		be.set_tooltip(0,d.name)
+		be.set_tooltip(0,key)
+		be.set_text(0,d.name)
 		if d.tex:
 			be.set_icon(0,d.tex)
 #	for key in data.plant_block:
@@ -97,34 +98,34 @@ func _update() -> void:
 		if !"g" in d:
 			d.g = 2
 		var be = create_item(group[d.g])
-		be.set_text(0,key)
+		be.set_tooltip(0,key)
 		if d.tex:
 			be.set_icon(0,d.tex)
-		be.set_tooltip(0,d.name)
+		be.set_text(0,d.name)
 	for key in data["tool"]:
 		var d = data["tool"][key]
 		if !"g" in d:
 			d.g = 3
 		var be = create_item(group[d.g])
-		be.set_text(0,key)
+		be.set_tooltip(0,key)
 		if data["tool"][key].tex:
 			be.set_icon(0,d.tex)
-		be.set_tooltip(0,d.name)
+		be.set_text(0,d.name)
 	for key in data.armor:
 		var d = data.armor[key]
 		if !"g" in d:
 			d.g = 4
 		var be = create_item(group[d.g])
-		be.set_text(0,key)
+		be.set_tooltip(0,key)
 		if data.armor[key].tex:
 			be.set_icon(0,d.tex)
-		be.set_tooltip(0,d.name)
+		be.set_text(0,d.name)
 
 
 func on_select() -> void:
 	data = Overall.data
-	var key = get_selected().get_text(0)
-	var parent_name = get_selected().get_parent().get_text(0)
+	var key = get_selected().get_tooltip(0)
+	var parent_name = get_selected().get_parent().get_tooltip(0)
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
@@ -154,9 +155,9 @@ func on_select() -> void:
 	else:
 		Overall.msg_node.key = ""
 func on_select_rmb(vec2:Vector2) -> void:
-	var key = get_selected().get_text(0)
+	var key = get_selected().get_tooltip(0)
 #	var index = get_selected().get_tooltip(0)
-	var parent_name = get_selected().get_parent().get_text(0)
+	var parent_name = get_selected().get_parent().get_tooltip(0)
 	Overall.msg_node.rect_position = vec2+Vector2(0,100)
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
@@ -190,3 +191,12 @@ func on_select_rmb(vec2:Vector2) -> void:
 		Overall.msg_node._show(key)
 	else:
 		Overall.msg_node._show("")
+func _gui_input(event) -> void:
+	if event.is_action_pressed("ctrl+d"):
+		yield(get_tree(),"idle_frame")
+		Overall.msg_node.hide()
+		Overall.msg_node.on_pressed2()
+	if event.is_action_pressed("ctrl+c"):
+		Overall.msg_node.on_pressed3()
+	if event.is_action_pressed("ctrl+v"):
+		Overall.msg_node.on_pressed4()

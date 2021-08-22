@@ -29,14 +29,18 @@ func on_changed(d,i) -> void:
 			data.key = d
 	if i == 5 && !$ui5.get_node("check").pressed:
 		return
-	data[key_list[i]] = d
 	if i==3:
-		var img = Image.new()
-		img.load($ui3.get_node("LineEdit").hint_tooltip)
-		img.resize(16,16)
-		var tex = ImageTexture.new()
-		tex.create_from_image(img,0)
-		data["tex"] = tex
+		if data[key_list[i]] != d:
+			data[key_list[i]] = d
+			var img = Image.new()
+			img.load($ui3.get_node("LineEdit").hint_tooltip)
+			img.resize(16,16)
+			var tex = ImageTexture.new()
+			tex.create_from_image(img,0)
+			data["tex"] = tex
+			Overall.left_node._update()
+		
+	data[key_list[i]] = d
 	if i == 4:
 		if !$ui5.get_node("check").pressed:
 			data["max"] = Overall.get_max(d)

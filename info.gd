@@ -1,5 +1,7 @@
 extends Control
 var key := ""
+func _ready() -> void:
+	Overall.info_node = self
 func _input(event) -> void:
 	if event.is_action_pressed("delete"):
 		Overall.sure_window_node._show("",self)

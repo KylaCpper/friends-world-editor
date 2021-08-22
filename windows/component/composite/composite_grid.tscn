@@ -44,7 +44,7 @@ __meta__ = {
 
 [node name="ui0" type="LineEdit" parent="."]
 margin_left = 48.0
-margin_right = 132.0
+margin_right = 161.0
 margin_bottom = 22.0
 theme = ExtResource( 1 )
 align = 1
@@ -57,8 +57,8 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="ui0"]
-margin_left = 89.8444
-margin_right = 108.844
+margin_left = 116.994
+margin_right = 135.994
 margin_bottom = 22.0
 theme = ExtResource( 1 )
 text = "."

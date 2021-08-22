@@ -38,6 +38,7 @@ var data = {
 	}
 
 }
+var info_node
 const head_node_type := preload("res://head.gd")
 var head_node :head_node_type
 const add_class_node_type := preload("res://windows/add_class.gd")

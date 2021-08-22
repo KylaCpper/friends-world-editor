@@ -44,7 +44,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-position = Vector2( 32, 16 )
-region_enabled = true
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
