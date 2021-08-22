@@ -29,10 +29,10 @@ __meta__ = {
 }
 
 [node name="text1" type="Label" parent="."]
-margin_left = 170.24
-margin_top = 3.93983
-margin_right = 211.24
-margin_bottom = 27.9398
+margin_left = 239.867
+margin_top = 4.0
+margin_right = 280.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 1 )
 text = "数量:"
@@ -43,10 +43,10 @@ __meta__ = {
 }
 
 [node name="text2" type="Label" parent="."]
-margin_left = 322.24
-margin_top = 3.93983
-margin_right = 363.24
-margin_bottom = 27.9398
+margin_left = 391.867
+margin_top = 4.0
+margin_right = 432.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 1 )
 text = "几率:"
@@ -57,10 +57,10 @@ __meta__ = {
 }
 
 [node name="text3" type="Label" parent="."]
-margin_left = 467.24
-margin_top = 3.93983
-margin_right = 508.24
-margin_bottom = 27.9398
+margin_left = 536.867
+margin_top = 4.0
+margin_right = 577.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 1 )
 text = "等级:"
@@ -73,16 +73,14 @@ __meta__ = {
 [node name="ui0" parent="." instance=ExtResource( 2 )]
 margin_left = 58.0
 margin_top = 4.0
-margin_right = 142.0
+margin_right = 206.0
 margin_bottom = 28.0
-rect_min_size = Vector2( 0, 0 )
-context_menu_enabled = true
 
 [node name="ui1" type="SpinBox" parent="."]
-margin_left = 211.24
-margin_top = 3.93983
-margin_right = 311.24
-margin_bottom = 27.9398
+margin_left = 280.867
+margin_top = 4.0
+margin_right = 380.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 5, 20 )
 theme = ExtResource( 1 )
 max_value = 999.0
@@ -92,10 +90,10 @@ __meta__ = {
 }
 
 [node name="ui2" type="SpinBox" parent="."]
-margin_left = 363.24
-margin_top = 3.93983
-margin_right = 463.24
-margin_bottom = 27.9398
+margin_left = 432.867
+margin_top = 4.0
+margin_right = 532.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 5, 20 )
 theme = ExtResource( 1 )
 step = 0.1
@@ -105,10 +103,10 @@ __meta__ = {
 }
 
 [node name="ui3" type="SpinBox" parent="."]
-margin_left = 508.24
-margin_top = 3.93983
-margin_right = 608.24
-margin_bottom = 27.9398
+margin_left = 577.867
+margin_top = 4.0
+margin_right = 677.867
+margin_bottom = 28.0
 rect_min_size = Vector2( 5, 20 )
 theme = ExtResource( 1 )
 max_value = 999.0
@@ -118,10 +116,10 @@ __meta__ = {
 }
 
 [node name="ui4" type="CheckBox" parent="."]
-margin_left = 613.431
-margin_top = 4.0
-margin_right = 667.431
-margin_bottom = 28.0
+margin_left = 683.058
+margin_top = 4.06017
+margin_right = 737.058
+margin_bottom = 28.0602
 rect_min_size = Vector2( 5, 20 )
 theme = ExtResource( 1 )
 text = "阻断"
@@ -131,10 +129,10 @@ __meta__ = {
 }
 
 [node name="delete" type="Button" parent="."]
-margin_left = 672.49
-margin_top = 3.93983
-margin_right = 691.49
-margin_bottom = 27.9398
+margin_left = 742.117
+margin_top = 4.0
+margin_right = 761.117
+margin_bottom = 28.0
 theme = ExtResource( 1 )
 text = "-"
 __meta__ = {

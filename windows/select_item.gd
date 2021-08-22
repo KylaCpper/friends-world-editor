@@ -55,52 +55,27 @@ func _update() -> void:
 		var datas = Overall.g_data[age]
 		for key in ["block","item","tool","armor","liquid_block"]:
 			var node = get_node(key+"/select_item")
-	#		if key == "block":
-	#			for keyy in datas[key]:
-	#				var tscn = grid_tscn.instance()
-	#				tscn.name = keyy
-	#				tscn.name_ = keyy
-	#				tscn.get_node("Label").text = keyy
-	#				tscn.get_node("TextureRect").hide()
-	#				var n = tscn.get_node("Sprite")
-	#				n.show()
-	#				if datas[key][keyy].material<=2:
-	#					n.texture = Overall.block_img
-	#				else:
-	#					n.texture = Overall.block_img_model
-	#				var vec2 = Vector2()
-	#				if datas[key][keyy].uv.size() > 0:
-	#					var be = datas[key][keyy].uv[0]
-	#					if !be.empty():
-	#						vec2 = Vector2(be.x,be.y)*16
-	#				n.region_rect = Rect2(vec2,Vector2(16,16))
-	#				n.scale = Vector2(2,2)
-	##				tscn.get_node("TextureRect").texture = Overall.block_img
-	#				tscn.hint_tooltip = keyy
-	#				node.add_child(tscn)
 			if key == "liquid_block":
 				for keyy in datas[key]:
 					var tscn = grid_tscn.instance()
 					tscn.name = keyy
 					tscn.name_ = keyy
-					tscn.get_node("Label").text = keyy
-					tscn.get_node("Sprite").hide()
+					tscn.get_node("Label").text = datas[key][keyy].name
 					var n = tscn.get_node("TextureRect")
 					n.show()
 					n.texture = datas[key][keyy].tex
-					tscn.hint_tooltip = datas[key][keyy].name
+					tscn.hint_tooltip = keyy
 					node.add_child(tscn)
 			if key == "item" || key == "tool" || key == "armor" || key == "block":
 				for keyy in datas[key]:
 					var tscn = grid_tscn.instance()
 					tscn.name = keyy
 					tscn.name_ = keyy
-					tscn.get_node("Label").text = keyy
-					tscn.get_node("Sprite").hide()
+					tscn.get_node("Label").text = datas[key][keyy].name
 					var n = tscn.get_node("TextureRect")
 					n.show()
 					n.texture = datas[key][keyy].tex
-					tscn.hint_tooltip = datas[key][keyy].name
+					tscn.hint_tooltip = keyy
 					node.add_child(tscn)
 			
 func _show(title:String,data:String,obj) -> void:
@@ -110,7 +85,7 @@ func _show(title:String,data:String,obj) -> void:
 	if Overall.item_c:
 		_update()
 		Overall.item_c = false
-	get_node(key+"/select_item")._update("")
+	get_node(key+"/select_item")._update("",data)
 	popup()
 func on_hide() -> void:
 	grab_focus()

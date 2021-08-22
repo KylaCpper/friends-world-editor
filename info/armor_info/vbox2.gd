@@ -29,12 +29,15 @@ func on_changed(d,i) -> void:
 		pass
 	else:
 		if i == 3:
-			var img = Image.new()
-			img.load($ui3.get_node("LineEdit").hint_tooltip)
-			img.resize(16,16)
-			var tex = ImageTexture.new()
-			tex.create_from_image(img,0)
-			data["tex"] = tex
+			if data[key_list[i]] != d:
+				data[key_list[i]] = d
+				var img = Image.new()
+				img.load($ui3.get_node("LineEdit").hint_tooltip)
+				img.resize(16,16)
+				var tex = ImageTexture.new()
+				tex.create_from_image(img,0)
+				data["tex"] = tex
+				Overall.left_node._update()
 		data[key_list[i]] = d
 	data["max"] = 1
 func _update(data) -> void:

@@ -57,7 +57,6 @@ func _update() -> void:
 				tscn.get_node("Label").text = key
 				var texture = tscn.get_node("TextureRect")
 				texture.show()
-				tscn.get_node("Sprite").hide()
 				
 				if "img" in datas.block[key]:
 					if datas.block[key].img:
@@ -75,34 +74,11 @@ func _update() -> void:
 					tscn.get_node("Label").text = key
 					var texture = tscn.get_node("TextureRect")
 					texture.hide()
-					tscn.get_node("Sprite").hide()
 					tscn.index = i
 					tscn.hint_tooltip = key
 					node.add_child(tscn)
 					index = i+1
 					break
-
-		
-#			var n = tscn.get_node("Sprite")
-#			if datas.block[key].material<=2:
-#				n.texture = Overall.block_img
-#			else:
-#				n.texture = Overall.block_img_model
-#			n.show()
-#			if datas.block[key].material<=2:
-#				n.texture = Overall.block_img
-#			else:
-#				n.texture = Overall.block_img_model
-#			var vec2 = Vector2()
-#			if datas.block[key].uv.size() > 0:
-#				var be = datas.block[key].uv[0]
-#				if !be.empty():
-#					vec2 = Vector2(be.x,be.y)*16
-#			n.region_rect = Rect2(vec2,Vector2(16,16))
-#			n.scale = Vector2(2,2)
-	#				tscn.get_node("TextureRect").texture = Overall.block_img
-
-#	var i = Overall.order.size()
 	for age in Overall.g_data:
 		var datas = Overall.g_data[age]
 		
@@ -119,23 +95,8 @@ func _update() -> void:
 			tscn.get_node("Label").text = key
 			var texture = tscn.get_node("TextureRect")
 			texture.show()
-			tscn.get_node("Sprite").hide()
 			if datas.block[key].img:
 				texture.texture = datas.block[key].tex
-	#			var n = tscn.get_node("Sprite")
-	#			n.show()
-	#			if datas.block[key].material<=2:
-	#				n.texture = Overall.block_img
-	#			else:
-	#				n.texture = Overall.block_img_model
-	#			var vec2 = Vector2()
-	#			if datas.block[key].uv.size() > 0:
-	#				var be = datas.block[key].uv[0]
-	#				if !be.empty():
-	#					vec2 = Vector2(be.x,be.y)*16
-	#			n.region_rect = Rect2(vec2,Vector2(16,16))
-	#			n.scale = Vector2(2,2)
-	#	#				tscn.get_node("TextureRect").texture = Overall.block_img
 			tscn.hint_tooltip = key
 			tscn.index = index
 			node.add_child(tscn)
@@ -152,7 +113,6 @@ func _update() -> void:
 			tscn.name_ = key
 			tscn.get_node("Label").text = key
 			tscn.get_node("TextureRect").hide()
-			tscn.get_node("Sprite").hide()
 			tscn.hint_tooltip = key
 			tscn.index = index
 			node.add_child(tscn)
