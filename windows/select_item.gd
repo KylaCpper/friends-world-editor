@@ -85,6 +85,14 @@ func _show(title:String,data:String,obj) -> void:
 	if Overall.item_c:
 		_update()
 		Overall.item_c = false
+	for age in Overall.g_data:
+		var datas = Overall.g_data[age]
+		for key1 in ["block","item","tool","armor","liquid_block"]:
+			if data in datas[key1]:
+				on_pressed(key1)
+				get_node(key+"/select_item")._update("",data)
+				popup()
+				return
 	get_node(key+"/select_item")._update("",data)
 	popup()
 func on_hide() -> void:

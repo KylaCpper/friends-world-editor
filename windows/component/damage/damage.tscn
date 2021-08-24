@@ -7,9 +7,9 @@
 [ext_resource path="res://info/ui/select_item_.tscn" type="PackedScene" id=7]
 
 [node name="damage" type="Control"]
-margin_right = 400.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 510, 30 )
+margin_right = 641.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 640, 30 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,18 +91,38 @@ margin_bottom = 25.8614
 max_value = 100.0
 
 [node name="ui3" parent="." instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 529.177
-margin_top = -3.13857
-margin_right = 572.177
-margin_bottom = 28.8614
+margin_left = 213.0
+margin_right = 237.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 0 )
+
+[node name="up" type="Button" parent="."]
+margin_left = 561.0
+margin_top = 2.0
+margin_right = 586.0
+margin_bottom = 24.0
+theme = ExtResource( 2 )
+text = "↑"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="down" type="Button" parent="."]
+margin_left = 591.0
+margin_top = 2.0
+margin_right = 616.0
+margin_bottom = 24.0
+theme = ExtResource( 2 )
+text = "↓"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="delete" type="Button" parent="."]
-margin_left = 560.096
-margin_top = 2.07763
-margin_right = 579.096
-margin_bottom = 24.0776
+margin_left = 622.189
+margin_top = 2.0
+margin_right = 641.189
+margin_bottom = 24.0
 theme = ExtResource( 2 )
 text = "-"
 __meta__ = {

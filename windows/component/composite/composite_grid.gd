@@ -8,6 +8,7 @@ func _ready() -> void:
 	$ui1.connect("value_changed",self,"on_changed1")
 
 	$ui0.text = name_
+	$ui0.hint_tooltip = name_
 	$ui1.value = num
 
 func on_pressed() -> void:

@@ -43,13 +43,12 @@ __meta__ = {
 }
 
 [node name="ui0" type="LineEdit" parent="."]
-margin_left = 48.0
+margin_left = 46.0
 margin_right = 161.0
 margin_bottom = 22.0
 theme = ExtResource( 1 )
 align = 1
 context_menu_enabled = false
-clear_button_enabled = true
 caret_blink = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -81,10 +80,10 @@ __meta__ = {
 }
 
 [node name="ui1" type="SpinBox" parent="."]
-margin_left = 48.0
-margin_top = 24.6487
+margin_left = 46.0
+margin_top = 25.0
 margin_right = 148.0
-margin_bottom = 46.6487
+margin_bottom = 47.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 1 )
 max_value = 999.0

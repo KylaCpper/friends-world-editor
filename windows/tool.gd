@@ -18,6 +18,7 @@ func _show(title:String,data:Array,obj) -> void:
 	self.obj = obj
 #	self.window_title = title
 	self.data = data
+
 	$ScrollContainer/select_tool._update(data)
 	popup()
 func on_hide() -> void:

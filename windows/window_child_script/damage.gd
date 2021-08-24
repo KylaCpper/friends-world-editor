@@ -24,3 +24,20 @@ func _delete(i:int) -> void:
 	for node in get_children():
 		if node.index>i:
 			node.index = node.index -1 
+
+func _up(node) -> void:
+	if node.get_parent() != self:return
+	var i_max = get_child_count()-1
+	var i = node.get_index()
+	if i > 0:
+		data[i] = data[i-1]
+		data[i-1] = node.data 
+		move_child(node,i-1)
+func _down(node) -> void:
+	if node.get_parent() != self:return
+	var i_max = get_child_count()-1
+	var i = node.get_index()
+	if i < i_max:
+		data[i] = data[i+1]
+		data[i+1] = node.data
+		move_child(node,i+1)
