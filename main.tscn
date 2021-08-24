@@ -434,10 +434,10 @@ current_path = "/godot_work/friends_world_editor/"
 script = ExtResource( 31 )
 
 [node name="drop" type="WindowDialog" parent="."]
-margin_left = 126.0
-margin_top = 66.0
-margin_right = 947.0
-margin_bottom = 544.0
+margin_left = 72.0181
+margin_top = 73.0
+margin_right = 977.018
+margin_bottom = 551.0
 focus_mode = 2
 theme = ExtResource( 10 )
 window_title = "掉落"
@@ -450,7 +450,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="drop"]
 margin_left = 40.0
 margin_top = 10.0
-margin_right = 811.0
+margin_right = 884.0
 margin_bottom = 478.0
 theme = ExtResource( 10 )
 __meta__ = {
@@ -1476,7 +1476,7 @@ max_value = 10.0
 [node name="damage" type="WindowDialog" parent="."]
 margin_left = 211.0
 margin_top = 214.0
-margin_right = 826.0
+margin_right = 879.0
 margin_bottom = 447.0
 focus_mode = 2
 theme = ExtResource( 10 )
@@ -1502,8 +1502,8 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="damage"]
 margin_left = 10.0
 margin_top = 28.0
-margin_right = 599.0
-margin_bottom = 120.0
+margin_right = 659.0
+margin_bottom = 224.0
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false

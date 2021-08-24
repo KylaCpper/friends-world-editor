@@ -146,8 +146,11 @@ func get_max(mass:float) -> int:
 	return max_
 
 func update_order(okey,nkey,name_) -> void:
+	if okey in key_list:
+		 key_list[nkey]=key_list[okey]
+	else:
+		 key_list[nkey]="item"
 	key_list.erase(okey)
-	key_list[nkey]=1
 	if okey in order_key:
 		var i = order_key[okey] 
 		order[i] = nkey

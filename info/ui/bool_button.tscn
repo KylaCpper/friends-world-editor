@@ -4,13 +4,8 @@
 [ext_resource path="res://info/ui/bool_button.gd" type="Script" id=2]
 
 [node name="ui0" type="CheckBox"]
-anchor_left = 0.4
-anchor_right = 0.4
-margin_right = 256.0
-margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 theme = ExtResource( 1 )
-align = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -25,21 +25,37 @@ func _free() -> void:
 	for node in get_children():
 		if node.name != "add":
 			node.free()
-func _add(arr:Array) -> void:
+func _add(data:Array) -> void:
 	self.data = data
-	for data in arr:
-		if !data.empty():
+	for d in data:
+		if !d.empty():
 			var tscn = drop_tscn.instance()
-			if !"name" in data:data.name = ""
-			if !"num" in data:data.num = 1
-			if !"pro" in data:data.pro = 100.0
-			if !"lv" in data:data.lv = 0
-			if !"stop" in data:data.stop = true
-			tscn.get_node("ui0").text = data.name
-			tscn.get_node("ui0").hint_tooltip = data.name
-			tscn.get_node("ui1").value = data.num
-			tscn.get_node("ui2").value = data.pro
-			tscn.get_node("ui3").value = data.lv
-			tscn.get_node("ui4").pressed = data.stop
-			tscn.data = data
+			if !"name" in d:d.name = ""
+			if !"num" in d:d.num = 1
+			if !"pro" in d:d.pro = 100.0
+			if !"lv" in d:d.lv = 0
+			if !"stop" in d:d.stop = true
+			tscn.get_node("ui0").text = d.name
+			tscn.get_node("ui0").hint_tooltip = d.name
+			tscn.get_node("ui1").value = d.num
+			tscn.get_node("ui2").value = d.pro
+			tscn.get_node("ui3").value = d.lv
+			tscn.get_node("ui4").pressed = d.stop
+			tscn.data = d
 			add_child(tscn)
+func _up(node) -> void:
+	if node.get_parent() != self:return
+	var i_max = get_child_count()-1
+	var i = node.get_index()
+	if i > 0:
+		data[i] = data[i-1]
+		data[i-1] = node.data 
+		move_child(node,i-1)
+func _down(node) -> void:
+	if node.get_parent() != self:return
+	var i_max = get_child_count()-1
+	var i = node.get_index()
+	if i < i_max:
+		data[i] = data[i+1]
+		data[i+1] = node.data
+		move_child(node,i+1)

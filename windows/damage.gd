@@ -24,7 +24,17 @@ func on_hide() -> void:
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
 	yield(get_tree(),"idle_frame")
+	check_empty()
 	if obj:
 #		$ScrollContainer/damage.set_data()
 		obj.text=var2str(data)
 		obj.emit_signal("text_changed")
+
+func check_empty() -> void:
+	var i := 0
+	for d in data:
+		if !d.name:
+			data.remove(i)
+			check_empty()
+			break
+		i = i +1

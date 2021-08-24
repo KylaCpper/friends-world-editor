@@ -46,7 +46,7 @@ func new_data(type:String,name_:String,node,copy_data=null,class_:=false) -> voi
 		Overall.msg_warn_node._show("错误","无选择分类")
 		return
 	var key = Overall.next_key_list(name_)
-	Overall.key_list[key]=1
+	Overall.key_list[key]=type
 	Overall.data[type][key]={"key":key}
 	if !copy_data:
 		node.set_data(Overall.data[type][key])
