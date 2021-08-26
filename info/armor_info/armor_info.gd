@@ -49,7 +49,7 @@ func set_data(data:Dictionary) -> void:
 			elif key =="food":
 				data[key] = []
 			elif key == "fuel":
-				data[key] = []
+				data[key] = [0,0]
 			elif key == "damage":
 				data[key] = []
 			else:

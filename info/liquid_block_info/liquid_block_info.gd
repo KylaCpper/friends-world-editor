@@ -24,7 +24,7 @@ var data_be := {
 	"lock_material":true,
 	"audio":"",
 	"dire":0,
-	"fuel":false,
+	"fuel":[],
 	"drop":{},
 	"food":false,
 	"composite":[],
@@ -65,6 +65,8 @@ func set_data(data:Dictionary) -> void:
 				data[key] = []
 			elif key == "drop":
 				data[key] = {}
+			elif key == "fuel":
+				data[key] = [0,0]
 			elif key == "uv":
 				data[key] = []
 			elif key == "aabb":

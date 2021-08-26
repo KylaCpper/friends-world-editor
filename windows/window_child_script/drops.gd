@@ -10,7 +10,7 @@ func on_pressed() -> void:
 	tscn.get_node("ui1").value = 1
 	tscn.get_node("ui2").value = 100.0
 	tscn.get_node("ui3").value = 0
-	tscn.get_node("ui4").pressed = true
+	tscn.get_node("ui4").pressed = false
 	if name in Overall.drop_node.data:
 		data = Overall.drop_node.data[name]
 	else:
@@ -18,7 +18,7 @@ func on_pressed() -> void:
 		Overall.drop_node.data[name] = data
 		
 		
-	data.append({"name":"","num":1,"pro":100.0,"lv":0,"stop":true})
+	data.append({"name":"","num":1,"pro":100.0,"lv":0,"stop":false})
 	tscn.data = data[data.size()-1]
 	add_child(tscn)
 func _free() -> void:
@@ -45,17 +45,17 @@ func _add(data:Array) -> void:
 			add_child(tscn)
 func _up(node) -> void:
 	if node.get_parent() != self:return
-	var i_max = get_child_count()-1
-	var i = node.get_index()
+	var i_max = get_child_count()-2
+	var i = node.get_index()-1
 	if i > 0:
 		data[i] = data[i-1]
 		data[i-1] = node.data 
-		move_child(node,i-1)
+		move_child(node,i)
 func _down(node) -> void:
 	if node.get_parent() != self:return
-	var i_max = get_child_count()-1
-	var i = node.get_index()
+	var i_max = get_child_count()-2
+	var i = node.get_index()-1
 	if i < i_max:
 		data[i] = data[i+1]
 		data[i+1] = node.data
-		move_child(node,i+1)
+		move_child(node,i+2)

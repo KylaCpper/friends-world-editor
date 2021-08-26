@@ -62,6 +62,11 @@ func on_changed() -> void:
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:
+			if self.data.size()==0:
+				self.data.append(0)
+				self.data.append(0)
+			if self.data.size()==1:
+				self.data.append(0)
 			self.data[i] = d
 			i = i+1
 	if TYPE == "plant":
@@ -80,7 +85,10 @@ func on_changed() -> void:
 		if typeof(data) != TYPE_ARRAY:return
 		var i := 0
 		for d in data:
-			self.data[i] = d
+			if self.data.size()>i:
+				self.data[i] = d
+			else:
+				self.data.append(d)
 			i = i+1
 	if TYPE == "uv":
 		if typeof(data) != TYPE_ARRAY:return

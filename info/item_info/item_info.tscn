@@ -160,10 +160,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 216.0
 margin_right = 300.0
 margin_bottom = 248.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 20 )
+text = "合成"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 252.0
+margin_right = 300.0
+margin_bottom = 284.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 20 )
@@ -177,9 +193,9 @@ __meta__ = {
 }
 
 [node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 252.0
+margin_top = 288.0
 margin_right = 300.0
-margin_bottom = 284.0
+margin_bottom = 320.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 20 )
@@ -193,29 +209,13 @@ __meta__ = {
 }
 
 [node name="ui11" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 288.0
-margin_right = 300.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 20 )
-text = "植物"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 324.0
 margin_right = 300.0
 margin_bottom = 356.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 20 )
-text = "合成"
+text = "植物"
 align = 1
 valign = 1
 autowrap = true
@@ -483,25 +483,25 @@ margin_bottom = 176.0
 margin_top = 180.0
 margin_bottom = 212.0
 
-[node name="ui6" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
+[node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
 margin_top = 216.0
 margin_bottom = 248.0
+TYPE = "composite"
+
+[node name="ui6" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
+margin_top = 252.0
+margin_bottom = 284.0
 TYPE = "fuel"
 
 [node name="ui7" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
-margin_top = 252.0
-margin_bottom = 284.0
+margin_top = 288.0
+margin_bottom = 320.0
 TYPE = "food"
 
 [node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
-margin_top = 288.0
-margin_bottom = 320.0
-TYPE = "plant"
-
-[node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 16 )]
 margin_top = 324.0
 margin_bottom = 356.0
-TYPE = "composite"
+TYPE = "plant"
 
 [node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 12 )]
 

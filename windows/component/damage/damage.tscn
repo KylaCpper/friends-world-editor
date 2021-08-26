@@ -56,20 +56,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="text2" type="Label" parent="."]
-margin_left = 494.513
-margin_top = 2.0
-margin_right = 528.513
-margin_bottom = 26.0
-rect_min_size = Vector2( 0, 20 )
-theme = ExtResource( 2 )
-text = "阻断:"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ui0" parent="." instance=ExtResource( 7 )]
 margin_left = 34.0
 margin_top = 2.0
@@ -91,15 +77,16 @@ margin_bottom = 25.8614
 max_value = 100.0
 
 [node name="ui3" parent="." instance=ExtResource( 5 )]
-margin_left = 213.0
-margin_right = 237.0
+margin_left = 165.0
+margin_right = 219.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 0 )
+text = "阻断"
 
 [node name="up" type="Button" parent="."]
-margin_left = 561.0
+margin_left = 540.364
 margin_top = 2.0
-margin_right = 586.0
+margin_right = 565.364
 margin_bottom = 24.0
 theme = ExtResource( 2 )
 text = "↑"
@@ -108,9 +95,9 @@ __meta__ = {
 }
 
 [node name="down" type="Button" parent="."]
-margin_left = 591.0
+margin_left = 570.364
 margin_top = 2.0
-margin_right = 616.0
+margin_right = 595.364
 margin_bottom = 24.0
 theme = ExtResource( 2 )
 text = "↓"
@@ -119,9 +106,9 @@ __meta__ = {
 }
 
 [node name="delete" type="Button" parent="."]
-margin_left = 622.189
+margin_left = 601.553
 margin_top = 2.0
-margin_right = 641.189
+margin_right = 620.553
 margin_bottom = 24.0
 theme = ExtResource( 2 )
 text = "-"
