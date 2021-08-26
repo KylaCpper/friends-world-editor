@@ -8,7 +8,7 @@ func _ready() ->void:
 	connect("popup_hide",self,"on_hide")
 	$add.connect("pressed",self,"on_pressed")
 func on_pressed() -> void:
-	data.append({"name":"","num":1,"pro":100,"stop":true})
+	data.append({"name":"","num":1,"pro":100,"stop":false})
 	$ScrollContainer/damage._update(data)
 func on_resized() -> void:
 	$ScrollContainer.rect_size = rect_size - Vector2(22,34)

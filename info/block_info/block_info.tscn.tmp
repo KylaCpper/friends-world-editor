@@ -181,7 +181,7 @@ margin_bottom = 248.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
-text = "质量"
+text = "密度(影响下落速度和最大速度,最大堆叠"
 align = 1
 valign = 1
 autowrap = true
@@ -859,15 +859,13 @@ margin_top = 288.0
 margin_bottom = 320.0
 
 [node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
-anchor_left = 0.0
-anchor_right = 0.0
 margin_top = 324.0
+margin_right = 256.0
 margin_bottom = 356.0
 
 [node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
-anchor_left = 0.0
-anchor_right = 0.0
 margin_top = 360.0
+margin_right = 256.0
 margin_bottom = 392.0
 
 [node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
@@ -911,9 +909,8 @@ margin_bottom = 716.0
 TYPE = "plant"
 
 [node name="ui19" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 9 )]
-anchor_left = 0.0
-anchor_right = 0.0
 margin_top = 720.0
+margin_right = 256.0
 margin_bottom = 752.0
 
 [node name="ui20" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]

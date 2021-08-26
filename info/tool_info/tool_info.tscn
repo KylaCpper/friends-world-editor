@@ -16,7 +16,7 @@
 margin_left = 166.0
 margin_top = 62.0
 margin_right = 1024.0
-margin_bottom = 596.0
+margin_bottom = 870.0
 custom_styles/bg = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -272,24 +272,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 468.0
 margin_right = 300.0
 margin_bottom = 500.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 12 )
-text = "脚本"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 504.0
-margin_right = 300.0
-margin_bottom = 536.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -303,9 +289,9 @@ __meta__ = {
 }
 
 [node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 540.0
+margin_top = 504.0
 margin_right = 300.0
-margin_bottom = 572.0
+margin_bottom = 536.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 12 )
@@ -314,6 +300,20 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 540.0
+margin_right = 300.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+text = "脚本"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -665,18 +665,19 @@ margin_top = 432.0
 margin_bottom = 464.0
 TYPE = "composite"
 
-[node name="ui12" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 6 )]
+[node name="ui13" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
 margin_top = 468.0
 margin_bottom = 500.0
-
-[node name="ui13" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
-margin_top = 504.0
-margin_bottom = 536.0
 TYPE = "fuel"
 
 [node name="ui14" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 10 )]
-margin_bottom = 572.0
+margin_top = 504.0
+margin_bottom = 536.0
 TYPE = "food"
+
+[node name="ui12" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 6 )]
+margin_top = 540.0
+margin_bottom = 572.0
 
 [node name="ui15" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 7 )]
 margin_top = 576.0

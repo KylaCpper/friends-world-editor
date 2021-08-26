@@ -199,10 +199,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 324.0
 margin_right = 300.0
 margin_bottom = 356.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = "合成"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 392.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
@@ -216,29 +232,13 @@ __meta__ = {
 }
 
 [node name="ui9" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
-margin_top = 360.0
-margin_right = 300.0
-margin_bottom = 392.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "食物"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ui12" type="Label" parent="VBoxContainer/HBoxContainer/vbox0"]
 margin_top = 396.0
 margin_right = 300.0
 margin_bottom = 428.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 1 )
-text = "合成"
+text = "食物"
 align = 1
 valign = 1
 autowrap = true
@@ -549,20 +549,20 @@ margin_top = 288.0
 margin_bottom = 320.0
 TYPE = "damage"
 
-[node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
+[node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 margin_top = 324.0
 margin_bottom = 356.0
+TYPE = "composite"
+
+[node name="ui8" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
+margin_top = 360.0
+margin_bottom = 392.0
 TYPE = "fuel"
 
 [node name="ui9" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
-margin_top = 360.0
-margin_bottom = 392.0
-TYPE = "food"
-
-[node name="ui10" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 3 )]
 margin_top = 396.0
 margin_bottom = 428.0
-TYPE = "composite"
+TYPE = "food"
 
 [node name="ui11" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 4 )]
 margin_top = 432.0

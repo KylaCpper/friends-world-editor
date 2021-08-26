@@ -18,7 +18,7 @@ func on_pressed() -> void:
 	if !"num" in data:data["num"]=1
 	if !"time" in data:data["time"]=1
 	if !"craft" in data:data["craft"]="default"
-	tscn.name_ = data.name
+	tscn.name_ = ""
 	tscn.num = 1
 	$ui0.value = data.num
 	$ui1.value = data.time
