@@ -1,8 +1,8 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
-[ext_resource path="res://info/block_info/block_info.tscn" type="PackedScene" id=3]
+[ext_resource path="res://info/block_info/vbox2.gd" type="Script" id=3]
 [ext_resource path="res://head/head.gd" type="Script" id=4]
 [ext_resource path="res://info/spin.tres" type="Theme" id=5]
 [ext_resource path="res://windows/window_child_script/order.gd" type="Script" id=6]
@@ -20,7 +20,7 @@
 [ext_resource path="res://windows/composite.gd" type="Script" id=18]
 [ext_resource path="res://windows/window_child_script/composite.gd" type="Script" id=19]
 [ext_resource path="res://windows/component/composite/composites_grid.tscn" type="PackedScene" id=20]
-[ext_resource path="res://info/liquid_block_info/liquid_block_info.tscn" type="PackedScene" id=21]
+[ext_resource path="res://info/liquid_block_info/liquid_block_info.gd" type="Script" id=21]
 [ext_resource path="res://windows/branch.gd" type="Script" id=22]
 [ext_resource path="res://windows/window_child_script/branch.gd" type="Script" id=23]
 [ext_resource path="res://info/plant_block_info/plant_block_info.tscn" type="PackedScene" id=24]
@@ -67,6 +67,24 @@
 [ext_resource path="res://windows/set_class_s.gd" type="Script" id=65]
 [ext_resource path="res://windows/add_class_s.gd" type="Script" id=66]
 [ext_resource path="res://info/ui/option_button.tscn" type="PackedScene" id=67]
+[ext_resource path="res://windows/furnace.gd" type="Script" id=68]
+[ext_resource path="res://windows/window_child_script/furnace.gd" type="Script" id=69]
+[ext_resource path="res://windows/window_child_script/furnace_tree.gd" type="Script" id=70]
+[ext_resource path="res://windows/window_child_script/msg_furnace.gd" type="Script" id=71]
+[ext_resource path="res://windows/component/furnace/class.gd" type="Script" id=72]
+[ext_resource path="res://info/block_info/block_info.gd" type="Script" id=73]
+[ext_resource path="res://info/ui/num.tscn" type="PackedScene" id=74]
+[ext_resource path="res://info/ui/textedit.tscn" type="PackedScene" id=75]
+[ext_resource path="res://info/bg.tres" type="StyleBox" id=76]
+[ext_resource path="res://info/check/check_num.tscn" type="PackedScene" id=77]
+[ext_resource path="res://info/ui/linetext.tscn" type="PackedScene" id=78]
+[ext_resource path="res://info/ui/path.tscn" type="PackedScene" id=79]
+[ext_resource path="res://info/check/check_option_button.tscn" type="PackedScene" id=80]
+[ext_resource path="res://info/ui/data.tscn" type="PackedScene" id=81]
+[ext_resource path="res://info/ui/bool_button.tscn" type="PackedScene" id=82]
+[ext_resource path="res://info/liquid_block_info/vbox2.gd" type="Script" id=83]
+[ext_resource path="res://windows/component/plant/1.gd" type="Script" id=84]
+[ext_resource path="res://info/ui/select_item_delete.tscn" type="PackedScene" id=85]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -247,6 +265,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="furnace" type="Button" parent="head"]
+margin_left = 440.0
+margin_right = 517.0
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "炼制合成"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="head_grid" type="Control" parent="head"]
 margin_left = 84.0
 margin_top = 27.0
@@ -328,15 +356,1474 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="block_info" parent="info" instance=ExtResource( 3 )]
+[node name="block_info" type="ScrollContainer" parent="info"]
 visible = false
+margin_left = 166.0
 margin_top = 102.0
+margin_right = 1024.0
 margin_bottom = 598.0
+custom_styles/bg = ExtResource( 76 )
+script = ExtResource( 73 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="liquid_block_info" parent="info" instance=ExtResource( 21 )]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/block_info"]
+margin_right = 850.0
+margin_bottom = 976.0
+custom_constants/separation = 0
+
+[node name="head" type="Control" parent="info/block_info/VBoxContainer"]
+margin_right = 850.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 850, 32 )
+
+[node name="delete" type="Button" parent="info/block_info/VBoxContainer/head"]
+margin_left = 790.0
+margin_top = 4.0
+margin_right = 845.0
+margin_bottom = 29.0
+theme = ExtResource( 10 )
+text = "删除"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="info/block_info/VBoxContainer/head"]
+margin_left = 50.0
+margin_right = 82.0
+margin_bottom = 32.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="info/block_info/VBoxContainer"]
+margin_top = 32.0
+margin_right = 850.0
+margin_bottom = 928.0
+custom_constants/separation = 0
+
+[node name="offset" type="VBoxContainer" parent="info/block_info/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="vbox0" type="VBoxContainer" parent="info/block_info/VBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 350.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="ui0" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_right = 300.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "唯一key(不能重复"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 36.0
+margin_right = 300.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "名字"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui2" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 72.0
+margin_right = 300.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "详情"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui23" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
 visible = false
+margin_top = 108.0
+margin_right = 300.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "uv"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui24" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 108.0
+margin_right = 300.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "图片"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "强度(砸损,挖掘"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 180.0
+margin_right = 300.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "挖掘强度(覆盖"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 216.0
+margin_right = 300.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "密度(影响下落速度和最大速度,最大堆叠"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 252.0
+margin_right = 300.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "最大堆叠数"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui7" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 288.0
+margin_right = 300.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "硬度类型(硬砸非实体不碎，脆必碎"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui8" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 324.0
+margin_right = 300.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "显示透明"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui9" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "实体"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 396.0
+margin_right = 300.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "自定义模型"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui11" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 432.0
+margin_right = 300.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "材质"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui12" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 468.0
+margin_right = 300.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "音效"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui13" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 504.0
+margin_right = 300.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "方向类型"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui15" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 540.0
+margin_right = 300.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "掉落"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui17" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 576.0
+margin_right = 300.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "合成"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui14" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 612.0
+margin_right = 300.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "燃料"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui16" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 648.0
+margin_right = 300.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "食物"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui22" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 684.0
+margin_right = 300.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "植物"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui18" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 720.0
+margin_right = 300.0
+margin_bottom = 752.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "周期更新"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui19" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 756.0
+margin_right = 300.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "自定义脚本"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui25" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 792.0
+margin_right = 300.0
+margin_bottom = 824.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "aabb"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui20" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 828.0
+margin_right = 300.0
+margin_bottom = 860.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "翻译名英"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui21" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 864.0
+margin_right = 300.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "翻译详情英"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox1" type="VBoxContainer" parent="info/block_info/VBoxContainer/HBoxContainer"]
+margin_left = 350.0
+margin_right = 366.0
+margin_bottom = 896.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="ui0" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui22" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 36.0
+margin_right = 16.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui25" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 72.0
+margin_right = 16.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui23" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 108.0
+margin_right = 16.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui24" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 144.0
+margin_right = 16.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 180.0
+margin_right = 16.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui2" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 216.0
+margin_right = 16.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 252.0
+margin_right = 16.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 288.0
+margin_right = 16.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 324.0
+margin_right = 16.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 360.0
+margin_right = 16.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui7" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 396.0
+margin_right = 16.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui8" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 432.0
+margin_right = 16.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui9" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 468.0
+margin_right = 16.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 504.0
+margin_right = 16.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui11" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 540.0
+margin_right = 16.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui12" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 576.0
+margin_right = 16.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui13" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 612.0
+margin_right = 16.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui14" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 648.0
+margin_right = 16.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui15" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 684.0
+margin_right = 16.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui16" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 720.0
+margin_right = 16.0
+margin_bottom = 752.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui17" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 756.0
+margin_right = 16.0
+margin_bottom = 788.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui18" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 792.0
+margin_right = 16.0
+margin_bottom = 824.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui19" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 828.0
+margin_right = 16.0
+margin_bottom = 860.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui20" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 864.0
+margin_right = 16.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui21" type="Label" parent="info/block_info/VBoxContainer/HBoxContainer/vbox1"]
+visible = false
+margin_top = 864.0
+margin_right = 16.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox2" type="VBoxContainer" parent="info/block_info/VBoxContainer/HBoxContainer"]
+margin_left = 366.0
+margin_right = 622.0
+margin_bottom = 896.0
+mouse_filter = 2
+theme = ExtResource( 10 )
+custom_constants/separation = 4
+script = ExtResource( 3 )
+
+[node name="ui0" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 78 )]
+
+[node name="ui1" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 78 )]
+margin_top = 36.0
+margin_bottom = 68.0
+
+[node name="ui2" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 75 )]
+
+[node name="ui23" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 108.0
+margin_bottom = 140.0
+TYPE = "uv"
+
+[node name="ui3" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 74 )]
+margin_top = 144.0
+margin_bottom = 176.0
+
+[node name="ui4" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 77 )]
+margin_top = 180.0
+margin_bottom = 212.0
+
+[node name="ui5" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 74 )]
+margin_top = 216.0
+margin_bottom = 248.0
+
+[node name="ui6" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 77 )]
+margin_top = 252.0
+margin_bottom = 284.0
+step = 1.0
+
+[node name="ui7" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 67 )]
+margin_top = 288.0
+margin_bottom = 320.0
+
+[node name="ui8" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 82 )]
+margin_top = 324.0
+margin_right = 256.0
+margin_bottom = 356.0
+
+[node name="ui9" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 82 )]
+margin_top = 360.0
+margin_right = 256.0
+margin_bottom = 392.0
+
+[node name="ui10" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+margin_top = 396.0
+margin_bottom = 428.0
+
+[node name="ui11" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 80 )]
+margin_top = 432.0
+margin_bottom = 464.0
+
+[node name="ui12" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+margin_top = 468.0
+margin_bottom = 500.0
+
+[node name="ui13" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 67 )]
+margin_top = 504.0
+margin_bottom = 536.0
+TYPE = "dire"
+
+[node name="ui14" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_bottom = 572.0
+
+[node name="ui15" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 576.0
+margin_bottom = 608.0
+TYPE = "composite"
+
+[node name="ui16" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 612.0
+margin_bottom = 644.0
+TYPE = "fuel"
+
+[node name="ui17" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 648.0
+margin_bottom = 680.0
+TYPE = "food"
+
+[node name="ui18" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 684.0
+margin_bottom = 716.0
+TYPE = "plant"
+
+[node name="ui19" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 74 )]
+margin_top = 720.0
+margin_bottom = 752.0
+
+[node name="ui20" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+margin_top = 756.0
+margin_bottom = 788.0
+
+[node name="ui24" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 792.0
+margin_bottom = 824.0
+TYPE = "aabb"
+
+[node name="ui21" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 78 )]
+margin_top = 828.0
+margin_bottom = 860.0
+
+[node name="ui22" parent="info/block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 75 )]
+margin_top = 864.0
+margin_bottom = 896.0
+
+[node name="offset" type="Control" parent="info/block_info/VBoxContainer"]
+margin_top = 928.0
+margin_right = 850.0
+margin_bottom = 976.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="liquid_block_info" type="ScrollContainer" parent="info"]
+visible = false
+margin_left = 166.0
 margin_top = 103.0
+margin_right = 1024.0
 margin_bottom = 598.0
+custom_styles/bg = ExtResource( 76 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/liquid_block_info"]
+margin_right = 850.0
+margin_bottom = 580.0
+custom_constants/separation = 0
+
+[node name="head" type="Control" parent="info/liquid_block_info/VBoxContainer"]
+margin_right = 850.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 850, 32 )
+
+[node name="delete" type="Button" parent="info/liquid_block_info/VBoxContainer/head"]
+margin_left = 790.0
+margin_top = 4.0
+margin_right = 845.0
+margin_bottom = 26.0
+theme = ExtResource( 10 )
+text = "删除"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="info/liquid_block_info/VBoxContainer"]
+margin_top = 32.0
+margin_right = 850.0
+margin_bottom = 532.0
+custom_constants/separation = 0
+
+[node name="offset" type="VBoxContainer" parent="info/liquid_block_info/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="vbox0" type="VBoxContainer" parent="info/liquid_block_info/VBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 350.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="ui0" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_right = 300.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "556654645654654654654654654654654654"
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "唯一key(不能重复"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 36.0
+margin_right = 300.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "名字"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui2" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 72.0
+margin_right = 300.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "详情"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui12" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 108.0
+margin_right = 300.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "质量"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "显示透明"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 180.0
+margin_right = 300.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "自定义模型"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 216.0
+margin_right = 300.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "材质"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 252.0
+margin_right = 300.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "周期更新"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui7" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 288.0
+margin_right = 300.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "自定义脚本"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 324.0
+margin_right = 300.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "分支"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui11" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 360.0
+margin_right = 300.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "音效"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui13" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 396.0
+margin_right = 300.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "aabb"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui8" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 432.0
+margin_right = 300.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "翻译名英"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui9" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox0"]
+margin_top = 468.0
+margin_right = 300.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "翻译详情英"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox1" type="VBoxContainer" parent="info/liquid_block_info/VBoxContainer/HBoxContainer"]
+margin_left = 350.0
+margin_right = 366.0
+margin_bottom = 500.0
+mouse_filter = 2
+custom_constants/separation = 4
+
+[node name="ui0" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui13" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 36.0
+margin_right = 16.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui12" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 72.0
+margin_right = 16.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui11" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 108.0
+margin_right = 16.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 144.0
+margin_right = 16.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui2" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 180.0
+margin_right = 16.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui3" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 216.0
+margin_right = 16.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui4" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 252.0
+margin_right = 16.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui5" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 288.0
+margin_right = 16.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui6" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 324.0
+margin_right = 16.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui7" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 360.0
+margin_right = 16.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui8" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 396.0
+margin_right = 16.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui9" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 432.0
+margin_right = 16.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui10" type="Label" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox1"]
+margin_top = 468.0
+margin_right = 16.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 16, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = ":"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox2" type="VBoxContainer" parent="info/liquid_block_info/VBoxContainer/HBoxContainer"]
+margin_left = 366.0
+margin_right = 622.0
+margin_bottom = 500.0
+mouse_filter = 2
+theme = ExtResource( 10 )
+custom_constants/separation = 4
+script = ExtResource( 83 )
+
+[node name="ui0" type="LineEdit" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2"]
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+script = ExtResource( 30 )
+
+[node name="ui1" type="LineEdit" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2"]
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 256, 32 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+script = ExtResource( 30 )
+
+[node name="ui2" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 75 )]
+
+[node name="ui3" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 74 )]
+
+[node name="ui4" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 82 )]
+margin_top = 144.0
+margin_right = 256.0
+margin_bottom = 176.0
+
+[node name="ui5" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+margin_top = 180.0
+margin_bottom = 212.0
+
+[node name="ui6" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 80 )]
+margin_top = 216.0
+margin_bottom = 248.0
+
+[node name="ui7" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 74 )]
+margin_top = 252.0
+margin_bottom = 284.0
+
+[node name="ui8" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+margin_top = 288.0
+margin_bottom = 320.0
+
+[node name="ui9" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 324.0
+margin_bottom = 356.0
+TYPE = "branch"
+
+[node name="ui10" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 79 )]
+
+[node name="ui13" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 81 )]
+margin_top = 396.0
+margin_bottom = 428.0
+TYPE = "aabb"
+
+[node name="ui11" type="LineEdit" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2"]
+margin_top = 432.0
+margin_right = 256.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 256, 32 )
+theme = ExtResource( 10 )
+align = 1
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+script = ExtResource( 30 )
+
+[node name="ui12" parent="info/liquid_block_info/VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 75 )]
+margin_top = 468.0
+margin_bottom = 500.0
+
+[node name="Control" type="Control" parent="info/liquid_block_info/VBoxContainer"]
+margin_top = 532.0
+margin_right = 850.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 0, 48 )
 
 [node name="plant_block_info" parent="info" instance=ExtResource( 24 )]
 margin_top = 103.0
@@ -822,18 +2309,18 @@ __meta__ = {
 }
 
 [node name="vbox" type="VBoxContainer" parent="composite/ScrollContainer"]
-margin_right = 634.0
+margin_right = 638.0
 margin_bottom = 74.0
 custom_constants/separation = 30
 script = ExtResource( 19 )
 
 [node name="composites_grid" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
-margin_right = 634.0
+margin_right = 638.0
 margin_bottom = 22.0
 
 [node name="composites_grid2" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
 margin_top = 52.0
-margin_right = 634.0
+margin_right = 638.0
 margin_bottom = 74.0
 
 [node name="branch" type="WindowDialog" parent="."]
@@ -1019,11 +2506,13 @@ margin_right = 283.0
 margin_bottom = 24.0
 
 [node name="plant" type="WindowDialog" parent="."]
-margin_left = 266.0
-margin_top = 248.0
-margin_right = 811.0
-margin_bottom = 306.0
+visible = true
+margin_left = 333.0
+margin_top = 219.0
+margin_right = 735.0
+margin_bottom = 451.0
 focus_mode = 2
+mouse_filter = 1
 theme = ExtResource( 10 )
 window_title = "植物"
 resizable = true
@@ -1032,29 +2521,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="add" type="Button" parent="plant"]
+margin_left = 345.948
+margin_top = 6.0
+margin_right = 365.948
+margin_bottom = 26.0
+rect_min_size = Vector2( 20, 20 )
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="plant"]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 536.0
-margin_bottom = 48.0
+margin_right = 395.0
+margin_bottom = 223.0
+mouse_filter = 2
 theme = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="plant" type="Control" parent="plant/ScrollContainer"]
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
+[node name="plant" type="HBoxContainer" parent="plant/ScrollContainer"]
+margin_right = 332.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 24 )
+custom_constants/separation = 32
 script = ExtResource( 36 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="text0" type="Label" parent="plant/ScrollContainer/plant"]
-margin_top = 4.0
-margin_right = 72.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 0, 20 )
+[node name="0" type="VBoxContainer" parent="plant/ScrollContainer/plant"]
+margin_right = 150.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 150, 24 )
+
+[node name="text" type="Label" parent="plant/ScrollContainer/plant/0"]
+margin_right = 150.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 72, 20 )
 theme = ExtResource( 10 )
 text = "下一个方块:"
 align = 1
@@ -1063,11 +2569,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="text1" type="Label" parent="plant/ScrollContainer/plant"]
-margin_left = 253.329
-margin_top = 4.0
-margin_right = 333.329
-margin_bottom = 28.0
+[node name="ui0" parent="plant/ScrollContainer/plant/0" instance=ExtResource( 29 )]
+margin_top = 24.0
+margin_right = 150.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 150, 24 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+text = "grass_dirt_111small111"
+
+[node name="1" type="VBoxContainer" parent="plant/ScrollContainer/plant"]
+margin_left = 182.0
+margin_right = 332.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 150, 24 )
+script = ExtResource( 84 )
+
+[node name="text" type="Label" parent="plant/ScrollContainer/plant/1"]
+margin_right = 150.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 10 )
 text = "下方块需求:"
@@ -1077,17 +2597,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ui0" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
-margin_left = 72.0
-margin_top = 4.0
-margin_right = 223.0
-margin_bottom = 28.0
-
-[node name="ui1" parent="plant/ScrollContainer/plant" instance=ExtResource( 29 )]
-margin_left = 344.0
-margin_top = 4.0
-margin_right = 495.0
-margin_bottom = 28.0
+[node name="ui0" parent="plant/ScrollContainer/plant/1" instance=ExtResource( 85 )]
 
 [node name="select_tool" type="WindowDialog" parent="."]
 margin_left = 309.0
@@ -1554,6 +3064,268 @@ __meta__ = {
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 61 )
+
+[node name="furnace" type="WindowDialog" parent="."]
+margin_left = 107.0
+margin_top = 83.0
+margin_right = 934.0
+margin_bottom = 571.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "炼制系统"
+resizable = true
+script = ExtResource( 68 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="furnace"]
+visible = false
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 20 )
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tree" type="Tree" parent="furnace"]
+margin_top = 2.0
+margin_right = 156.0
+margin_bottom = 488.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/bg = SubResource( 4 )
+allow_reselect = true
+allow_rmb_select = true
+hide_root = true
+drop_mode_flags = 1
+script = ExtResource( 70 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="class" type="WindowDialog" parent="furnace"]
+margin_left = 299.906
+margin_top = 177.0
+margin_right = 496.906
+margin_bottom = 248.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "分类"
+resizable = true
+script = ExtResource( 72 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="furnace/class"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 191.0
+margin_bottom = 66.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Control" parent="furnace/class/ScrollContainer"]
+margin_right = 180.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 180, 50 )
+
+[node name="Label" type="Label" parent="furnace/class/ScrollContainer/control"]
+margin_left = 5.90601
+margin_top = 8.0
+margin_right = 43.906
+margin_bottom = 28.0
+theme = ExtResource( 10 )
+text = "名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="furnace/class/ScrollContainer/control" instance=ExtResource( 51 )]
+margin_left = 48.854
+margin_top = 8.0
+margin_right = 169.854
+margin_bottom = 28.0
+
+[node name="sure" type="Button" parent="furnace/class/ScrollContainer/control"]
+margin_left = 67.854
+margin_top = 39.0
+margin_right = 105.854
+margin_bottom = 59.0
+theme = ExtResource( 10 )
+text = "确定"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="furnace"]
+margin_left = 159.0
+margin_top = 2.0
+margin_right = 820.0
+margin_bottom = 479.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="furnace" type="GridContainer" parent="furnace/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+mouse_filter = 2
+script = ExtResource( 69 )
+
+[node name="msg_furnace" type="Panel" parent="furnace"]
+visible = false
+margin_left = 104.0
+margin_top = 32.0
+margin_right = 205.0
+margin_bottom = 202.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 71 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button0" type="Button" parent="furnace/msg_furnace"]
+margin_left = 4.95786
+margin_top = 5.0
+margin_right = 95.9579
+margin_bottom = 25.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button1" type="Button" parent="furnace/msg_furnace"]
+margin_left = 5.12643
+margin_top = 25.0
+margin_right = 96.1264
+margin_bottom = 45.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "修改分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="furnace/msg_furnace"]
+margin_left = 4.95786
+margin_top = 45.0
+margin_right = 95.9579
+margin_bottom = 65.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "删除分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button3" type="Button" parent="furnace/msg_furnace"]
+margin_left = 5.12643
+margin_top = 65.0
+margin_right = 96.1264
+margin_bottom = 85.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button4" type="Button" parent="furnace/msg_furnace"]
+margin_left = 5.12644
+margin_top = 85.0
+margin_right = 96.1265
+margin_bottom = 105.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "删除配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button5" type="Button" parent="furnace/msg_furnace"]
+margin_left = 5.12644
+margin_top = 105.0
+margin_right = 96.1265
+margin_bottom = 125.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "复制配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button6" type="Button" parent="furnace/msg_furnace"]
+margin_left = 4.95786
+margin_top = 125.0
+margin_right = 95.9579
+margin_bottom = 145.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "粘贴配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button7" type="Button" parent="furnace/msg_furnace"]
+margin_left = 4.95786
+margin_top = 145.0
+margin_right = 95.9579
+margin_bottom = 165.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "刷新"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="select_item" type="WindowDialog" parent="."]
 margin_left = 266.0

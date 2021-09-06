@@ -27,6 +27,8 @@ func on_changed(d,i) -> void:
 			Overall.data.block[d] = data
 			Overall.data.block.erase(data.key)
 			Overall.update_order(data.key,d,data.name)
+			for dd in Overall.data.block[d].composite:
+				dd.name = d
 			data.key = d
 	if i == 4 && !$ui4.get_node("check").pressed:
 		return
@@ -100,7 +102,7 @@ func _update(data) -> void:
 	$ui16.get_node("text").text = var2str(data.fuel)
 	$ui17.get_node("text").text = var2str(data.food)
 	$ui18.get_node("text").text = var2str(data.plant)
-	$ui19.pressed = data.tick
+	$ui19.value = data.tick
 	$ui20.get_node("LineEdit").text = data.script
 	$ui21.text = data.name_en
 	$ui22.get_node("TextEdit").text = data.info_en

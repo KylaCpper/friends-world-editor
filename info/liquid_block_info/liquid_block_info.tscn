@@ -504,9 +504,8 @@ script = ExtResource( 3 )
 [node name="ui3" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 8 )]
 
 [node name="ui4" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
 margin_top = 144.0
+margin_right = 256.0
 margin_bottom = 176.0
 
 [node name="ui5" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 4 )]
@@ -517,9 +516,7 @@ margin_bottom = 212.0
 margin_top = 216.0
 margin_bottom = 248.0
 
-[node name="ui7" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
+[node name="ui7" parent="VBoxContainer/HBoxContainer/vbox2" instance=ExtResource( 8 )]
 margin_top = 252.0
 margin_bottom = 284.0
 

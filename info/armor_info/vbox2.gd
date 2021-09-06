@@ -24,6 +24,8 @@ func on_changed(d,i) -> void:
 			Overall.data.armor[d] = data
 			Overall.data.armor.erase(data.key)
 			Overall.update_order(data.key,d,data.name)
+			for dd in Overall.data.armor[d].composite:
+				dd.name = d
 			data.key = d
 	if i==7 || i==8 || i ==9 || i==10:
 		pass

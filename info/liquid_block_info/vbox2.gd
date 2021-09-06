@@ -44,7 +44,7 @@ func _update(data) -> void:
 	$ui3.value = data.mass
 	$ui4.pressed = data.transparent
 	$ui5.get_node("LineEdit").text = data.model
-	$ui7.pressed = data.tick
+	$ui7.value = data.tick
 	$ui8.get_node("LineEdit").text = data.script
 	$ui9.get_node("text").text = var2str(data.branch)
 	$ui10.get_node("LineEdit").text = data.audio

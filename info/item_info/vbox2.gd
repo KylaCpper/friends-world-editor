@@ -26,6 +26,8 @@ func on_changed(d,i) -> void:
 			Overall.data.item[d] = data
 			Overall.data.item.erase(data.key)
 			Overall.update_order(data.key,d,data.name)
+			for dd in Overall.data.item[d].composite:
+				dd.name = d
 			data.key = d
 	if i == 5 && !$ui5.get_node("check").pressed:
 		return
