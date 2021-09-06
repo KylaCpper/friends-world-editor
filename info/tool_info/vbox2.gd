@@ -37,6 +37,8 @@ func on_changed(d,i) -> void:
 			Overall.data["tool"][d] = data
 			Overall.data["tool"].erase(data.key)
 			Overall.update_order(data.key,d,data.name)
+			for dd in Overall.data["tool"][d].composite:
+				dd.name = d
 			data.key = d
 	if i==17:
 #		if typeof(d) == TYPE_ARRAY:

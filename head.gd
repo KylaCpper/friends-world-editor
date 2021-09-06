@@ -10,6 +10,7 @@ func _ready() -> void:
 	$export.connect("pressed",self,"on_export")
 	$export_order.connect("pressed",self,"on_export_order")
 	$buff.connect("pressed",self,"on_buff")
+	$furnace.connect("pressed",self,"on_furnace")
 #	$import_img0.connect("pressed",self,"on_import_img0")
 #	$import_img1.connect("pressed",self,"on_import_img1")
 	var p = Function.get_save("set.cfg")
@@ -38,6 +39,11 @@ func on_buff() -> void:
 		Overall.msg_warn_node._show("错误","需要新建项目")
 		return
 	Overall.buff_node._show()
+func on_furnace() -> void:
+	if !Overall.head_node.open_project:
+		Overall.msg_warn_node._show("错误","需要新建项目")
+		return
+	Overall.furnace_node._show()
 func on_import_img0() -> void:
 	select_png = 0
 	Overall.path_g_node._show("导入方块图",self)
@@ -79,6 +85,9 @@ func _changed_dir(path:String) -> void:
 		Overall.order_key = data.order_key
 		Overall.key_list = data.key_list
 		Overall.buff = data.buff
+		if "furnace" in data:
+			Overall.furnace = data.furnace
+		Overall.furnace_node._update()
 		if "windows" in data:
 			Overall.windows = data.windows
 			for key in data.windows:
@@ -160,7 +169,8 @@ func _changed_dir(path:String) -> void:
 			"order_key":Overall.order_key,
 			"key_list":Overall.key_list,
 			"buff":Overall.buff,
-			"windows":Overall.windows
+			"windows":Overall.windows,
+			"furnace":Overall.furnace,
 		}
 		Overall.save_msg_node.popup()
 		data = data.duplicate(true)
@@ -232,7 +242,8 @@ func _input(event) -> void:
 				"order_key":Overall.order_key,
 				"key_list":Overall.key_list,
 				"buff":Overall.buff,
-				"windows":Overall.windows
+				"windows":Overall.windows,
+				"furnace":Overall.furnace,
 			}
 			Overall.save_msg_node.popup()
 			data = data.duplicate(true)

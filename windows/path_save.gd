@@ -30,6 +30,7 @@ func on_hide(path:String) -> void:
 		var data = {}
 		var gdata = Overall.g_data.duplicate(true)
 		var composite = {}
+		var furnace = {}
 		var block = {}
 		var liquid_block = {}
 		var item = {}
@@ -46,6 +47,15 @@ func on_hide(path:String) -> void:
 			buff[d.key] = d
 		for key in Overall.order:
 			order.append(Overall.order[key])
+		for key in Overall.furnace:
+			var d = Overall.furnace[key].data
+			for dd in d:
+				var size = dd.table.size()
+				if size > 0:
+					if !size in furnace:furnace[size]=[]
+					furnace[size].append({"export":dd["export"],"table":dd.table,"energy":dd.energy,"time":dd.time})
+			
+			
 		for age in gdata:
 			composite[age] = {"default":{},"craft_table":{}}
 			class_[age] = {}
@@ -55,6 +65,7 @@ func on_hide(path:String) -> void:
 			class_[age].name_en = gdata[age].age.name_en
 			class_[age].info_en = gdata[age].age.info_en
 			class_[age].img = gdata[age].age.img
+			class_[age].index = gdata[age].age.index
 			
 			for type in gdata[age]:
 				if type=="block" ||type=="liquid_block" ||type=="item" ||type=="tool" ||type=="armor":
@@ -64,14 +75,15 @@ func on_hide(path:String) -> void:
 #							for d in gdata[age][type][key].uv:
 #								uv[gdata[age][type][key].key] = d
 							if !"aabb" in gdata[age][type][key]:
+								
 								gdata[age][type][key]["aabb"]=null
 							else:
 								var aabb = gdata[age][type][key].aabb
 								if !aabb[0]&&!aabb[1]&&!aabb[2]&&!aabb[3]&&!aabb[4]&&!aabb[5]:
 									gdata[age][type][key]["aabb"]=null
+#									gdata[age][type][key].erase("aabb")
 							#合成表
-							for d in gdata[age][type][key].composite:
-								composite[age][d.craft][d.name]=d
+							_composite(gdata[age][type][key].composite,composite[age],furnace)
 							#物
 #							for keyy in gdata[age][type][key]:
 							gdata[age][type][key].erase("tex")
@@ -83,6 +95,15 @@ func on_hide(path:String) -> void:
 							block[gdata[age][type][key].key] = gdata[age][type][key]
 							
 						if type == "liquid_block":
+							if !gdata[age][type][key]["branch"][0]:
+								gdata[age][type][key]["lv"]=0
+								var next_branch = gdata[age][type][key]["branch"][1]
+								var i := 1
+								for ii in range(10):
+									if next_branch:
+										gdata[age][type][next_branch]["lv"]=i
+										i = i +1
+										next_branch = gdata[age][type][next_branch]["branch"][1]
 							if !"aabb" in gdata[age][type][key]:
 								gdata[age][type][key]["aabb"]=null
 							else:
@@ -93,8 +114,7 @@ func on_hide(path:String) -> void:
 #							for d in gdata[age][type][key].uv:
 #								uv[gdata[age][type][key].key] = d
 							#合成表
-							for d in gdata[age][type][key].composite:
-								composite[age][d.craft][d.name]=d
+							_composite(gdata[age][type][key].composite,composite[age],furnace)
 							#物
 							gdata[age][type][key].erase("tex")
 							gdata[age][type][key].erase("img")
@@ -103,24 +123,21 @@ func on_hide(path:String) -> void:
 								
 						if type == "item":
 							#合成表
-							for d in gdata[age][type][key].composite:
-								composite[age][d.craft][d.name]=d
+							_composite(gdata[age][type][key].composite,composite[age],furnace)
 							#物
 							gdata[age][type][key].erase("tex")
 #							for keyy in gdata[age][type][key]:
 							item[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "tool":
 							#合成表
-							for d in gdata[age][type][key].composite:
-								composite[age][d.craft][d.name]=d
+							_composite(gdata[age][type][key].composite,composite[age],furnace)
 							#物
 							gdata[age][type][key].erase("tex")
 #							for keyy in gdata[age][type][key]:
 							tool_[gdata[age][type][key].key] = gdata[age][type][key]
 						if type == "armor":
 							#合成表
-							for d in gdata[age][type][key].composite:
-								composite[age][d.craft][d.name]=d
+							_composite(gdata[age][type][key].composite,composite[age],furnace)
 							#物
 							gdata[age][type][key].erase("tex")
 #							for keyy in gdata[age][type][key]:
@@ -132,11 +149,21 @@ func on_hide(path:String) -> void:
 		data["tool"] = tool_
 #		data["armor"] = armor
 		data["composite"] = composite
+		data["furnace"] = furnace
 		data["age"] = class_
 		data["order"] = order
 		data["buff"] = buff
 		Function.write_file(path,var2str(data),null)
 
-
+func _composite(gcomposite,craft,furnace) -> void:
+	for d in gcomposite:
+		if d.craft == "furnace":
+			var size = d.table.size()
+			if !size in furnace:furnace[size] = {}
+			if !d.name in furnace[size]:furnace[size][d.name] = []
+			furnace[size][d.name].append(d)
+		else:
+			if !d.name in craft[d.craft]:craft[d.craft][d.name]=[]
+			craft[d.craft][d.name].append(d)
 
 

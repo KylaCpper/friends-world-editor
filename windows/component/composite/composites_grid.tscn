@@ -68,10 +68,42 @@ rect_min_size = Vector2( 80, 22 )
 clip_text = true
 TYPE = "craft"
 
-[node name="label" type="Label" parent="."]
+[node name="furnace" type="Control" parent="."]
 margin_left = 366.0
+margin_right = 366.0
+margin_bottom = 22.0
+
+[node name="text" type="Label" parent="furnace"]
+margin_left = -366.0
+margin_top = 27.0474
+margin_right = -333.0
+margin_bottom = 47.0474
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 4 )
+text = "热值:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" type="SpinBox" parent="furnace"]
+margin_left = -329.0
+margin_top = 25.0
+margin_right = -229.0
+margin_bottom = 47.0
+theme = ExtResource( 4 )
+max_value = 999.0
+step = 0.01
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 370.0
 margin_top = 1.0
-margin_right = 412.0
+margin_right = 416.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 4 )
@@ -80,8 +112,8 @@ align = 1
 valign = 1
 
 [node name="add" type="Button" parent="."]
-margin_left = 416.0
-margin_right = 435.0
+margin_left = 420.0
+margin_right = 439.0
 margin_bottom = 22.0
 theme = ExtResource( 4 )
 text = "+"
@@ -90,5 +122,5 @@ __meta__ = {
 }
 
 [node name="composite0" parent="." instance=ExtResource( 1 )]
-margin_left = 439.0
-margin_right = 634.0
+margin_left = 443.0
+margin_right = 638.0

@@ -1,5 +1,6 @@
 extends Node
 var windows :={}
+var furnace := {}
 var path = ""
 var block_img :Texture
 var block_img_model :Texture
@@ -38,6 +39,7 @@ var data = {
 	}
 
 }
+var furnace_node
 var info_node
 const head_node_type := preload("res://head.gd")
 var head_node :head_node_type
@@ -148,6 +150,7 @@ func get_max(mass:float) -> int:
 func update_order(okey,nkey,name_) -> void:
 	if okey in key_list:
 		 key_list[nkey]=key_list[okey]
+
 	else:
 		 key_list[nkey]="item"
 	key_list.erase(okey)
