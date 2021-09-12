@@ -7,12 +7,13 @@ var data := {
 	"craft":"default"
 	
 }
+
 var composite_grid_tscn := preload("res://windows/component/composite/composite_grid.tscn")
 func _ready() -> void:
 	$add.connect("pressed",self,"on_pressed")
 	$ui2.connect("_changed",self,"on_craft_changed")
 #	$furnace/ui0.connect("value_changed",self,"on_furnaceed")
-	$furnace.hide()
+#	$furnace.hide()
 func on_pressed() -> void:
 	var tscn = composite_grid_tscn.instance()
 	if !"table" in data:data["table"]={}
@@ -54,10 +55,18 @@ func set_data() -> void:
 		
 
 func on_craft_changed(text:String) -> void:
-	if text == "furnace":
-		$furnace.show()
-	else:
-		$furnace.hide()
+#	if text == "furnace":
+#		if has_node("furnace"):
+#			$furnace.show()
+#		else:
+#			yield(self,"ready")
+#			$furnace.show()
+#	else:
+#		if has_node("furnace"):
+#			$furnace.hide()
+#		else:
+#			yield(self,"ready")
+#			$furnace.hide()
 	data.craft = text
 func on_furnaceed(num) -> void:
 	data["energy"] = num
