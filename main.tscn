@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://windows/window_child_script/food.gd" type="Script" id=17]
 [ext_resource path="res://windows/composite.gd" type="Script" id=18]
 [ext_resource path="res://windows/window_child_script/composite.gd" type="Script" id=19]
-[ext_resource path="res://windows/component/composite/composites_grid.tscn" type="PackedScene" id=20]
 [ext_resource path="res://info/liquid_block_info/liquid_block_info.gd" type="Script" id=21]
 [ext_resource path="res://windows/branch.gd" type="Script" id=22]
 [ext_resource path="res://windows/window_child_script/branch.gd" type="Script" id=23]
@@ -2274,6 +2273,7 @@ __meta__ = {
 }
 
 [node name="composite" type="WindowDialog" parent="."]
+visible = true
 margin_left = 154.0
 margin_top = 140.0
 margin_right = 934.0
@@ -2309,19 +2309,8 @@ __meta__ = {
 }
 
 [node name="vbox" type="VBoxContainer" parent="composite/ScrollContainer"]
-margin_right = 638.0
-margin_bottom = 74.0
 custom_constants/separation = 30
 script = ExtResource( 19 )
-
-[node name="composites_grid" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
-margin_right = 638.0
-margin_bottom = 22.0
-
-[node name="composites_grid2" parent="composite/ScrollContainer/vbox" instance=ExtResource( 20 )]
-margin_top = 52.0
-margin_right = 638.0
-margin_bottom = 74.0
 
 [node name="branch" type="WindowDialog" parent="."]
 margin_left = 297.0
@@ -2506,7 +2495,6 @@ margin_right = 283.0
 margin_bottom = 24.0
 
 [node name="plant" type="WindowDialog" parent="."]
-visible = true
 margin_left = 333.0
 margin_top = 219.0
 margin_right = 735.0

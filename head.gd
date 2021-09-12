@@ -97,11 +97,14 @@ func _changed_dir(path:String) -> void:
 #				node.on_resized()
 		for d in data.buff:
 			var img1 = Image.new()
-			img1.load(Overall.path+d.img)
-			img1.resize(16,16)
-			var tex1 = ImageTexture.new()
-			tex1.create_from_image(img1,0)
-			d.tex = tex1
+			if Function.is_file(Overall.path+d.img):
+				img1.load(Overall.path+d.img)
+				img1.resize(16,16)
+				var tex1 = ImageTexture.new()
+				tex1.create_from_image(img1,0)
+				d.tex = tex1
+			else:
+				d.tex = null
 		for age in data.g_data:
 			for g in data.g_data[age].age.group:
 				if g[2]:
@@ -114,11 +117,14 @@ func _changed_dir(path:String) -> void:
 #			data.g_data[age].age["group"]=[["block",0,"",null],["liquid_block",1,"",null],["item",2,"",null],["tool",3,"",null],["armor",4,"",null]]
 			
 			var img1 = Image.new()
-			img1.load(Overall.path+data.g_data[age].age.img)
-			img1.resize(16,16)
-			var tex1 = ImageTexture.new()
-			tex1.create_from_image(img1,0)
-			data.g_data[age].age.tex = tex1
+			if Function.is_file(Overall.path+data.g_data[age].age.img):
+				img1.load(Overall.path+data.g_data[age].age.img)
+				img1.resize(16,16)
+				var tex1 = ImageTexture.new()
+				tex1.create_from_image(img1,0)
+				data.g_data[age].age.tex = tex1
+			else:
+				data.g_data[age].age.tex = null
 			
 			for type in data.g_data[age]:
 				if type == "item" || type == "tool" || type == "armor" || type == "block":
@@ -128,11 +134,14 @@ func _changed_dir(path:String) -> void:
 						data.g_data[age][type][key]["tex"]=null
 						if data.g_data[age][type][key].img:
 							var img = Image.new()
-							img.load(Overall.path+data.g_data[age][type][key].img)
-							img.resize(16,16)
-							var tex = ImageTexture.new()
-							tex.create_from_image(img,0)
-							data.g_data[age][type][key]["tex"] = tex
+							if Function.is_file(Overall.path+data.g_data[age][type][key].img):
+								img.load(Overall.path+data.g_data[age][type][key].img)
+								img.resize(16,16)
+								var tex = ImageTexture.new()
+								tex.create_from_image(img,0)
+								data.g_data[age][type][key]["tex"] = tex
+							else:
+								data.g_data[age][type][key]["tex"] = null
 				if type == "block" || type == "liquid_block":
 					for key in data.g_data[age][type]:
 #						data.g_data[age][type][key]["class"] = type
