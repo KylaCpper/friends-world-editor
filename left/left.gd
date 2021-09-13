@@ -20,7 +20,7 @@ func _ready():
 	Overall.left_node = self
 	
 	_update()
-
+	connect("item_activated",self,"on_double")
 	connect("item_selected",self,"on_select")
 	connect("item_rmb_selected",self,"on_select_rmb")
 func _change(nkey,nname) -> void:
@@ -120,8 +120,25 @@ func _update() -> void:
 		if data.armor[key].tex:
 			be.set_icon(0,d.tex)
 		be.set_text(0,d.name)
-
-
+	for d in group:
+		if current_select == d.get_tooltip(0):
+			d.collapsed = false
+		else:
+			d.collapsed = true
+var current_select := ""
+func on_double() -> void:
+	var key = get_selected().get_tooltip(0)
+	var parent_name = get_selected().get_parent().get_tooltip(0)
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	if parent_name == "root":
+		if current_select == key:
+			current_select = ""
+			get_selected().collapsed = true
+		else:
+			get_selected().collapsed = false
+			current_select = key
 func on_select() -> void:
 	data = Overall.data
 	var key = get_selected().get_tooltip(0)
