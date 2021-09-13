@@ -2273,7 +2273,6 @@ __meta__ = {
 }
 
 [node name="composite" type="WindowDialog" parent="."]
-visible = true
 margin_left = 154.0
 margin_top = 140.0
 margin_right = 934.0

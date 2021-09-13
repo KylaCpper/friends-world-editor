@@ -35,7 +35,7 @@ func _update(data) -> void:
 	if !"table" in data:
 		return
 	for node in get_children():
-		if node.name != "add" && node.name != "ui0" && node.name != "time" && node.name != "ui1" && node.name != "label" && node.name != "num" && node.name != "ui2":
+		if node.name != "add" && node.name != "ui0" && node.name != "time" && node.name != "ui1" && node.name != "label" && node.name != "num" && node.name != "ui2" &&  node.name != "furnace":
 			node.free()
 	for key in data.table:
 		var tscn = composite_grid_tscn.instance()
@@ -49,7 +49,7 @@ func set_data() -> void:
 	data.time = $ui1.value
 	data.craft = $ui2.craft[$ui2.selected]
 	for node in get_children():
-		if node.name != "add" && node.name != "ui0" && node.name != "time" && node.name != "ui1" && node.name != "label" && node.name != "num" && node.name != "ui2":
+		if node.name != "add" && node.name != "ui0" && node.name != "time" && node.name != "ui1" && node.name != "label" && node.name != "num" && node.name != "ui2" && node.name != "furnace":
 			if node.name_:
 				data.table[node.name_]=node.num
 		
