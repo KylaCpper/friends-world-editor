@@ -41,7 +41,6 @@ func on_changed(d,i) -> void:
 			tex.create_from_image(img,0)
 			data["tex"] = tex
 			Overall.left_node._update()
-		
 	data[key_list[i]] = d
 	if i == 4:
 		if !$ui5.get_node("check").pressed:
@@ -67,7 +66,7 @@ func _update(data) -> void:
 	$ui9.get_node("text").text = var2str(data.composite)
 	$ui10.get_node("LineEdit").text = data.script
 	$ui11.text = data.name_en
-	$ui2.get_node("TextEdit").text = data.info_en
+	$ui12.get_node("TextEdit").text = data.info_en
 	
 	
 	$ui6.data = data.fuel

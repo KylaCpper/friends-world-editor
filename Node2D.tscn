@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://boot.png" type="Texture" id=1]
+[ext_resource path="res://apk_icon_front.png" type="Texture" id=2]
+[ext_resource path="res://block.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+texture = ExtResource( 1 )

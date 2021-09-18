@@ -20,5 +20,5 @@ func on_pressed() -> void:
 	else:
 		editable = true
 	emit_signal("_switch",$check.pressed)
-func on_changed(num:int) -> void:
+func on_changed(num) -> void:
 	emit_signal("_changed",num)
