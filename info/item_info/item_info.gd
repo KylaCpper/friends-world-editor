@@ -19,6 +19,7 @@ var data_be := {
 	"composite":[],
 	"tex":null,
 	"script":"",
+	"other":"",
 	"name_en":"","info_en":""
 }
 func _ready() -> void:

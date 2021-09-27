@@ -26,6 +26,7 @@ var data_be := {
 	"tex":null,
 	"fuel":[],
 	"food":[],
+	"other":"",
 	"name_en":"","info_en":""
 }
 func _ready() -> void:

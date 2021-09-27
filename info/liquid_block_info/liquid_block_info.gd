@@ -35,6 +35,7 @@ var data_be := {
 	"plant":"",
 	"aabb":[],
 	"uv":[],
+	"other":"",
 	"tex":Overall.model_img,
 	"name_en":"","info_en":""
 }

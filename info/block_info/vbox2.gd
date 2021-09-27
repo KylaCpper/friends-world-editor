@@ -4,7 +4,7 @@ var data := {}
 var key_list = [
 	"key","name","info","intensity","intensity_dig","mass","max","smash","transparent",
 	"entity","model","material","audio","dire","drop","composite","fuel","food","plant","tick",
-	"script","name_en","info_en","uv","img"
+	"script","name_en","info_en","uv","img","other"
 ]
 
 func _ready() -> void:
@@ -12,7 +12,7 @@ func _ready() -> void:
 	for child in get_children():
 		child.connect("focus_exited",self,"on_focus_exited",[child])
 		i = i+1
-	for ii in range(24):
+	for ii in range(26):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 	$ui4.connect("_switch",self,"on_switch",[4])
 	$ui6.connect("_switch",self,"on_switch",[6])
@@ -108,7 +108,10 @@ func _update(data) -> void:
 	$ui22.get_node("TextEdit").text = data.info_en
 	$ui23.get_node("text").text = var2str(data.uv)
 	$ui24.get_node("text").text = var2str(data.aabb)
-	
+	if "other" in data:
+		$ui25.get_node("TextEdit").text = data.other
+	else:
+		$ui25.get_node("TextEdit").text = ""
 	$ui14.data = data.drop
 	$ui15.data = data.composite
 	$ui16.data = data.fuel
