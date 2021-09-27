@@ -1,5 +1,5 @@
 extends Control
-export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv","aabb")var TYPE = "drop"
+export (String ,"drop","food","composite","branch","fuel","plant","tool","damage","uv","aabb","other")var TYPE = "drop"
 signal _changed(text_)
 var data
 var select := 0

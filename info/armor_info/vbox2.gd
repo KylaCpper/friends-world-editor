@@ -4,7 +4,7 @@ var data := {}
 
 var key_list = [
 	"key","name","info","img","armor","hp","mass","damage","fuel",
-	"food","composite","script","name_en","info_en","img_material"
+	"food","composite","script","name_en","info_en","img_material","other"
 ]
 func _ready() -> void:
 	var i := 0
@@ -61,7 +61,10 @@ func _update(data) -> void:
 	$ui13.get_node("TextEdit").text = data.info_en
 	
 	$ui14.get_node("LineEdit").text = data.img_material
-	
+	if "other" in data:
+		$ui15.get_node("TextEdit").text = data.other
+	else:
+		$ui15.get_node("TextEdit").text = ""
 	$ui7.data = data.damage
 	$ui8.data = data.fuel
 	$ui9.data = data.food

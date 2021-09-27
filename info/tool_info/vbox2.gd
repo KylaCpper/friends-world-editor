@@ -5,7 +5,7 @@ var data := {}
 var key_list = [
 	"key","name","info","img","mass","tool","speed","lv",
 	"hp","atk","damage","composite","script","fuel","food",
-	"name_en","info_en","tool"
+	"name_en","info_en","tool","other"
 ]
 func _ready() -> void:
 	var i := 0
@@ -14,7 +14,7 @@ func _ready() -> void:
 #		child.connect("text_changed",self,"on_text_changed",[child,i])
 		i = i+1
 	$ui17.connect("_pressed",self,"on_pressed")
-	for ii in range(18):
+	for ii in range(19):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 func on_pressed(press:bool) -> void:
 	if press:
@@ -96,8 +96,10 @@ func _update(data) -> void:
 	$ui14.get_node("text").text = var2str(data.food)
 	$ui15.text = data.name_en
 	$ui16.get_node("TextEdit").text = data.info_en
-	
-	
+	if "other" in data:
+		$ui18.get_node("TextEdit").text = data.other
+	else:
+		$ui18.get_node("TextEdit").text = ""
 	$ui10.data = data.damage
 	$ui11.data = data.composite
 	$ui13.data = data.fuel

@@ -4,7 +4,7 @@ var data := {}
 var key_list = [
 	"key","name","info","mass","transparent",
 	"model","material","tick",
-	"script","branch","audio","name_en","info_en"
+	"script","branch","audio","name_en","info_en","other"
 ]
 func _ready() -> void:
 	var i := 0
@@ -12,7 +12,7 @@ func _ready() -> void:
 		child.connect("focus_exited",self,"on_focus_exited",[child])
 #		child.connect("text_changed",self,"on_text_changed",[child,i])
 		i = i+1
-	for ii in range(13):
+	for ii in range(14):
 		get_node("ui"+str(ii)).connect("_changed",self,"on_changed",[ii])
 	$ui6.connect("_switch",self,"on_switch",[6])
 func on_changed(d,i) -> void:
@@ -51,7 +51,10 @@ func _update(data) -> void:
 	$ui11.text = data.name_en
 	$ui12.get_node("TextEdit").text = data.info_en
 	$ui13.get_node("text").text = var2str(data.aabb)
-	
+	if "other" in data:
+		$ui14.get_node("TextEdit").text = data.other
+	else:
+		$ui14.get_node("TextEdit").text = ""
 	$ui9.data = data.branch
 	$ui13.data = data.aabb
 	

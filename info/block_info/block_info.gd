@@ -38,6 +38,7 @@ var data_be := {
 	"img":"",
 	"tex":null,
 	"aabb":[],
+	"other":"",
 	"name_en":"","info_en":""
 }
 func _ready() -> void:

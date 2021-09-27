@@ -31,6 +31,7 @@ var data_be := {
 	"liquid":false,
 	"branch":["","","",""],
 	"plant":[],
+	"other":"",
 	"name_en":"","info_en":""
 }
 func _ready() -> void:
