@@ -153,6 +153,8 @@ func on_hide(path:String) -> void:
 		data["age"] = class_
 		data["order"] = order
 		data["buff"] = buff
+		var p = path.left(path.find_last("/"))
+		Overall.head_node._save(p)
 		Function.write_file(path,var2str(data),null)
 
 func _composite(gcomposite,craft,furnace) -> void:

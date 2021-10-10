@@ -12,8 +12,8 @@ func _ready() -> void:
 	$button6.connect("pressed",self,"_on_pressed6")
 	$button7.connect("pressed",self,"_on_pressed7")
 func _show(vec,key,index) -> void:
-#	global_rect_position = vec
 	rect_global_position = vec
+#	rect_position = vec
 	self.key = key
 	self.index = index
 	show()
@@ -49,23 +49,26 @@ func on_sure() -> void:
 func _on_pressed5() -> void:
 	if key != null:
 		if key in Overall.furnace:
-			copy = Overall.furnace[key].data[index].duplicate(true)
+			copy = Overall.furnace[key].data[index]
 func _on_pressed6() -> void:
 	if key != null:
 		if key in Overall.furnace:
-			Overall.furnace[key].data.append(copy)
-			_update_tree()
+			if copy:
+				copy = copy.duplicate(true)
+				Overall.furnace[key].data.append(copy)
+				_update_tree()
 func _on_pressed7() -> void:
 	_update_tree()
 func _update_tree() -> void:
 	$"../tree"._update()
 func _update(data:Directory) -> void:
 	pass
-func _input(event) ->void:
-	if $"../".visible == false:return
+func _input(event):
 	if event.is_action_pressed("mouse_left"):
 		yield(get_tree(),"idle_frame")
 		hide()
+func gui_input(event) ->void:
+	if $"../".visible == false:return
 	if event.is_action_pressed("ctrl+c"):
 		_on_pressed5()
 	if event.is_action_pressed("ctrl+v"):

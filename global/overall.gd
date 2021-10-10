@@ -162,7 +162,8 @@ func update_order(okey,nkey,name_) -> void:
 		Overall.order_node._update()
 #		order_c = true
 	item_c = true
-	Overall.left_node._change(nkey,name_)
+	Overall.left_node._update()
+#	Overall.left_node._change(nkey,name_)
 #		update_list()
 func next_key_list(name_:String) -> String:
 	item_c = true

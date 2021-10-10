@@ -47,6 +47,9 @@ func on_select() -> void:
 		$"../ScrollContainer/furnace"._update(data[parent_name].data[index],key,index)
 		$"../msg_furnace".key = key
 		$"../msg_furnace".index = index
+	else:
+		key = index
+		$"../msg_furnace".key = key
 func on_select_rmb(vec2:Vector2) -> void:
 	vec2 = vec2 + Vector2(100,80)
 	var data = Overall.furnace
@@ -65,11 +68,11 @@ func on_select_rmb(vec2:Vector2) -> void:
 		key = index
 		self.index = null
 		$"../msg_furnace"._show(vec2,key,null)
-func _input(event) -> void:
+func _gui_input(event) -> void:
 	if event.is_action_pressed("mouse_right"):
 		yield(get_tree(),"idle_frame")
-		if get_global_rect().has_point(event.position):
-#			yield(get_tree(),"idle_frame")
-			$"../msg_furnace"._show(event.position,null,null)
-		else:
-			$"../msg_furnace".hide()
+#		if get_global_rect().has_point(event.position):
+		$"../msg_furnace"._show(event.global_position,null,null)
+#		else:
+#			$"../msg_furnace".hide()
+	$"../msg_furnace".gui_input(event)
