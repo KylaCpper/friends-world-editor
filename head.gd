@@ -18,16 +18,20 @@ func _ready() -> void:
 		Overall.path = p
 
 	$import_img0/num.connect("value_changed",self,"on_changed")
+var new := 1
 func on_new() -> void:
 	open_dir = 1
+	new = 1
 	Overall.path_dir_node._show("选择工作目录",self)
 	
 func on_open() -> void:
 	open_dir = 0
+	new = 0
 	Overall.path_dir_node._show("打开项目",self)
 	
 func on_save() -> void:
 	open_dir = 1
+	new = 0
 	Overall.path_dir_node._show("保存项目",self)
 func on_export() -> void:
 #	Overall.path_save_node.type = 1
@@ -63,6 +67,7 @@ func _changed(path:String) -> void:
 		Overall.block_img = tex
 	if select_png == 1:
 		Overall.block_img_model = tex
+
 func _changed_dir(path:String) -> void:
 	Overall.path_node.current_dir = path
 	Overall.path_save_node.current_dir = path
@@ -147,7 +152,7 @@ func _changed_dir(path:String) -> void:
 #						data.g_data[age][type][key]["class"] = type
 						if data.g_data[age][type][key].model:
 							data.g_data[age][type][key]["tex"] = Overall.model_img
-							
+#		data = str2var(Function.read_file(path+"/config/data.mod"))
 		Overall.order_node._update()
 		Overall.select_item_node._update()
 		_update()
@@ -166,6 +171,7 @@ func _changed_dir(path:String) -> void:
 #			Overall.block_img_model = tex
 		return
 	if open_dir == 1:
+			
 		Overall.path = path
 		Function.set_save("set.cfg",path)
 		open_project = true
@@ -199,10 +205,48 @@ func _changed_dir(path:String) -> void:
 				d["tool"][key].tex = null
 			for key in d.armor:
 				d.armor[key].tex = null
+		if new:
+			if Function.is_file(path+"/config.cfg"):
+				var be = Function.read_file(path+"/config.cfg")
+				Function.write_file(path+"/config_backup.cfg",be)
+
+		
 		Function.write_file(path+"/config.cfg",var2str(data))
+		
 		for i in range(20):
 			yield(get_tree(),"idle_frame")
 		Overall.save_msg_node.hide()
+func _save(path:String) -> void:
+		var data = {
+			"g_data":Overall.g_data,
+			"block_img_path":Overall.block_img_path,
+			"block_img_model_path":Overall.block_img_model_path,
+			"side_size":Overall.side_size,
+			"order":Overall.order,
+			"order_key":Overall.order_key,
+			"key_list":Overall.key_list,
+			"buff":Overall.buff,
+			"windows":Overall.windows,
+			"furnace":Overall.furnace,
+		}
+		data = data.duplicate(true)
+		for d in data.buff:
+			d.tex = null
+		var g_data = data.g_data
+		for age in g_data:
+			for g in g_data[age].age.group:
+				g[3] = null
+			g_data[age].age.tex = null
+			var d = g_data[age]
+			for key in d.block:
+				d.block[key].tex = null
+			for key in d.item:
+				d.item[key].tex = null
+			for key in d["tool"]:
+				d["tool"][key].tex = null
+			for key in d.armor:
+				d.armor[key].tex = null
+		Function.write_file(path+"/mod_project.cfg",var2str(data))
 func delete_age(age) -> void:
 #	Overall.g_data[age] = Overall.g_data[age]
 	Overall.g_data.erase(age)

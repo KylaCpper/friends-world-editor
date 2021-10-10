@@ -50,6 +50,8 @@ func on_hide() -> void:
 					Overall.g_data[age].age.img = path
 					Overall.g_data[age].age.key = key
 					Overall.g_data[age].age.tex = tex
+					Overall.g_data[age].age.name_en = name_en
+					Overall.g_data[age].age.info_en = info_en
 					Overall.g_data[age].age["index"] = index
 					if !(key in Overall.g_data):
 						Overall.g_data[key] = Overall.g_data[age]

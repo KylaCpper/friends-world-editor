@@ -1918,7 +1918,6 @@ margin_top = 103.0
 margin_bottom = 600.0
 
 [node name="armor_info" parent="info" instance=ExtResource( 43 )]
-visible = false
 margin_top = 103.0
 margin_bottom = 598.0
 
@@ -3132,6 +3131,7 @@ rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 61 )
 
 [node name="furnace" type="WindowDialog" parent="."]
+visible = true
 margin_left = 107.0
 margin_top = 83.0
 margin_right = 934.0
