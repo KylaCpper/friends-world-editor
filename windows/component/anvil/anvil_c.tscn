@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://default.tres" type="Theme" id=1]
+[ext_resource path="res://windows/component/anvil/anvil_c.gd" type="Script" id=2]
+[ext_resource path="res://info/ui/select_item_.gd" type="Script" id=3]
+[ext_resource path="res://info/ui/bool_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://info/ui/num_.tscn" type="PackedScene" id=5]
+
+[node name="grid" type="Control"]
+margin_right = 230.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 290, 55 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 42.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "物品:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" type="LineEdit" parent="."]
+margin_left = 47.0
+margin_top = 1.0
+margin_right = 170.0
+margin_bottom = 23.0
+theme = ExtResource( 1 )
+align = 1
+context_menu_enabled = false
+caret_blink = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ui0"]
+margin_left = 126.439
+margin_right = 145.439
+margin_bottom = 22.0
+theme = ExtResource( 1 )
+text = "."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 26.0
+margin_right = 42.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "数量:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Label" parent="."]
+margin_left = 149.0
+margin_top = 26.0
+margin_right = 184.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "几率:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Label" parent="."]
+margin_left = 196.911
+margin_top = 1.0
+margin_right = 231.911
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "阻断:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" parent="." instance=ExtResource( 5 )]
+margin_left = 46.7463
+margin_top = 26.0
+margin_right = 146.746
+margin_bottom = 46.0
+max_value = 99.0
+step = 1.0
+
+[node name="ui2" parent="." instance=ExtResource( 5 )]
+margin_left = 184.749
+margin_top = 26.0
+margin_right = 284.749
+margin_bottom = 46.0
+
+[node name="ui3" parent="." instance=ExtResource( 4 )]
+margin_left = 88.8067
+margin_top = -5.66864
+margin_right = 112.807
+margin_bottom = 26.3314
+
+[node name="delete" type="Button" parent="."]
+margin_left = 259.769
+margin_top = 1.0
+margin_right = 281.769
+margin_bottom = 23.0
+rect_min_size = Vector2( 22, 22 )
+theme = ExtResource( 1 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sp" type="Label" parent="."]
+margin_left = -4.20448
+margin_top = 0.594604
+margin_right = 2.79552
+margin_bottom = 45.5946
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "|
+|
+|"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -31,6 +31,7 @@ func on_hide(path:String) -> void:
 		var gdata = Overall.g_data.duplicate(true)
 		var composite = {}
 		var furnace = {}
+		var anvil = []
 		var block = {}
 		var liquid_block = {}
 		var item = {}
@@ -54,8 +55,13 @@ func on_hide(path:String) -> void:
 				if size > 0:
 					if !size in furnace:furnace[size]=[]
 					furnace[size].append({"export":dd["export"],"table":dd.table,"energy":dd.energy,"time":dd.time})
-			
-			
+		for key in Overall.anvil:
+			var d = Overall.anvil[key].data
+			for dd in d:
+				var size = dd.table.size()
+				if size > 0:
+					anvil.append([dd.export,dd.time,dd.table])
+#					anvil.append({"export":dd["export"],"table":dd.table,"energy":dd.energy,"time":dd.time})
 		for age in gdata:
 			composite[age] = {"default":{},"craft_table":{}}
 			class_[age] = {}
@@ -150,6 +156,7 @@ func on_hide(path:String) -> void:
 #		data["armor"] = armor
 		data["composite"] = composite
 		data["furnace"] = furnace
+		data["anvil"] = anvil
 		data["age"] = class_
 		data["order"] = order
 		data["buff"] = buff

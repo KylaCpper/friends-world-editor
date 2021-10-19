@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://left/left.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://windows/window_child_script/food.gd" type="Script" id=17]
 [ext_resource path="res://windows/composite.gd" type="Script" id=18]
 [ext_resource path="res://windows/window_child_script/composite.gd" type="Script" id=19]
+[ext_resource path="res://windows/anvil.gd" type="Script" id=20]
 [ext_resource path="res://info/liquid_block_info/liquid_block_info.gd" type="Script" id=21]
 [ext_resource path="res://windows/branch.gd" type="Script" id=22]
 [ext_resource path="res://windows/window_child_script/branch.gd" type="Script" id=23]
@@ -84,6 +85,10 @@
 [ext_resource path="res://info/liquid_block_info/vbox2.gd" type="Script" id=83]
 [ext_resource path="res://windows/component/plant/1.gd" type="Script" id=84]
 [ext_resource path="res://info/ui/select_item_delete.tscn" type="PackedScene" id=85]
+[ext_resource path="res://windows/component/anvil/class.gd" type="Script" id=86]
+[ext_resource path="res://windows/component/anvil/tree.gd" type="Script" id=87]
+[ext_resource path="res://windows/component/anvil/anvil.gd" type="Script" id=88]
+[ext_resource path="res://windows/component/anvil/msg_anvil.gd" type="Script" id=89]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -285,6 +290,16 @@ margin_right = 517.0
 margin_bottom = 27.0
 theme = ExtResource( 10 )
 text = "炼制合成"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anvil" type="Button" parent="head"]
+margin_left = 528.0
+margin_right = 605.0
+margin_bottom = 27.0
+theme = ExtResource( 10 )
+text = "锻造合成"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3131,7 +3146,6 @@ rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 61 )
 
 [node name="furnace" type="WindowDialog" parent="."]
-visible = true
 margin_left = 107.0
 margin_top = 83.0
 margin_right = 934.0
@@ -3378,6 +3392,268 @@ __meta__ = {
 }
 
 [node name="button7" type="Button" parent="furnace/msg_furnace"]
+margin_left = 4.95786
+margin_top = 145.0
+margin_right = 95.9579
+margin_bottom = 165.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "刷新"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anvil" type="WindowDialog" parent="."]
+margin_left = 107.0
+margin_top = 83.0
+margin_right = 934.0
+margin_bottom = 571.0
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 10 )
+window_title = "锻造系统"
+resizable = true
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add" type="Button" parent="anvil"]
+visible = false
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 20 )
+theme = ExtResource( 10 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tree" type="Tree" parent="anvil"]
+margin_top = 2.0
+margin_right = 156.0
+margin_bottom = 488.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/bg = SubResource( 4 )
+allow_reselect = true
+allow_rmb_select = true
+hide_root = true
+drop_mode_flags = 1
+script = ExtResource( 87 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="class" type="WindowDialog" parent="anvil"]
+margin_left = 299.906
+margin_top = 177.0
+margin_right = 496.906
+margin_bottom = 248.0
+focus_mode = 2
+theme = ExtResource( 10 )
+window_title = "分类"
+resizable = true
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="anvil/class"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 191.0
+margin_bottom = 66.0
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Control" parent="anvil/class/ScrollContainer"]
+margin_right = 180.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 180, 50 )
+
+[node name="Label" type="Label" parent="anvil/class/ScrollContainer/control"]
+margin_left = 5.90601
+margin_top = 8.0
+margin_right = 43.906
+margin_bottom = 28.0
+theme = ExtResource( 10 )
+text = "名字:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" parent="anvil/class/ScrollContainer/control" instance=ExtResource( 51 )]
+margin_left = 48.854
+margin_top = 8.0
+margin_right = 169.854
+margin_bottom = 28.0
+
+[node name="sure" type="Button" parent="anvil/class/ScrollContainer/control"]
+margin_left = 67.854
+margin_top = 39.0
+margin_right = 105.854
+margin_bottom = 59.0
+theme = ExtResource( 10 )
+text = "确定"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="anvil"]
+margin_left = 159.0
+margin_top = 2.0
+margin_right = 820.0
+margin_bottom = 479.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anvil" type="GridContainer" parent="anvil/ScrollContainer"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+mouse_filter = 2
+script = ExtResource( 88 )
+
+[node name="msg_anvil" type="Panel" parent="anvil"]
+visible = false
+margin_left = 104.0
+margin_top = 32.0
+margin_right = 205.0
+margin_bottom = 202.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 89 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button0" type="Button" parent="anvil/msg_anvil"]
+margin_left = 4.95786
+margin_top = 5.0
+margin_right = 95.9579
+margin_bottom = 25.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button1" type="Button" parent="anvil/msg_anvil"]
+margin_left = 5.12643
+margin_top = 25.0
+margin_right = 96.1264
+margin_bottom = 45.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "修改分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="anvil/msg_anvil"]
+margin_left = 4.95786
+margin_top = 45.0
+margin_right = 95.9579
+margin_bottom = 65.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "删除分类"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button3" type="Button" parent="anvil/msg_anvil"]
+margin_left = 5.12643
+margin_top = 65.0
+margin_right = 96.1264
+margin_bottom = 85.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "添加配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button4" type="Button" parent="anvil/msg_anvil"]
+margin_left = 5.12644
+margin_top = 85.0
+margin_right = 96.1265
+margin_bottom = 105.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "删除配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button5" type="Button" parent="anvil/msg_anvil"]
+margin_left = 5.12644
+margin_top = 105.0
+margin_right = 96.1265
+margin_bottom = 125.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "复制配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button6" type="Button" parent="anvil/msg_anvil"]
+margin_left = 4.95786
+margin_top = 125.0
+margin_right = 95.9579
+margin_bottom = 145.0
+mouse_filter = 1
+theme = ExtResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+text = "粘贴配方"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button7" type="Button" parent="anvil/msg_anvil"]
 margin_left = 4.95786
 margin_top = 145.0
 margin_right = 95.9579
