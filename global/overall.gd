@@ -1,6 +1,7 @@
 extends Node
 var windows :={}
 var furnace := {}
+var anvil := {}
 var path = ""
 var block_img :Texture
 var block_img_model :Texture
@@ -62,7 +63,7 @@ const tool_node_type := preload("res://info/tool_info/tool_info.gd")
 var tool_node:tool_node_type
 const armor_node_type := preload("res://info/armor_info/armor_info.gd")
 var armor_node:armor_node_type
-
+var anvil_node
 var add_class_s_node
 var set_class_s_node
 #const tool_node_type := preload("res://info/tool_info/tool_info.gd")

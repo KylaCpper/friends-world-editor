@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://default.tres" type="Theme" id=1]
+[ext_resource path="res://windows/component/furnace/furnace_t.gd" type="Script" id=2]
+[ext_resource path="res://info/ui/select_item_.gd" type="Script" id=3]
+
+[node name="grid" type="Control"]
+margin_right = 193.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 193, 55 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text0" type="Label" parent="."]
+margin_right = 38.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "物品:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui0" type="LineEdit" parent="."]
+margin_left = 44.0
+margin_right = 181.0
+margin_bottom = 22.0
+theme = ExtResource( 1 )
+align = 1
+context_menu_enabled = false
+caret_blink = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ui0"]
+margin_left = 145.0
+margin_right = 167.0
+margin_bottom = 22.0
+theme = ExtResource( 1 )
+text = "."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text1" type="Label" parent="."]
+margin_top = 25.0
+margin_right = 38.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+text = "需量:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui1" type="SpinBox" parent="."]
+margin_left = 43.584
+margin_top = 25.0
+margin_right = 145.584
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 20 )
+theme = ExtResource( 1 )
+max_value = 99.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete" type="Button" parent="."]
+margin_left = 189.0
+margin_top = 25.0
+margin_right = 211.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 22, 22 )
+theme = ExtResource( 1 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sp" type="Label" parent="."]
+margin_left = 227.754
+margin_right = 235.754
+margin_bottom = 47.0
+theme = ExtResource( 1 )
+text = "|
+|
+|"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
