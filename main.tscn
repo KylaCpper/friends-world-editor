@@ -386,7 +386,6 @@ __meta__ = {
 }
 
 [node name="block_info" type="ScrollContainer" parent="info"]
-visible = false
 margin_left = 166.0
 margin_top = 102.0
 margin_right = 1024.0
@@ -553,7 +552,7 @@ margin_bottom = 248.0
 rect_min_size = Vector2( 32, 32 )
 mouse_filter = 1
 theme = ExtResource( 10 )
-text = "密度(影响下落速度和最大速度,最大堆叠"
+text = "质量(影响下落速度和最大速度,最大堆叠"
 align = 1
 valign = 1
 autowrap = true
@@ -1933,6 +1932,7 @@ margin_top = 103.0
 margin_bottom = 600.0
 
 [node name="armor_info" parent="info" instance=ExtResource( 43 )]
+visible = false
 margin_top = 103.0
 margin_bottom = 598.0
 
