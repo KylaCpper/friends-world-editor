@@ -24,6 +24,8 @@ func on_changed(d,i) -> void:
 			Overall.data.liquid_block[d] = data
 			Overall.data.liquid_block.erase(data.key)
 			Overall.update_order(data.key,d,data.name)
+			for dd in Overall.data.liquid_block[d].composite:
+				dd.name = d
 			data.key = d
 	if i==9:return
 	data[key_list[i]] = d

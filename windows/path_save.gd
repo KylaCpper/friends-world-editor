@@ -160,10 +160,18 @@ func on_hide(path:String) -> void:
 		data["age"] = class_
 		data["order"] = order
 		data["buff"] = buff
+		for age in composite:
+			if "craft_table" in composite[age]:
+				if "default" in composite[age]:
+					for key in composite[age]["default"]:
+						composite[age]["craft_table"][key]=composite[age]["default"][key]
+#					.append()
+			
+				
 		var p = path.left(path.find_last("/"))
 		Overall.head_node._save(p)
 		Function.write_file(path,var2str(data),null)
-
+	
 func _composite(gcomposite,craft,furnace) -> void:
 	for d in gcomposite:
 		if d.craft == "furnace":
@@ -174,5 +182,6 @@ func _composite(gcomposite,craft,furnace) -> void:
 		else:
 			if !d.name in craft[d.craft]:craft[d.craft][d.name]=[]
 			craft[d.craft][d.name].append(d)
+
 
 
